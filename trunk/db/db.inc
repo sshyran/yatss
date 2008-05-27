@@ -3,6 +3,6 @@
 $hostName = "localhost";
 $userName = "root";
 $password = "admin";
-$db = "residential";
+$db = "yatss";
 
 ?>
