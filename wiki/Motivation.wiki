@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Course taken at Leipzig university
+PHP course at Leipzig university
 
 
 = Details =
