@@ -1,0 +1,3 @@
+on *nix systems:
+
+sudo chown www templates_c
