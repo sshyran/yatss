@@ -12,8 +12,7 @@ Password: <input type="password" name="password" size="30"/> <br /> <br />
 
 </form>
 {else}
-Welcome {$smarty.session.username} <a href="index.php?logout=1">logout</a>
-		<!-- your role is {$smarty.session.userrole} -->
+Welcome {$smarty.session.username} <a href="logout.php">logout</a>
+		your role is {$smarty.session.userrole}
 {/if}
-
 {include file="footer.tpl"}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2008-06-03 15:19:43
+<?php /* Smarty version 2.6.19, created on 2008-06-04 11:13:20
          compiled from page1.tpl */ ?>
 <?php $this->assign('title', 'Page 1 Title'); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
