@@ -10,13 +10,13 @@ if (PEAR::isError($res)) {
 }
 
 $row_array=array();
-
 while (($row = $res->fetchRow())) {
-//	print_r($row);
-	$row_array[]=$row;
+	$row_array[$row[0]]=$row[1];
 	$t->assign('data',$row_array);
 }
-
+//print_r($row_array);
 $t->display('register.tpl');
+
+
 
 ?>
