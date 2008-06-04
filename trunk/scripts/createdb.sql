@@ -100,6 +100,15 @@ CREATE TABLE IF NOT EXISTS  us_states  (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
+DROP TABLE IF EXISTS  basket ;
+CREATE TABLE IF NOT EXISTS  basket  (
+   id  varchar(2) NOT NULL,
+   name  varchar(20) NOT NULL,
+  PRIMARY KEY  ( id )
+) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
 
 alter table users add constraint user_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_tickettype_fk foreign key(ticket_type_id) references ticket_type(id); 
