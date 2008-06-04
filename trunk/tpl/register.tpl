@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 <link type="text/javascript" href="verify.js" />
 
-<form method="POST" action="insert.php" name="loginForm">
+<form method="post" action="insert.php" name="loginForm">
 <table border="0" cellpadding="0" cellspacing="0">
 <tr align="center" height="30px">
 	<td colspan="2">Registration</td>
