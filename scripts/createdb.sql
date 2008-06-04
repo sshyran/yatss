@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS  tickets  (
 DROP TABLE IF EXISTS  users ;
 CREATE TABLE IF NOT EXISTS  users  (
    id  int(5) NOT NULL auto_increment,
-   nickname  varchar(30) NOT NULL,
+   username  varchar(30) NOT NULL,
    password  varchar(40) NOT NULL,
    address_id  int(5) NOT NULL,
    firstName  varchar(30) NOT NULL,
@@ -95,3 +95,10 @@ alter table users add constraint user_address_fk foreign key(address_id) referen
 alter table tickets add constraint ticket_tickettype_fk foreign key(ticket_type_id) references ticket_type(id); 
 alter table purchases add constraint purchases_event_fk foreign key(event_id) references events(id); 
 alter table purchases add constraint purchases_users_fk foreign key(user_id) references users(id); 
+
+
+
+--------------
+-- adding default users
+
+s
