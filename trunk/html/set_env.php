@@ -81,7 +81,7 @@ $a->setIdle(600);
 
 
 // Use case insensitive login
-if (isset($_POST['username'])) $_POST['username'] = strtoupper($_POST['username']);
+if (isset($_POST['username'])) $_POST['username'] = strtolower($_POST['username']);
 
 // Check for logout
 if (isset($_REQUEST['logout']) && $_REQUEST['logout'] && $a->getAuth()) {
