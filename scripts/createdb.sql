@@ -1,7 +1,7 @@
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
--- DROP DATABASE  yatss ;
+DROP DATABASE  yatss ;
 CREATE DATABASE  yatss  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE  yatss ;
 
@@ -95,10 +95,16 @@ alter table users add constraint user_address_fk foreign key(address_id) referen
 alter table tickets add constraint ticket_tickettype_fk foreign key(ticket_type_id) references ticket_type(id); 
 alter table purchases add constraint purchases_event_fk foreign key(event_id) references events(id); 
 alter table purchases add constraint purchases_users_fk foreign key(user_id) references users(id); 
+alter table admin_table add constraint user_admin_fk foreign key(user_id) references users(id); 
+alter table events add constraint event_address_fk foreign key(address_id) references address(id); 
+alter table tickets add constraint ticket_event_fk foreign key(event_id) references events(id); 
 
 
 
---------------
--- adding default users
+INSERT INTO address (id, address, city, state, zip) VALUES
+(1, 'Montanastrasse', 'Leipzig', 'Sachsen', 04103);
 
-s
+-- default password for user roll = 1
+
+INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
+(1, 'admin', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'admin', '', 'sysadmin', 'xxx@xxx.com');
