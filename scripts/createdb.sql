@@ -11,9 +11,10 @@ CREATE TABLE IF NOT EXISTS  address  (
    id  int(5) NOT NULL auto_increment,
    address  varchar(30) NOT NULL,
    city  varchar(30) NOT NULL,
-   state  varchar(30) NOT NULL,
+   state_id  varchar(20) NOT NULL,
    zip  int(5) NOT NULL,
-  PRIMARY KEY  ( id )
+  PRIMARY KEY  ( id ),
+	key(state_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
@@ -91,6 +92,15 @@ CREATE TABLE IF NOT EXISTS  users  (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
+DROP TABLE IF EXISTS  us_states ;
+CREATE TABLE IF NOT EXISTS  us_states  (
+   id  varchar(2) NOT NULL,
+   name  varchar(20) NOT NULL,
+  PRIMARY KEY  ( id )
+) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
 alter table users add constraint user_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_tickettype_fk foreign key(ticket_type_id) references ticket_type(id); 
 alter table purchases add constraint purchases_event_fk foreign key(event_id) references events(id); 
@@ -98,11 +108,14 @@ alter table purchases add constraint purchases_users_fk foreign key(user_id) ref
 alter table admin_table add constraint user_admin_fk foreign key(user_id) references users(id); 
 alter table events add constraint event_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_event_fk foreign key(event_id) references events(id); 
+alter table address add constraint address_state_fk foreign key(state_id) references us_states(id); 
+
+INSERT INTO us_states (id, name) VALUES
+('AL','Alabama'),('AK','Alaska'),('AZ','Arizona'),('AR','Arkansas'),('CA','California'),('CO','Colorado'),('CT','Connecticut'),('DE','Delaware'),('DC','District of Columbia'),('FL','Florida'),('GA','Georgia'),('HI','Hawaii'),('ID','Idaho'),('IL','Illinois'),('IN','Indiana'),('IA','Iowa'),('KS','Kansas'),('KY','Kentucky'),('LA','Louisiana'),('ME','Maine'),('MD','Maryland'),('MA','Massachusetts'),('MI','Michigan'),('MN','Minnesota'),('MS','Mississippi'),('MO','Missouri'),('MT','Montana'),('NE','Nebraska'),('NV','Nevada'),('NH','New Hampshire'),('NJ','New Jersey'),('NM','New Mexico'),('NY','New York'),('NC','North Carolina'),('ND','North Dakota'),('OH','Ohio'),('OK','Oklahoma'),('OR','Oregon'),('PA','Pennsylvania'),('RI','Rhode Island'),('SC','South Carolina'),('SD','South Dakota'),('TN','Tennessee'),('TX','Texas'),('UT','Utah'),('VT','Vermont'),('VA','Virginia'),('WA','Washington'),('WV','West Virginia'),('WI','Wisconsin'),('WY','Wyoming');
 
 
-
-INSERT INTO address (id, address, city, state, zip) VALUES
-(1, 'Montanastrasse', 'Leipzig', 'Sachsen', 04103);
+INSERT INTO address (id, address, city, state_id, zip) VALUES
+(1, 'Leipzigstrasse', 'Sidney', 'MT', 04103);
 
 -- default password for user roll = 1
 

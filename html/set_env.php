@@ -75,6 +75,11 @@ $a = new Auth('MDB2',
 	isset($require_login) && $require_login ==1
 );
 
+// change session parameters
+$a->setAdvancedSecurity(true);
+$a->setIdle(600);
+
+
 // Use case insensitive login
 if (isset($_POST['username'])) $_POST['username'] = strtoupper($_POST['username']);
 
