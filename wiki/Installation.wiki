@@ -1,4 +1,4 @@
-on *nix systems:
+on unix systems:
 
-sudo chown www compile
-sudo chown www logs
+*sudo chown www compile
+*sudo chown www logs
