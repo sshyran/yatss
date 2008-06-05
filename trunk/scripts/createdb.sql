@@ -70,11 +70,12 @@ CREATE TABLE IF NOT EXISTS  ticket_type  (
 
 DROP TABLE IF EXISTS  tickets ;
 CREATE TABLE IF NOT EXISTS  tickets  (
-   id  int(5) NOT NULL auto_increment,
+  -- id  int(5) NOT NULL auto_increment,
    event_id  int(5) NOT NULL,
    ticket_type_id  int(5) NOT NULL,
-  PRIMARY KEY  ( id ),
-  key(ticket_type_id)
+  PRIMARY KEY  ( event_id, ticket_type_id ),
+  key(ticket_type_id),
+	key(event_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS  users ;

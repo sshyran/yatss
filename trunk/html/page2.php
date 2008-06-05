@@ -1,5 +1,5 @@
 <?
-$require_login=0;
+$require_login=1;
 require_once 'set_env.php';
 
 //$t->assign('data', $db->query('Select nickname, password from users'));
