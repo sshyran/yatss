@@ -3,10 +3,10 @@
 error_reporting(E_ALL);
 
 // db connect info
-$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss';
+$dsn = 'mysqli://root:admin@localhost/yatss';
 
 // Setup include path
-$web_root = 'http://localhost/~roll/paxton/yatss/html/';
+$web_root = 'http://project:8888/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
 $app_root = '..';
 $pear = $app_root . '/pear/'; 
@@ -27,7 +27,7 @@ PEAR::setErrorHandling(PEAR_ERROR_CALLBACK, 'errhndl');
 function errhndl ($err) {
     echo '<pre>' . $err->message;
     //die();
-	error_log($err."\n", 3, '../logs/error.log');
+	//error_log($err."\n", 3, '../logs/error.log');
     print_r($err);  # print_r is very useful during development but will display the db uid/pwd on query failure.
     die();
 } 
