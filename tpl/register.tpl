@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header.tpl" title="Registration"}
 <script type="text/javascript" src="../html/js/validate.js"></script>
 
 <form method="GET" action="insert.php" name="vform" id="vform">

@@ -6,7 +6,8 @@ error_reporting(E_ALL);
 $dsn = 'mysqli://root:admin@localhost/yatss';
 
 // Setup include path
-$web_root = 'http://project:8888/yatss/html/';
+//$web_root = 'http://project:8888/yatss/html/';
+$web_root = 'http://localhost/~roll/paxton/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
 $app_root = '..';
 $pear = $app_root . '/pear/'; 
@@ -51,9 +52,11 @@ session_start();
 
 /* BEGIN USER AUTH */
 
-// if (isset($_REQUEST['login']) && $_REQUEST['login'] == 1) {
+// if (isset($_GET['login']) && $_GET['login'] == 1) {
 //      $optional = true;
+// 	$_SESSION['showLogin']=1;
 // } else {
+// 		$_SESSION['showLogin']=0;
 //      $optional = false;
 // }
 
@@ -70,14 +73,15 @@ $a = new Auth('MDB2',
 //		,
 //		'db_fields' => array('user_key', 'perms')
 		),
-	'login', # login function name
-//	$optional #show login?
-	isset($require_login) && $require_login ==1
+	'loginFunction', # login function name
+	//$optional #show login?
+//	isset($require_login) && $require_login ==1
+	true
 );
 
 // change session parameters
 $a->setAdvancedSecurity(true);
-$a->setIdle(600);
+$a->setIdle(10);
 
 
 // Use case insensitive login
@@ -100,14 +104,34 @@ if (isset($require_login) && $require_login && !$a->getAuth()) {
 //$user_key = $_SESSION['_authsession']['data']['user_key'];
 //$perms = $_SESSION['_authsession']['data']['perms'];
 
-function login($username, $status, $auth) {
-	global $t;
-	$t->assign('status', $status);
-	$t->display('login.tpl');
-	die();
-}
+// function login($username, $status, $auth) {
+// 	global $t;
+// 	$t->assign('status', $status);
+// 	$t->display('login.tpl');
+// 	die();
+// }
 /* END USER AUTH */
 
 // Assign any global smarty values here.
 $t->assign('web_root', $web_root);
+
+
+
+function loginFunction()
+{
+	// //global $t;
+	// if (isset($_GET['login']) && $_GET['login'] == 1) {
+	//   //   $optional = true;
+	// 	$_SESSION['showLogin']=1;
+	// } else {
+	// 		$_SESSION['showLogin']=0;
+	//     // $optional = false;
+	// }
+	
+//	require_once('login.php');
+//	loginFunc();
+//	$t->display('login.tpl');
+}
+
+
 ?>
