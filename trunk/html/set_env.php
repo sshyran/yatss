@@ -35,7 +35,12 @@ function errhndl ($err) {
 } 
 // Connect to the database
 $db = MDB2::connect($dsn);
-//$db->setFetchMode(DB_FETCHMODE_ASSOC);  // Other modes possible; I find assoc best.
+
+if (PEAR::isError($db)) {
+    die($db->getMessage());
+}
+
+$db->setFetchMode(MDB2_FETCHMODE_ASSOC);  // Other modes possible; I find assoc best.
 //$db->setOption('optimize', 'portability');  // This is useful for apps supporting multiple backends such as mysql & oracle
 
 $t = new smarty;
@@ -80,9 +85,8 @@ $a = new Auth('MDB2',
 	true
 );
 
-// change session parameters
-$a->setAdvancedSecurity(true);
-$a->setIdle(10);
+
+setSessionVar($db, $a);
 
 
 // Use case insensitive login
@@ -132,6 +136,19 @@ function loginFunction()
 //	require_once('login.php');
 //	loginFunc();
 //	$t->display('login.tpl');
+}
+
+
+function setSessionVar($db, $a)
+{
+//	global $db;
+	$rs=$db->query('select session_timeout from config where id=1');
+	
+	$timeout=$rs->fetchRow();
+	// change session parameters
+	$a->setAdvancedSecurity(true);
+	$a->setIdle($timeout['session_timeout']);
+	
 }
 
 
