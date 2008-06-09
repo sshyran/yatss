@@ -11,7 +11,7 @@ require_once('login.php');
 //$t->display('menu.php')
 $t->display('index.tpl');
 
-//print_r($_SESSION);
+//print_r($_SESSION); 
 
 $t->display('footer.tpl');
 ?>
