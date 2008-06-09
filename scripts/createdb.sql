@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS  events  (
    date  datetime NOT NULL,
    name  varchar(30) NOT NULL,
    address_id  int(5) NOT NULL,
-   number_of_tickets  int(50) NOT NULL,
   PRIMARY KEY  ( id )
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -51,10 +50,12 @@ CREATE TABLE IF NOT EXISTS  purchases  (
    event_id  int(5) NOT NULL,
    user_id  int(5) NOT NULL,
    date  datetime NOT NULL,
+   ticket_type_id int(5) not null,
    number_of_tickets  int(10) NOT NULL,
   PRIMARY KEY  ( id ),
   key(event_id),
-  key (user_id)
+  key (user_id),
+  key (ticket_type_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
@@ -73,6 +74,7 @@ CREATE TABLE IF NOT EXISTS  tickets  (
   -- id  int(5) NOT NULL auto_increment,
    event_id  int(5) NOT NULL,
    ticket_type_id  int(5) NOT NULL,
+   num_of_tickets  int(5) NOT NULL,
   PRIMARY KEY  ( event_id, ticket_type_id ),
   key(ticket_type_id),
 	key(event_id)
@@ -119,6 +121,7 @@ alter table admin_table add constraint user_admin_fk foreign key(user_id) refere
 alter table events add constraint event_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_event_fk foreign key(event_id) references events(id); 
 alter table address add constraint address_state_fk foreign key(state_id) references us_states(id); 
+alter table purchases add constraint purchases_ticket_type_fk foreign key(ticket_type_id) references ticket_type(id); 
 
 INSERT INTO us_states (id, name) VALUES
 ('AL','Alabama'),('AK','Alaska'),('AZ','Arizona'),('AR','Arkansas'),('CA','California'),('CO','Colorado'),('CT','Connecticut'),('DE','Delaware'),('DC','District of Columbia'),('FL','Florida'),('GA','Georgia'),('HI','Hawaii'),('ID','Idaho'),('IL','Illinois'),('IN','Indiana'),('IA','Iowa'),('KS','Kansas'),('KY','Kentucky'),('LA','Louisiana'),('ME','Maine'),('MD','Maryland'),('MA','Massachusetts'),('MI','Michigan'),('MN','Minnesota'),('MS','Mississippi'),('MO','Missouri'),('MT','Montana'),('NE','Nebraska'),('NV','Nevada'),('NH','New Hampshire'),('NJ','New Jersey'),('NM','New Mexico'),('NY','New York'),('NC','North Carolina'),('ND','North Dakota'),('OH','Ohio'),('OK','Oklahoma'),('OR','Oregon'),('PA','Pennsylvania'),('RI','Rhode Island'),('SC','South Carolina'),('SD','South Dakota'),('TN','Tennessee'),('TX','Texas'),('UT','Utah'),('VT','Vermont'),('VA','Virginia'),('WA','Washington'),('WV','West Virginia'),('WI','Wisconsin'),('WY','Wyoming');
