@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS  admin_table  (
 DROP TABLE IF EXISTS  config ;
 CREATE TABLE IF NOT EXISTS  config  (
    id  int(5) NOT NULL auto_increment,
-   timer  int(15) NOT NULL,
-   timeout  int(30) NOT NULL,
+   basket_timer  int(15) NOT NULL,
+   session_timeout  int(30) NOT NULL,
   PRIMARY KEY  ( id )
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS  events  (
    date  datetime NOT NULL,
    name  varchar(30) NOT NULL,
    address_id  int(5) NOT NULL,
+	description text,
   PRIMARY KEY  ( id )
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -49,7 +50,7 @@ CREATE TABLE IF NOT EXISTS  purchases  (
    id  int(5) NOT NULL auto_increment,
    event_id  int(5) NOT NULL,
    user_id  int(5) NOT NULL,
-   date  datetime NOT NULL,
+   date_of_purchase  datetime NOT NULL,
    ticket_type_id int(5) not null,
    number_of_tickets  int(10) NOT NULL,
   PRIMARY KEY  ( id ),
@@ -103,11 +104,20 @@ CREATE TABLE IF NOT EXISTS  us_states  (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
+-- TODO: check start_of_transaction agains config.timer
+
 DROP TABLE IF EXISTS  basket ;
 CREATE TABLE IF NOT EXISTS  basket  (
-   id  varchar(2) NOT NULL,
-   name  varchar(20) NOT NULL,
-  PRIMARY KEY  ( id )
+ id  int(5) NOT NULL auto_increment,
+ event_id  int(5) NOT NULL,
+ user_id  int(5) NOT NULL,
+ start_of_transaction  datetime NOT NULL,
+ ticket_type_id int(5) not null,
+ number_of_tickets  int(5) NOT NULL,
+PRIMARY KEY  ( id ),
+key(event_id),
+key (user_id),
+key (ticket_type_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
@@ -139,4 +149,30 @@ insert into admin_table (user_id) values (1);
 INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
 (2, 'roll', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'registered', '', 'user', 'yyy@xxx.com');
 
+-- drop view view_event_info;
+CREATE VIEW  view_event_info  as 
+	select e.id as event_id, date, e.name, description, a.address, city, s.name as us_state, zip, num_of_tickets, tt.type as ticket_type, price
+	from events as e, tickets as t, ticket_type as tt, address as a, us_states as s
+	where e.id=t.event_id and tt.id=t.ticket_type_id and e.address_id = a.id and a.state_id = s.id;
 
+
+
+
+
+-- create events
+INSERT INTO events (id, date, name, address_id, description) VALUES
+(1, '2008-06-09 10:58:56', 'chris is doing pair programmin', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+(2, '2008-06-17 11:06:41', 'dxxxx', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+");
+
+INSERT INTO ticket_type (id, type, price) VALUES
+(1, 'premium', 20),
+(2, 'standard', 10);
+
+INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets) VALUES
+(1, 1, 10),
+(1, 2, 11);
+
+
+insert into config (basket_timer, session_timeout) values (600, 600);
