@@ -131,3 +131,9 @@ INSERT INTO address (id, address, city, state_id, zip) VALUES
 
 INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
 (1, 'admin', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'admin', '', 'sysadmin', 'xxx@xxx.com');
+insert into admin_table (user_id) values (1);
+
+INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
+(2, 'roll', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'registered', '', 'user', 'yyy@xxx.com');
+
+
