@@ -3,17 +3,17 @@ $require_login=0;
 error_reporting(E_ALL);
 require_once('set_env.php');
 
-$user = $_POST['username'];
-$pass1 = $_POST['password1'];
-$pass2 = $_POST['password2'];
-$firstName = $_POST['firstName'];
-$middleName = $_POST['middleName'];
-$lastName = $_POST['lastName'];
-$email = $_POST['email'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$zip = $_POST['zip'];
+$user = $_GET['username'];
+$pass1 = $_GET['password1'];
+$pass2 = $_GET['password2'];
+$firstName = $_GET['firstName'];
+$middleName = $_GET['middleName'];
+$lastName = $_GET['lastName'];
+$email = $_GET['email'];
+$address = $_GET['address'];
+$city = $_GET['city'];
+$state = $_GET['state'];
+$zip = $_GET['zip'];
 
 $result =& $db->query("SELECT * FROM users WHERE users.username = '$user'");
 
