@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>{$title|default:'main page'}</title>
-	 <link rel="stylesheet" href="../html/register.css" type="text/css" media="screen">
+	 <link rel="stylesheet" href="../html/register.css" type="text/css" media="screen" />
 
 </head>
 
