@@ -159,8 +159,7 @@ if ($debug) {
 echo "<br />Everybody can see this text!<br />";
 
 
-
-?>
+Å?>
 
 	<BODY>
 

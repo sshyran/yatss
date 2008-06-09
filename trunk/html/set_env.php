@@ -3,7 +3,8 @@
 error_reporting(E_ALL);
 
 // db connect info
-$dsn = 'mysqli://root:admin@localhost/yatss';
+//$dsn = 'mysqli://root:admin@localhost/yatss';
+$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss'
 
 // Setup include path
 //$web_root = 'http://project:8888/yatss/html/';
