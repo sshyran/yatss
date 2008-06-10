@@ -1,4 +1,4 @@
-#Some links I've found useful for php+db development.
+_Some links I've found useful for php+db development._
 
 == DB security ==
 sql injection: 
