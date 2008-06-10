@@ -1,17 +1,12 @@
 <?php
 require_once('set_env.php');
-if ($a->checkAuth()) {
-$rs=$db->query('select * from view_event_info');
+require_once('handleQuery.php');
 
-$myarray=array();
-while ($row = $rs->fetchRow()) {
-	$myarray[]=$row;
-}
 
+//$myarray=executeQuery('select * from view_event_info');
+$values[]=1;
+$myarray=executeQuery('select * from view_event_info where event_id = ?',$values);
 $t->assign('data',$myarray);
 $t->display("events.tpl");
-}
-else {
-	echo "hi chris";
-}
+
 ?>
