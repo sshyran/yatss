@@ -10,9 +10,12 @@ if (PEAR::isError($res)) {
 }
 
 $row_array=array();
+		
 while (($row = $res->fetchRow())) {
-        $row_array[$row[0]]=$row[1];
+        $row_array[$row['id']]=$row['name'];
 }
+
+//print_r($row_array);
 
 $t->assign('stateOptions', $row_array);
 
