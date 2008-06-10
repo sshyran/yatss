@@ -29,7 +29,7 @@
   <center>
   <br />
   <div style="width:80%; text-align:center;">
-  	<div id="route" style="width: 30%; height:480px; float:left; margin-right:10px; font-size:14px;"></div>
+  	<div id="route" style="text-align: left; width: 30%; height:480px; float:left; margin-right:10px; font-size:14px;"></div>
     <div id="map_canvas" style="width: 55%; height: 480px; float:left; border: 1px solid black;"></div>
     <br/>
 	

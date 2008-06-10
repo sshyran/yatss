@@ -154,6 +154,10 @@ CREATE VIEW  view_event_info  as
 	select e.id as event_id, date, e.name, description, a.address, city, s.name as us_state, zip, num_of_tickets, tt.type as ticket_type, price
 	from events as e, tickets as t, ticket_type as tt, address as a, us_states as s
 	where e.id=t.event_id and tt.id=t.ticket_type_id and e.address_id = a.id and a.state_id = s.id;
+	
+CREATE VIEW vew_basket_info as
+	SELECT events.name, events.date, ticket_type.price, basket.number_of_tickets FROM events, ticket_type, basket
+	WHERE basket.event_id = events.id AND ticket_type.id = basket.ticket_type_id AND basket.user_id = 1;
 
 
 
@@ -168,7 +172,7 @@ INSERT INTO events (id, date, name, address_id, description) VALUES
 
 INSERT INTO ticket_type (id, type, price) VALUES
 (1, 'premium', 20),
-(2, 'standard', 10);
+(2, 'standard', 10);  
 
 INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets) VALUES
 (1, 1, 10),
