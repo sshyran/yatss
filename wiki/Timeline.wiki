@@ -1,25 +1,25 @@
-= Project Timeline =
-June 10-11, 2008
-*  User should be able to buy tickets, and the shopping will be displayed.
-*  Create template called showgrid.tpl to display all associative arrays (purchase history, users, event details, admin pages)
+== Project Timeline ==
+=== June 10-11, 2008 ===
+ * User should be able to buy tickets, and the shopping will be displayed.
+ * Create template called showgrid.tpl to display all associative arrays (purchase history, users, event details, admin pages)
 
-== June 12, 2008 ==
- *  Fix bugs in shopping cart
+=== June 12, 2008 ===
+ *  Fix bugs in shopping cart.
  *  Enhance shopping cart (add, delete, update quantity, checkout, continue shopping button, link to events)
 
-== June 13, 2008 ==
-*  Create checkout pages
+=== June 13, 2008 ===
+ *  Create checkout pages
     # Initial page with login/register (if not logged in)
     # Confirmation page (if logged in) - information, shipping info, confirmation
 
-== June 14, 2008 ==
-*  Debug of shopping cart / confirmation pages
+=== June 14, 2008 ===
+ *  Debug of shopping cart / confirmation pages
 
-== June 15, 2008 ==
-*  User options (change personal information, view purchase history)
-*  Admin interface and options
+=== June 15, 2008 ===
+ *  User options (change personal information, view purchase history)
+ *  Admin interface and options
 
-=*Later Enhancements*=
-*  PEAR package for dealing with credit cards
-*  Paypal Services
-*  Pie charts
+== Later Enhancements ==
+ *  PEAR package for dealing with credit cards
+ *  Paypal Services
+ *  Pie charts
