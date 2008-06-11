@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS  basket  (
  id  int(5) NOT NULL auto_increment,
  event_id  int(5) NOT NULL,
  user_id  int(5) NOT NULL,
- start_of_transaction  datetime NOT NULL,
+ start_of_transaction  timestamp NOT NULL default CURRENT_TIMESTAMP,
  ticket_type_id int(5) not null,
  number_of_tickets  int(5) NOT NULL,
 PRIMARY KEY  ( id ),
