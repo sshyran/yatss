@@ -150,7 +150,7 @@ insert into admin_table (user_id) values (1);
 INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
 (2, 'roll', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'registered', '', 'user', 'yyy@xxx.com');
 
--- drop view view_event_info;
+drop view  if exists view_event_info;
 CREATE VIEW  view_event_info  as 
 	select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
 		available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
@@ -176,10 +176,21 @@ INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets, available_tickets
 
 insert into config (basket_timer, session_timeout) values (600, 600);
 	
--- drop view view_event_info;
+drop view if exists view_purchase_history;
 CREATE VIEW  view_purchase_history  as 
 	select username, e.name as event_name, date, tt.type, tt.price from purchases as p, events as e, ticket_type as tt, users as u where
 	 						tt.id=ticket_type_id and 
 							u.id=p.user_id and
 							e.id=p.event_id;
-							
+
+drop trigger if exists delete_invalid_transactions;
+create trigger delete_invalid_transactions after delete on basket
+	for each row 
+		update tickets set available_tickets=available_tickets+old.number_of_tickets where old.event_id=event_id and old.ticket_type_id=ticket_type_id;
+
+drop trigger if exists ticket_in_baket;
+create trigger ticket_in_baket after insert on basket
+	for each row
+		update tickets set available_tickets=available_tickets-new.number_of_tickets where new.event_id=event_id and new.ticket_type_id=ticket_type_id;
+	
+-- delete from basket where ticket_type_id=2
