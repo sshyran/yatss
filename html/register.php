@@ -1,5 +1,5 @@
 <?php
-$require_login=0;
+//$require_login=0;
 require_once('set_env.php');
 
 $res =& $db->query('SELECT id, name FROM us_states');
