@@ -1,3 +1,4 @@
+{$smarty.session.username}
 {if !isset($smarty.session.username)}
 	<div>
 			<form method="post" action="{$smarty.config.web_root}" id="loginForm">

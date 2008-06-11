@@ -21,4 +21,6 @@ if (isset($_REQUEST['page']) && in_array(($page=$_REQUEST['page']), $valid_pages
 $tplList[]='footer';
 $t->assign('tplList',$tplList);
 $t->display('index.tpl');
+echo "<pre>";
+print_r($_SESSION);
 ?>

@@ -5,7 +5,7 @@ if ($a->checkAuth()) {
 		$ticketType=$db->escape($_REQUEST['ticketType']);
 		$numOfTickets=$db->escape($_REQUEST['addItem']);
 		//adding request to basket table
-		$sql=''
+		$sql='';
 	}
 }
 
