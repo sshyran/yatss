@@ -3,3 +3,4 @@ These are technologies and/or other packages, features, etc. that we have used i
 ==Enhancements==
  * Smarty Template Engine
  * PEAR Packages
+ * script.aculo.us / prototype Javascript frameworks
