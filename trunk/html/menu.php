@@ -12,11 +12,11 @@ if ($a->checkAuth()) {
 		$links = array_merge($links, populateArray($web_root,$valid_pages_admin));
 	}
 	else {
-		$links = array_merge($links, populateArray($web_root,$valid_pages_browser));
+		$links = array_merge($links, populateArray($web_root,$valid_pages_registered));
 	}
 }
 else {
-	$links = array_merge($links, populateArray($web_root,$valid_pages));
+	$links = array_merge($links, populateArray($web_root,$valid_pages_browser));
 }
 $t->assign('links',$links);
 
