@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS  tickets  (
    event_id  int(5) NOT NULL,
    ticket_type_id  int(5) NOT NULL,
    num_of_tickets  int(5) NOT NULL,
+   available_tickets  int(5) NOT NULL,
   PRIMARY KEY  ( event_id, ticket_type_id ),
   key(ticket_type_id),
 	key(event_id)
@@ -152,16 +153,9 @@ INSERT INTO users (id, username, password, address_id, firstName, middleName, la
 -- drop view view_event_info;
 CREATE VIEW  view_event_info  as 
 	select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
-		num_of_tickets as available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
+		available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
 	from events as e, tickets as t, ticket_type as tt, address as a, us_states as s
 	where e.id=t.event_id and tt.id=t.ticket_type_id and e.address_id = a.id and a.state_id = s.id;
-	
-CREATE VIEW vew_basket_info as
-	SELECT events.name, events.date, ticket_type.price, basket.number_of_tickets FROM events, ticket_type, basket
-	WHERE basket.event_id = events.id AND ticket_type.id = basket.ticket_type_id AND basket.user_id = 1;
-
-
-
 
 
 -- create events
@@ -175,9 +169,9 @@ INSERT INTO ticket_type (id, type, price) VALUES
 (1, 'premium', 20),
 (2, 'standard', 10);  
 
-INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets) VALUES
-(1, 1, 10),
-(1, 2, 11);
+INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets, available_tickets) VALUES
+(1, 1, 10, 10),
+(1, 2, 11, 10);
 
 
 insert into config (basket_timer, session_timeout) values (600, 600);
