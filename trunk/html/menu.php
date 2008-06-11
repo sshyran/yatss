@@ -1,19 +1,33 @@
 <?php
 //require_once('set_env.php');
 
-$valid_pages=array('events', 'history','cart');
-$valid_pages_browser=array('events');
+$valid_pages=array('events', 'history','cart', 'register');
+$valid_pages_registered=array('events', 'history','cart');
+$valid_pages_browser=array('events', 'register');
+$valid_pages_admin=array('events', 'history', 'users');
 $links=array();
 
 if ($a->checkAuth()) {
-	foreach ($valid_pages as  $value) {
-		$links[$value]="$web_root?page=$value";
+	if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']==1) {
+		$links = array_merge($links, populateArray($web_root,$valid_pages_admin));
+	}
+	else {
+		$links = array_merge($links, populateArray($web_root,$valid_pages_browser));
 	}
 }
 else {
-	foreach ($valid_pages_browser as  $value) {
-		$links[$value]="$web_root?page=$value";
-	}	
+	$links = array_merge($links, populateArray($web_root,$valid_pages));
 }
 $t->assign('links',$links);
+
+function populateArray($prefix, $array)
+{
+	
+	foreach ($array as  $value) {
+		$links[$value]="$prefix?page=$value";
+	}
+	return $links;
+}
+
+
 ?>

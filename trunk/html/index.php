@@ -1,7 +1,4 @@
 <?php
-
-
-
 require_once('set_env.php');
 $t->assign('title', 'yatss');
 

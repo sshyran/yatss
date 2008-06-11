@@ -13,7 +13,7 @@ requires data array
 		{foreach from=$row key=k item=i}
 			<td> {$k} </td>
 		{/foreach}
-		</tr>
+		</tr><tr>
 	{/if}
 		{foreach from=$row key=k item=v}
 			<td> {$v} </td>

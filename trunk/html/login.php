@@ -1,18 +1,56 @@
 <?php
 require_once('set_env.php');
-$t->assign('showLogin',($a->getAuth()!=1)?1:0);
+
+//$t->assign('showLogin',($a->getAuth()!=1)?1:0);
+//print_r($a->session);
 $t->assign('tpl_name_login','login');
 if($a->getAuth()){
 	if (!session_is_registered('username') && !session_is_registered('userid')) {
-		session_register('username');
-		$_SESSION['username']=$a->getUserName();
-		session_register('userid');
-		$_SESSION['userid']='1';
+		setSessionVars();
 	}
 }
 else {
 	session_unregister ('username');
 	session_unregister ('userid');
+	session_unregister ('is_admin');
+}
+
+/**
+ * sets the session variables needed for login
+ *
+ */
+
+function setSessionVars()
+{
+	global $a;
+	session_register('username');
+	$_SESSION['username']=$a->getUserName();
+	session_register('userid');
+	$uid=getUID();
+	if (isAdmin($uid)) {
+		session_register('is_admin');
+		$_SESSION['is_admin']=1;
+	}
+	$_SESSION['userid']=$uid;
+	
+}
+
+function isAdmin($uid)
+{
+	require_once('handleQuery.php');
+	$var[]=$uid;
+	$rs=executeQuery('select id from users, admin_table where users.id = ? and users.id = admin_table.user_id',$var);
+	return count($rs)>0;
+	
+}
+
+function getUID()
+{
+	global $a;
+	require_once('handleQuery.php');
+	$var[]=$a->getUserName();
+	$rs=executeQuery('select id from users where username = ?',$var);
+	return $rs[0]['id'];
 }
 
 //$t->display('index.tpl');

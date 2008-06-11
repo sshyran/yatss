@@ -75,9 +75,11 @@ $a = new Auth('MDB2',
 		'usernamecol' => 'username',
 		'passwordcol' => 'password',
 		'cryptType' => 'sha1',
-		'dsn' => $dsn
+		'dsn' => $dsn,
+		'advancedsecurity'=>true,
+		'regenerateSessionId'=>true
 //		,
-//		'db_fields' => array('user_key', 'perms')
+//		'db_fields' => array('id', 'email')
 		),
 	'loginFunction', # login function name
 	//$optional #show login?
@@ -122,8 +124,17 @@ $t->assign('web_root', $web_root);
 
 
 
-function loginFunction()
+function loginFunction($username, $status, &$auth)
 {
+	global $a;
+	if (isset($status)) {
+		switch ($status) {
+			case '-3':
+				echo "Authentication failed for user $username";
+				break;
+		}
+	}
+	
 	// //global $t;
 	// if (isset($_GET['login']) && $_GET['login'] == 1) {
 	//   //   $optional = true;
@@ -141,14 +152,10 @@ function loginFunction()
 
 function setSessionVar($db, $a)
 {
-//	global $db;
-	$rs=$db->query('select session_timeout from config where id=1');
-	
-	$timeout=$rs->fetchRow();
-	// change session parameters
-	$a->setAdvancedSecurity(true);
-	$a->setIdle($timeout['session_timeout']);
-	
+	require_once('handleQuery.php');
+	$id=array(1);
+	$rs=executeQuery('select session_timeout from config where id=?',$id);
+	$a->setIdle($rs[0]['session_timeout']);
 }
 define ("NOT_AUTHORIZED", 1);
 
