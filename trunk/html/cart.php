@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 require_once('set_env.php');
 require_once('handleQuery.php');
@@ -32,6 +32,6 @@ $myarray=executeQuery('SELECT events.name, events.date, ticket_type.price, baske
  	
 $t->assign('data',$myarray);
 
-$t->display('cart.tpl');
+//$t->display('cart.tpl');
 
 ?>
