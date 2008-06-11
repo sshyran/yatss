@@ -150,6 +150,6 @@ function setSessionVar($db, $a)
 	$a->setIdle($timeout['session_timeout']);
 	
 }
-
+define ("NOT_AUTHORIZED", 1);
 
 ?>

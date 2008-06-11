@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 
 	<title>{$title|default:'main page'}</title>
-	<link rel="stylesheet" href="../html/register.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="register.css" type="text/css" media="screen" />
 
 </head>
 

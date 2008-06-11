@@ -1,8 +1,5 @@
 <div id="box">
-<h3>{$title}</h3>
-<ul>
-{foreach from=$links key=k item=l}
- {$k} {$l}
+{foreach from=$links key=k item=v}
+	<a href="{$v}">{$k}</a>
 {/foreach}
-</ul>
 </div>

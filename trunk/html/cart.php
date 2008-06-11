@@ -1,8 +1,8 @@
-<?php
+	<?php
 
 require_once('set_env.php');
 require_once('handleQuery.php');
-require('basket_fns.php');
+//require('basket_fns.php');
 
 $values[] = array();
 $values['id'] = '1';

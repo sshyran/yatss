@@ -1,9 +1,12 @@
+{*
 {include file="header.tpl" title="Registration"}
 <script type="text/javascript" src="../html/js/prototype.js"></script>
 <script type="text/javascript" src="../html/js/scriptaculous.js"></script>
 <script type="text/javascript" src="../html/js/validate.js"></script>
 
 {include file="topbar.tpl"}
+
+*}
 
 <div id="regform" style="width: 100%;">
 <form method="get" action="insert.php" id="vform">
@@ -108,5 +111,6 @@
 </table>
 </form>
 </div>
-
+{*
 {include file="footer.tpl"}
+*}

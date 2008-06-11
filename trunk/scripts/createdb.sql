@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS  address  (
    id  int(5) NOT NULL auto_increment,
    address  varchar(30) NOT NULL,
    city  varchar(30) NOT NULL,
-   state_id  varchar(20) NOT NULL,
+   state_id  varchar(2) NOT NULL,
    zip  int(5) NOT NULL,
   PRIMARY KEY  ( id ),
 	key(state_id)
@@ -151,7 +151,8 @@ INSERT INTO users (id, username, password, address_id, firstName, middleName, la
 
 -- drop view view_event_info;
 CREATE VIEW  view_event_info  as 
-	select e.id as event_id, date, e.name, description, a.address, city, s.name as us_state, zip, num_of_tickets, tt.type as ticket_type, price
+	select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
+		num_of_tickets as available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
 	from events as e, tickets as t, ticket_type as tt, address as a, us_states as s
 	where e.id=t.event_id and tt.id=t.ticket_type_id and e.address_id = a.id and a.state_id = s.id;
 	
@@ -180,3 +181,12 @@ INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets) VALUES
 
 
 insert into config (basket_timer, session_timeout) values (600, 600);
+	
+-- drop view view_event_info;
+CREATE VIEW  view_purchase_history  as 
+	select username, e.name as event_name, date, tt.type, tt.price from purchases as p, events as e, ticket_type as tt, users as u where
+	 						tt.id=ticket_type_id and 
+							u.id=p.user_id and
+							e.id=p.event_id;
+							
+							
