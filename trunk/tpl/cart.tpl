@@ -24,9 +24,9 @@
 		<td style="border-top:1px solid grey;"></td>
 		<td style="border-top:1px solid grey;">{$row.date}</td>
 		<td style="border-top:1px solid grey;"></td>
-		<td style="border-top:1px solid grey; text-align:left;">{$row.number_of_tickets}</td>
+		<td style="border-top:1px solid grey; text-align:left;"><input type="text" size="4" value="{$row.number_of_tickets}" /></td>
 		<td style="border-top:1px solid grey; text-align:left;">${$row.price}</td>
-		<td style="border-top:1px solid grey; text-align:left;">${$row.price * $row.number_of_tickets}</td>
+		<td style="border-top:1px solid grey; text-align:left;">${$row.total}</td>
 		<td style="border-top:1px solid grey;"></td>
 		<td style="border-top:1px solid grey; width: 100px; text-align:center; border-right:1px solid grey;"><a href="" style="font-size:13px;">Remove</a></td>
 	</tr>
