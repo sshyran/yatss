@@ -8,9 +8,10 @@ if(isset($_REQUEST['event_id']) && isset($_REQUEST['ticket_type']) && isset($_RE
 	$sentValues = array();
 	$sentValues[0] = $_REQUEST['event_id'];
 	$sentValues[1] = $_REQUEST['ticket_type'];
+	echo('xxx' . $_REQUEST['event_id']);
 	
 	// Check if there are any tickets left
-	if($result = executeQuery("SELECT view_event_info.event_id FROM view_event_info WHERE event_id = ? AND ticket_type = ? available_tickets > 0", $sentValues))
+	if($result = executeQuery("SELECT view_event_info.event_id FROM view_event_info WHERE event_id = ? AND ticket_type_id = ? AND available_tickets > 0", $sentValues))
 	{
 		if(sizeof($result) == 1)
 		{
