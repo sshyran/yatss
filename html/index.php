@@ -1,17 +1,24 @@
 <?php
+
+
+
 require_once('set_env.php');
-//require_once('login.php');
 $t->assign('title', 'yatss');
-$t->display('header.tpl');
-$t->assign('tpl_name','topbar');
 
+$tplList=array('header','topbar', 'menu', 'login');
+
+require_once('menu.php');
 require_once('login.php');
-//$t->assign('tpl_name_menu','menu');
-//require_once('menu.php');
-//$t->display('menu.php')
+
+if (isset($_REQUEST['page']) && in_array(($page=$_REQUEST['page']), $valid_pages) ){
+	require_once("$page.php");
+	$tplList[]=$page;
+} else{
+	require_once('events.php');
+	$tplList[]='events';
+}
+
+$tplList[]='footer';
+$t->assign('tplList',$tplList);
 $t->display('index.tpl');
-
-//print_r($_SESSION); xxx
-
-$t->display('footer.tpl');
 ?>

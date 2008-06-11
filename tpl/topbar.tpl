@@ -1,1 +1,1 @@
-<p><b>top bar</b></p>
+<p><b>a nice top bar</b></p>

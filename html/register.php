@@ -56,5 +56,5 @@ if(isset($_GET['e']))
 }
 
 //print_r($row_array);
-$t->display('register.tpl');
+//$t->display('register.tpl');
 ?>

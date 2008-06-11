@@ -1,8 +1,19 @@
 <?php
-require_once('set_env.php');
-//require_once('login.php');
+//require_once('set_env.php');
 
-$links = array('0' => 'zero', '1'=> 'one');
+$valid_pages=array('events', 'history','cart');
+$valid_pages_browser=array('events');
+$links=array();
+
+if ($a->checkAuth()) {
+	foreach ($valid_pages as  $value) {
+		$links[$value]="$web_root?page=$value";
+	}
+}
+else {
+	foreach ($valid_pages_browser as  $value) {
+		$links[$value]="$web_root?page=$value";
+	}	
+}
 $t->assign('links',$links);
-$t->display('menu.tpl');
 ?>

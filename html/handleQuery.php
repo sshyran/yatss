@@ -1,15 +1,14 @@
 <?php
 require_once('set_env.php');
 /**
- * Handle all the DB queries using prepared statements or sql sting (without parameters)
+ * Handle all the DB queries using prepared statements or sql string (without parameters)
  */
 function executeQuery($sql, $values=array())
 {
 	global $db;
 	$result=array();
-	$rs;
 	if(sizeof($values)>0){
-		$statement=$db->prepare($sql,  MDB2_PREPARE_RESULT);
+		$statement=$db->prepare($sql, MDB2_PREPARE_RESULT);
 		$rs=$statement->execute($values);
 		$statement->free();
 	}
@@ -20,6 +19,7 @@ function executeQuery($sql, $values=array())
 	if(PEAR::isError($rs)) {
 	    die('failed... ' . $rs->getMessage());
 	}
+
 	while ($row = $rs->fetchRow()) {
 		$result[]=$row;
 	}

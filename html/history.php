@@ -1,0 +1,14 @@
+<?php
+require_once('set_env.php');
+require_once('handleQuery.php');
+
+if ($a->checkAuth()) {
+	$values[]=$a->getUserName();
+	$sql='select * from view_purchase_history where username= ?';
+	$myarray=executeQuery($sql,$values);
+	$t->assign('data',$myarray);
+}
+else {
+	$t->assign('error',NOT_AUTHORIZED);
+}
+?>

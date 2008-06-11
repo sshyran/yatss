@@ -3,11 +3,16 @@ require_once('set_env.php');
 require_once('handleQuery.php');
 
 
-//$myarray=executeQuery('select * from view_event_info');
-$values[]=1;
-$values[]='2008-06-09';
-$myarray=executeQuery('select * from view_event_info where event_id = ? and date > ? order by date asc',$values);
-$t->assign('data',$myarray);
-$t->display("events.tpl");
+$values[]= $db->quote(date($_date_format));
+$myarray=executeQuery('select * from view_event_info where date > ? order by date asc',$values);
 
-?>
+foreach ($myarray as $key => &$value) {
+	if ($a->checkAuth()) {
+		$value['link']="<a href=\"$web_root?page=cart&amp;addItem=$value[event_id]&amp;ticketType=$value[ticket_type_id]\">add to cart</a>";
+	}
+	array_shift($value);
+	unset($value['ticket_type_id']);
+}
+$t->assign('data',$myarray);
+
+	?>
