@@ -8,7 +8,7 @@ $myarray=executeQuery('select * from view_event_info where date > ? order by dat
 
 foreach ($myarray as $key => &$value) {
 	if ($a->checkAuth()) {
-		$value['link']="<a href=\"$web_root?page=cart&amp;addItem=$value[event_id]&amp;ticketType=$value[ticket_type_id]\">add to cart</a>";
+		$value['link']="<a href=\"$web_root?page=cart&amp;event_id=$value[event_id]&amp;ticket_type=$value[ticket_type_id]\">add to cart</a>";
 	}
 	array_shift($value);
 	unset($value['ticket_type_id']);
