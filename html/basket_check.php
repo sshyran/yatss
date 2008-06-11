@@ -13,9 +13,10 @@ function basketCheck()
 		$vars[]=getBasketTimer();
 		$sql='select id , start_of_transaction from basket where user_id = ? and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval ? second)';
 		$rs=executeQuery($sql, $vars);
-		print_r($rs);
 		if (count($rs)>0) {
-			echo "I will delete!!!";
+			echo "I will delete!!!<pre>";
+			print_r($rs);
+			deleteInvalidTransactions($rs);
 		}
 	}
 }
@@ -31,7 +32,15 @@ function getBasketTimer()
 
 
 
-
+function deleteInvalidTransactions($transactions)
+{
+	$sql='delete from basket where id = ?';
+	foreach ($transactions as $key => $value) {
+		$x[]=$value['id'];
+		$rs=executeQuery($sql,$x);
+		unset($x);
+	}
+}
 
 
 
