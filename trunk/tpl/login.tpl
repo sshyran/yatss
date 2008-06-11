@@ -1,6 +1,6 @@
 {if !isset($smarty.session.username)}
 	<div>
-			<form method="post" action="{$smarty.config.web_root}" id="loginForm">
+			<form method="post" action="{$smarty.config.web_root}?page=events" id="loginForm">
 			<div>Login: <input type="text" name="username" size="15"/></div>
 			<div>Password: <input type="password" name="password" size="15"/></div>
 			<div><input type="submit" name="Submit" value="Submit"/></div>

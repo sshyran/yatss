@@ -2,6 +2,9 @@
 //error_reporting(E_ALL - E_NOTICE);
 error_reporting(E_ALL);
 
+// set debug=0 to turn messages of
+$DEBUG=1;
+
 // db connect info
 $dsn = 'mysqli://root:admin@localhost/yatss';
 //$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss'
