@@ -183,4 +183,3 @@ CREATE VIEW  view_purchase_history  as
 							u.id=p.user_id and
 							e.id=p.event_id;
 							
-							
