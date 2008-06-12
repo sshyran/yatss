@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 // set debug=0 to turn messages of
-$DEBUG=1;
+$DEBUG=0;
 
 // db connect info
 $dsn = 'mysqli://root:admin@localhost/yatss';
@@ -162,4 +162,6 @@ function setSessionVar($db, $a)
 }
 define ("NOT_AUTHORIZED", 1);
 
+
+//$t->debugging=true;
 ?>
