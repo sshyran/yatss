@@ -18,9 +18,9 @@ if(isset($_GET['event_id']) && isset($_GET['ticket_type']) && isset($_GET['numbe
 	$tempA = array($user_id, $eventid, $ticket_type_id);
 	executeQuery("DELETE FROM basket WHERE basket.user_id = ? AND basket.event_id = ? AND basket.ticket_type_id = ?", $tempA);
 	
-	// Update number of tickets available
-	$tempB = array($number_of_tickets, $eventid, $ticket_type_id);
-	executeQuery("UPDATE tickets SET tickets.available_tickets = tickets.available_tickets+? WHERE tickets.event_id = ? AND tickets.ticket_type_id = ?", $tempB);
+	// // Update number of tickets available
+	// $tempB = array($number_of_tickets, $eventid, $ticket_type_id);
+	// executeQuery("UPDATE tickets SET tickets.available_tickets = tickets.available_tickets+? WHERE tickets.event_id = ? AND tickets.ticket_type_id = ?", $tempB);
 	
 	$address = $web_root."?page=cart";
 	//echo $address;
