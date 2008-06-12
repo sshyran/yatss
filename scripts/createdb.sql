@@ -194,3 +194,4 @@ create trigger ticket_in_baket after insert on basket
 		update tickets set available_tickets=available_tickets-new.number_of_tickets where new.event_id=event_id and new.ticket_type_id=ticket_type_id;
 	
 -- delete from basket where ticket_type_id=2
+-- select id , start_of_transaction from basket where user_id = 1 and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval 600 second)

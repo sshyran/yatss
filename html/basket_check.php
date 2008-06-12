@@ -27,22 +27,25 @@ function getBasketTimer()
 {
 	$sql='select basket_timer from config where id=1';
 	$rs=executeQuery($sql);
-	return $rs[0];
+	return $rs[0]['basket_timer'];
 }
 
 
 
 function deleteInvalidTransactions($transactions)
 {
-	$sql='delete from basket where id = ?';
+	$x=array();
+	$suffix='';
+	$sql='delete from basket where id= ? ';
 	foreach ($transactions as $key => $value) {
 		$x[]=$value['id'];
-		$rs=executeQuery($sql,$x);
-		unset($x);
+		$suffix .= $key=0?'':' or id= ?';
 	}
+//	print_r($sql.$suffix);
+	$rs=executeQuery($sql,$x);
 }
 
 
 
-basketCheck();
+//basketCheck();
 ?>
