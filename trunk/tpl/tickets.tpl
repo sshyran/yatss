@@ -27,7 +27,7 @@
 
 <table border="1">
 	<tr>
-		<td>Ticket Type</td><td>Ticket Price</td><td>Quantity</td>{if isset($smarty.session.username)}<td></td>{/if}
+		<td>Ticket Type</td><td>Ticket Price</td>{if isset($smarty.session.username)}<td>Tickets Remaining</td>{/if}<td>{if !isset($smarty.session.username)}Tickets Remaining{else}Quantity{/if}</td>{if isset($smarty.session.username)}<td></td>{/if}
 	</tr>
 	{foreach from=$ticketdata item=row}
 	<form method="get" name="{$row.type}Form" action="{$webroot}">
@@ -41,6 +41,7 @@
 			<td>{$row.available_tickets}</td>
 		
 		{elseif isset($smarty.session.username)}
+			<td>{$row.available_tickets}</td>
 			<td>
 			{html_options name=number_of_tickets options=$row.available_tickets_array}
 			</td>
@@ -51,3 +52,5 @@
 	</form>
 	{/foreach}
 </table>
+
+{if isset($smarty.session.username)}<br /><b>**</b> You are only allowed to buy up to <b>{$number_allowed} tickets</b> at one time <b>**</b>{/if}

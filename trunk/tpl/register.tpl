@@ -2,11 +2,13 @@
 {include file="header.tpl" title="Registration"}
 <script type="text/javascript" src="../html/js/prototype.js"></script>
 <script type="text/javascript" src="../html/js/scriptaculous.js"></script>
-<script type="text/javascript" src="../html/js/validate.js"></script>
+
 
 {include file="topbar.tpl"}
 
 *}
+{if !isset($smarty.session.username)}
+<script type="text/javascript" src="../html/js/validate.js"></script>
 
 <div id="regform" style="width: 100%;">
 <form method="get" action="insert.php" id="vform">
@@ -111,6 +113,9 @@
 </table>
 </form>
 </div>
+{else}
+Hey!  You're already logged in!  You can't register again.
+{/if}
 {*
 {include file="footer.tpl"}
 *}

@@ -2,19 +2,18 @@
 require_once('set_env.php');
 require_once('handleQuery.php');
 
-ini_set("memory_limit","50M");
-
 // Set status variable depending on user status (logged in / not)
-if($a->getAuth()) { $status = 'true'; }
+/*if($a->getAuth()) { $status = 'true'; }
 else{ $status = 'false';}
 
-$t->assign('loggedin',$status);
+$t->assign('loggedin',$status);*/
 
 // If the event id has been sent as a parameter
 if(isset($_GET['event_id']))
 {
 	$eventid = $_GET['event_id'];
 	$t->assign('eid', $eventid);
+	$t->assign('number_allowed', $purchase_number);
 	$t->assign('webroot', $web_root);
 	$eventArray = array($eventid);
 	$result = executeQuery("SELECT events.date, events.name, events.description, address.address, address.city, address.state_id, address.zip FROM events, address WHERE events.id = ? AND events.address_id = address.id", $eventArray);
@@ -43,9 +42,19 @@ if(isset($_GET['event_id']))
 		$at = $row['available_tickets'];
 		$availableArray = array();
 		// Generate array for ticket drop down list
-		for($m=1; $m<=$at; $m++)
+		if($ttype[0]['available_tickets'] < $purchase_number)
 		{
-			$availableArray[$m] = $m;
+			for($m=1; $m<=$at; $m++)
+			{
+				$availableArray[$m] = $m;
+			}
+		}
+		else
+		{
+			for($k=1; $k<=$purchase_number; $k++)
+			{
+				$availableArray[$k] = $k;
+			}
 		}
 		$ttype[$j]['available_tickets_array'] = $availableArray;
 		//print_r($ttype);

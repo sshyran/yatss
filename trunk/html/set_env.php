@@ -6,13 +6,15 @@ error_reporting(E_ALL);
 $DEBUG=0;
 //$t->debugging=true;
 
+$purchase_number = 10;
+
 // db connect info
 $dsn = 'mysqli://root:admin@localhost/yatss';
 //$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss'
 
 // Setup include path
-//$web_root = 'http://project:8888/yatss/html/';
-$web_root = 'http://localhost/~roll/paxton/yatss/html/';
+$web_root = 'http://project:8888/yatss/html/';
+//$web_root = 'http://localhost/~roll/paxton/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
 $app_root = '..';
 $pear = $app_root . '/pear/'; 
