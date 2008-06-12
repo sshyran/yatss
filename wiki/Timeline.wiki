@@ -26,3 +26,4 @@
  *  PEAR package for dealing with credit cards
  *  Paypal Services
  *  Pie charts
+ *  Pictures in the events
