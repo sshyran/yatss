@@ -10,7 +10,7 @@
 === June 13, 2008 ===
  *  Create checkout pages
     # Initial page with login/register (if not logged in)
-    # Confirmation page (if logged in) -> ~~information~~, credit card information, ~~shipping info~~, confirmation
+    # Confirmation page (if logged in) -> ~~information~~, credit card information, ~~shipping info~~, confirmation, receipt page
             ** Reset timer on basket events at each checkout page
             ** Create button for canceling the update process
 
