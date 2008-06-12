@@ -71,6 +71,13 @@ if($a->checkAuth())
 	
 	
 	$t->assign('data',$myarray);
+	
+	$subtotal = 0;
+	for($i=0; $i<count($myarray); $i++)
+	{
+		$subtotal += $myarray[$i]['total'];
+	}
+	$t->assign('subtotal',$subtotal);
 
 }
 else
