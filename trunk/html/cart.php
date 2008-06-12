@@ -2,6 +2,9 @@
 
 require_once('set_env.php');
 require_once('handleQuery.php');
+require_once('basket_check.php');
+
+basketCheck();
 
 //$t->assign('webroot', $web_root.""); 
 
@@ -32,9 +35,9 @@ if(isset($_REQUEST['event_id']) && isset($_REQUEST['ticket_type']) && isset($_RE
 			executeQuery("INSERT INTO basket (event_id, user_id, ticket_type_id, number_of_tickets) VALUES (?, ?, ?, ?)", $insertArray);
 			}
 			
-			// Update available_tickets in tickets
+			/*// Update available_tickets in tickets
 			$updateArray = array($_REQUEST['number_of_tickets'], $_REQUEST['event_id'], $_REQUEST['ticket_type']);
-			executeQuery("UPDATE tickets SET available_tickets = available_tickets-? WHERE tickets.event_id = ? AND tickets.ticket_type_id = ?", $updateArray);
+			executeQuery("UPDATE tickets SET available_tickets = available_tickets-? WHERE tickets.event_id = ? AND tickets.ticket_type_id = ?", $updateArray);*/
 		}
 	}
 	else {echo 'There are no more tickets left!';}
@@ -44,6 +47,7 @@ if(isset($_REQUEST['event_id']) && isset($_REQUEST['ticket_type']) && isset($_RE
 $values[] = array();
 $values['id'] = '1';
 $myarray=executeQuery('SELECT events.id as event_id, events.name, events.date, ticket_type.price, ticket_type.id as ticket_type_id, ticket_type.type, basket.number_of_tickets, basket.id, basket.number_of_tickets*ticket_type.price as total FROM events, ticket_type, basket WHERE basket.event_id = events.id AND ticket_type.id = basket.ticket_type_id AND basket.user_id = ? ORDER BY events.name ASC;',$values['id']);
+
 
 $t->assign('data',$myarray);
 

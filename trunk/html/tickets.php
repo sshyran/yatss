@@ -6,7 +6,7 @@ ini_set("memory_limit","50M");
 
 // Set status variable depending on user status (logged in / not)
 if($a->getAuth()) { $status = 'true'; }
-else{ $status = 'true';}
+else{ $status = 'false';}
 
 $t->assign('loggedin',$status);
 
