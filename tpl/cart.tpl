@@ -1,4 +1,5 @@
 <div>
+{if isset($smarty.session.username)}
 <table border="1">
 <tr>
 	<td colspan="7">Shopping Cart</td>
@@ -15,6 +16,7 @@
 {foreach from=$data item=row}
 	<form name="form{$row.id}" action="deleteCartEvent.php">
 	<input type="hidden" name="event_id" value="{$row.event_id}" />
+	<input type="hidden" name="basket_id" value="{$row.id}" />
 	<tr>
 		<td>{$row.name}</td>
 		<td>{$row.date}</td>
@@ -34,4 +36,9 @@
 	</td>
 </tr>
 </table>
+{else}
+<br />
+Please log in to view this page.
+<br />
+{/if}
 </div>

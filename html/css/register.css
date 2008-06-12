@@ -1,0 +1,18 @@
+/* CSS Document */
+
+body{
+/*	text-align:center;*/
+}
+
+/*table.center {margin-left:auto; margin-right:auto;}*/
+
+.expl {
+	color: #888;
+	font: 10px normal Tahoma, Arial, sans-serif;
+	font-style: italic;
+}
+
+#emessage{
+	font-size:13px;
+	color:#CC0000;
+}

@@ -1,7 +1,7 @@
 <?php
-$require_login=0;
 error_reporting(E_ALL);
 require_once('set_env.php');
+require_once('handleQuery.php');
 
 $user = $_GET['username'];
 $pass1 = $_GET['password1'];
@@ -15,15 +15,10 @@ $city = $_GET['city'];
 $state = $_GET['state'];
 $zip = $_GET['zip'];
 
-$result =& $db->query("SELECT * FROM users WHERE users.username = '$user'");
+$result = executeQuery("SELECT * FROM users WHERE users.username = ?", array($user));
+//print_r($result);
 
-// Always check that result is not an error
-if (PEAR::isError($result)) 
-{
-    die($result->getMessage());
-}
-
-$row = $result->numRows();
+$row = count($result);
 
 if(!($row == 1 || $row > 1))	// If the username is unique
 {
@@ -45,73 +40,78 @@ if(!($row == 1 || $row > 1))	// If the username is unique
 								{
 									if(ereg("^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$", $email))
 									{
-										$db->query("LOCK TABLES address WRITE");
-										$db->query("INSERT INTO address (address, city, state_id, zip) VALUES ('$address', '$city', '$state', '$zip')");
-										$db->query("UNLOCK TABLES");
+										//$db->query("LOCK TABLES address WRITE");
+										//$db->query("INSERT INTO address (address, city, state_id, zip) VALUES ('$address', '$city', '$state', '$zip')");
+										executeQuery("INSERT INTO address (address, city, state_id, zip) VALUES (?, ?, ?, ?)", array($address, $city, $state, $zip));
+										//$db->query("UNLOCK TABLES");
 										
-										$res = $db->query("SELECT id FROM address WHERE address = '$address'");
-										$row = $res->fetchRow();
-										$add_id = $row[0];
+										//$res = $db->query("SELECT id FROM address WHERE address = '$address'");
+										$res = executeQuery("SELECT id FROM address WHERE address.address = ? AND address.city = ? AND address.state_id = ? AND address.zip = ?", array($address, $city, $state, $zip));
+										//print_r($res);
+										//$row = $res->fetchRow();
+										$add_id = $res[0]['id'];
+										//echo("Address Id = " . $add_id);
 										
 				
-										$db->query("LOCK TABLES users WRITE");
-										$db->query("INSERT INTO users (username, password, address_id, firstName, middleName, lastName, email) VALUES ('$user', '$passhash', '$add_id', '$firstName', '$middleName', '$lastName', '$email');");
-										$db->query("UNLOCK TABLES");
-										header("Location: login.php");
+										//$db->query("LOCK TABLES users WRITE");
+										//$db->query("INSERT INTO users (username, password, address_id, firstName, middleName, lastName, email) VALUES ('$user', '$passhash', '$add_id', '$firstName', '$middleName', '$lastName', '$email');");
+										executeQuery("INSERT INTO users (username, password, address_id, firstName, middleName, lastName, email) VALUES (?, ?, ?, ?, ?, ?, ?)", array($user, $passhash, $add_id, $firstName, $middleName, $lastName, $email));
+										//$db->query("UNLOCK TABLES");
+										header("Location: $web_root?page=login");
 										//$t->display('login.tpl');
 									}
 									else
 									{
 										// Email is invalid
-										header("Location: register.php?e=9");
+										header("Location: $web_root?page=register&e=9");
 									}
 								}
 								else
 								{
 									// Name (first, middle, or last) is invalid
-									header("Location: register.php?e=8");
+									header("Location: $web_root?page=register&e=8");
 								}
 							}
 							else
 							{
 								// Zip code is invalid
-								header("Location: register.php?e=7");
+								header("Location: $web_root?page=register&e=7");
 							}
 						}
 						else
 						{
 							// State is invalid
-							header("Location: register.php?e=6");
+							header("Location: $web_root?page=register&e=6");
 						}
 					}
 					else
 					{
 						// City is invalid
-						header("Location: register.php?e=5");
+						header("Location: $web_root?page=register&e=5");
 					}
 				}
 				else
 				{
 					// Address invalid
-					header("Location: register.php?e=4");
+					header("Location: $web_root?page=register&e=4");
 				}
 			}
 			else
 			{
 				// Username is invalid
-				header("Location: register.php?e=3");
+				header("Location: $web_root?page=register&e=3");
 			}
 	}
 	else
 	{
 		// Passwords do not match
-		header("Location: register.php?e=2");
+		header("Location: $web_root?page=register&e=2");
 	}
 }
 else
 {
 	// Username is not unique in db
-	header("Location: register.php?e=1");
+	header("Location: $web_root?page=register&e=1");
 }
 
 
