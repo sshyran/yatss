@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS  purchases  (
    user_id  int(5) NOT NULL,
    date_of_purchase  datetime NOT NULL,
    ticket_type_id int(5) not null,
-   number_of_tickets  int(10) NOT NULL,
+   number_of_tickets  int(10) unsigned NOT NULL,
   PRIMARY KEY  ( id ),
   key(event_id),
   key (user_id),
@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS  ticket_type ;
 CREATE TABLE IF NOT EXISTS  ticket_type  (
    id  int(5) NOT NULL auto_increment,
    type  varchar(15) NOT NULL,
-   price  int(10) NOT NULL,
+   price  int(10) unsigned NOT NULL,
   PRIMARY KEY  ( id )
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -75,8 +75,8 @@ CREATE TABLE IF NOT EXISTS  tickets  (
   -- id  int(5) NOT NULL auto_increment,
    event_id  int(5) NOT NULL,
    ticket_type_id  int(5) NOT NULL,
-   num_of_tickets  int(5) NOT NULL,
-   available_tickets  int(5) NOT NULL,
+   num_of_tickets  int(5) unsigned NOT NULL,
+   available_tickets  int(5) unsigned NOT NULL,
   PRIMARY KEY  ( event_id, ticket_type_id ),
   key(ticket_type_id),
 	key(event_id)
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS  basket  (
  user_id  int(5) NOT NULL,
  start_of_transaction  timestamp NOT NULL default CURRENT_TIMESTAMP,
  ticket_type_id int(5) not null,
- number_of_tickets  int(5) NOT NULL,
+ number_of_tickets  int(5) unsigned NOT NULL,
 PRIMARY KEY  ( id ),
 key(event_id),
 key (user_id),
