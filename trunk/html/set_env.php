@@ -4,14 +4,15 @@ error_reporting(E_ALL);
 
 // set debug=0 to turn messages of
 $DEBUG=0;
+//$t->debugging=true;
 
 // db connect info
 $dsn = 'mysqli://root:admin@localhost/yatss';
 //$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss'
 
 // Setup include path
-$web_root = 'http://project:8888/yatss/html/';
-//$web_root = 'http://localhost/~roll/paxton/yatss/html/';
+//$web_root = 'http://project:8888/yatss/html/';
+$web_root = 'http://localhost/~roll/paxton/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
 $app_root = '..';
 $pear = $app_root . '/pear/'; 
@@ -161,8 +162,4 @@ function setSessionVar($db, $a)
 	$a->setIdle($rs[0]['session_timeout']);
 }
 define ("NOT_AUTHORIZED", 1);
-define ("WRONG_PARAMETER", 2);
-
-
-//$t->debugging=true;
 ?>
