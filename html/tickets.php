@@ -61,5 +61,5 @@ else
 
 //print_r($result[0]);
 
-$t->display('tickets.tpl');
+//$t->display('tickets.tpl');
 ?>

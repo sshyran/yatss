@@ -19,7 +19,7 @@
 		<td>{$row.name}</td>
 		<td>{$row.date}</td>
 		<td><input type="hidden" name="ticket_type" value="{$row.ticket_type_id}" />{$row.type}</td>
-		<td><input type="text" size="4" name="number_of_tickets" value="{$row.number_of_tickets}" /></td>
+		<td><input type="hidden" size="4" name="number_of_tickets" value="{$row.number_of_tickets}" />{$row.number_of_tickets}</td>
 		<td>${$row.price}</td>
 		<td>${$row.total}</td>
 		<td><input type="submit" value="Remove" /></td>
@@ -29,7 +29,6 @@
 
 <tr style="height:50px;">
 	<td colspan="7">
-	<input type="button" value="Update Cart"/>
 	<input type="button" value="Continue Shopping" onclick="javacript: document.location.href = '{$web_root}'"/>
 	<input type="button" value="Checkout" style="float:right;"/>
 	</td>
