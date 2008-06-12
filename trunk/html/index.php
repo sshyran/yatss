@@ -4,8 +4,8 @@ $t->assign('title', 'yatss');
 
 $tplList=array('header','topbar', 'menu', 'login');
 
-require_once('menu.php');
 require_once('login.php');
+require_once('menu.php');
 
 if (isset($_REQUEST['page']) && in_array(($page=$_REQUEST['page']), $valid_pages) ){
 	require_once("$page.php");
