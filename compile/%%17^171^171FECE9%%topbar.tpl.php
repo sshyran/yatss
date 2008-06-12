@@ -1,3 +1,3 @@
-<?php /* Smarty version 2.6.19, created on 2008-06-09 15:28:43
+<?php /* Smarty version 2.6.19, created on 2008-06-12 10:35:28
          compiled from topbar.tpl */ ?>
-<p><b>top bar</b></p>
+<p><b>a nice top bar</b></p>
