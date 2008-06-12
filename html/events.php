@@ -4,7 +4,7 @@ require_once('handleQuery.php');
 
 
 $values[]= $db->quote(date($_date_format));
-$myarray=executeQuery('select event_id, name, description from view_event_info where date > ? order by date asc',$values);
+$myarray=executeQuery('select event_id, name, description from view_event_info where date > ? group by event_id order by date asc',$values);
 
 foreach ($myarray as $key => &$value) {
 //	if ($a->checkAuth()) {
