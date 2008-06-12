@@ -30,7 +30,7 @@
 <tr style="height:50px;">
 	<td colspan="7">
 	<input type="button" value="Update Cart"/>
-	<input type="button" value="Continue Shopping"/>
+	<input type="button" value="Continue Shopping" onclick="javacript: document.location.href = '{$web_root}'"/>
 	<input type="button" value="Checkout" style="float:right;"/>
 	</td>
 </tr>

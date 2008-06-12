@@ -27,7 +27,7 @@
 
 <table border="1">
 	<tr>
-		<td>Ticket Type</td><td>Ticket Price</td><td>Quantity</td><td></td>
+		<td>Ticket Type</td><td>Ticket Price</td><td>Quantity</td>{if isset($smarty.session.username)}<td></td>{/if}
 	</tr>
 	{foreach from=$ticketdata item=row}
 	<form method="get" name="{$row.type}Form" action="{$webroot}">
@@ -37,16 +37,16 @@
 		<td><input type="hidden" name="ticket_type" value="{$row.ticket_type_id}" />{$row.type}</td>
 		<td>${$row.price}</td>
 		
-		{if $loggedin eq "false" || $row.available_tickets == 0}
+		{if !isset($smarty.session.username) || $row.available_tickets == 0}
 			<td>{$row.available_tickets}</td>
 		
-		{elseif $loggedin eq "true"}
+		{elseif isset($smarty.session.username)}
 			<td>
 			{html_options name=number_of_tickets options=$row.available_tickets_array}
 			</td>
 		{/if}
 		
-		<td><input type="submit" value="Add to Cart"/></td>
+		{if isset($smarty.session.username)}<td><input type="submit" value="Add to Cart"/></td>{/if}
 	</tr>
 	</form>
 	{/foreach}
