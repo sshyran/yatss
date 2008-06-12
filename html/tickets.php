@@ -42,12 +42,13 @@ if(isset($_GET['event_id']))
 		$row = $ttype[$j];
 		$at = $row['available_tickets'];
 		$availableArray = array();
-		for($m=0; $m<=$at; $m++)
+		// Generate array for ticket drop down list
+		for($m=1; $m<=$at; $m++)
 		{
-			$availableArray[] = $m;
+			$availableArray[$m] = $m;
 		}
 		$ttype[$j]['available_tickets_array'] = $availableArray;
-		//print_r($row);
+		//print_r($ttype);
 	}
 	
 	$t->assign('ticketdata', $ttype);
