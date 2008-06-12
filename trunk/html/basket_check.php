@@ -14,8 +14,8 @@ function basketCheck()
 		$sql='select id , start_of_transaction from basket where user_id = ? and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval ? second)';
 		$rs=executeQuery($sql, $vars);
 		if (count($rs)>0) {
-			echo "I will delete!!!<pre>";
-			print_r($rs);
+//			echo "I will delete!!!<pre>";
+//			print_r($rs);
 			deleteInvalidTransactions($rs);
 		}
 	}
