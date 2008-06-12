@@ -19,6 +19,9 @@
  *  User options (change personal information, view purchase history)
  *  Admin interface and options
 
+=== June 16, 2008 ===
+ * Write cron job for deleting invalid entries in basket table
+
 == Later Enhancements ==
  *  PEAR package for dealing with credit cards
  *  Paypal Services
