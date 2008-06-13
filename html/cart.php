@@ -66,7 +66,7 @@ if($a->checkAuth())
 	}
 	
 	$values[] = array();
-	$values['id'] = '1';
+	$values['id'] = $_SESSION['userid'];
 	$myarray=executeQuery('SELECT events.id as event_id, events.name, events.date, ticket_type.price, ticket_type.id as ticket_type_id, ticket_type.type, basket.number_of_tickets, basket.id, basket.number_of_tickets*ticket_type.price as total FROM events, ticket_type, basket WHERE basket.event_id = events.id AND ticket_type.id = basket.ticket_type_id AND basket.user_id = ? ORDER BY events.name ASC;',$values['id']);
 	
 	

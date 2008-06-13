@@ -20,7 +20,9 @@ $t->assign('tplList',$tplList);
 $t->display('index.tpl');
 if ($DEBUG) {
 	echo "<pre>";
+	echo "tplList=";
 	print_r($tplList);
+	echo "session=";
 	print_r($_SESSION);
 }
 ?>

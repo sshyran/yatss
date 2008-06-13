@@ -1,7 +1,7 @@
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-DROP DATABASE  yatss ;
+DROP DATABASE if exists yatss ;
 CREATE DATABASE  yatss  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE  yatss ;
 
@@ -183,15 +183,33 @@ CREATE VIEW  view_purchase_history  as
 							u.id=p.user_id and
 							e.id=p.event_id;
 
+	
+-- delete from basket where ticket_type_id=2
+-- select id , start_of_transaction from basket where user_id = 1 and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval 600 second)
+
+		
+		
 drop trigger if exists delete_invalid_transactions;
 create trigger delete_invalid_transactions after delete on basket
 	for each row 
 		update tickets set available_tickets=available_tickets+old.number_of_tickets where old.event_id=event_id and old.ticket_type_id=ticket_type_id;
 
-drop trigger if exists ticket_in_baket;
-create trigger ticket_in_baket after insert on basket
+drop trigger if exists ticket_in_basket;
+create trigger ticket_in_basket after insert on basket
 	for each row
 		update tickets set available_tickets=available_tickets-new.number_of_tickets where new.event_id=event_id and new.ticket_type_id=ticket_type_id;
-	
--- delete from basket where ticket_type_id=2
--- select id , start_of_transaction from basket where user_id = 1 and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval 600 second)
+
+
+
+drop procedure if exists add_to_basket;
+drop procedure if exists delete_from_basket;
+		
+create procedure add_to_basket(in eventid int(5), in userid int(5), in tickettypeid int(5), in numoftickets int(5), out transactionid int(5))
+		INSERT INTO basket (event_id, user_id, ticket_type_id, number_of_tickets) VALUES (eventid, userid, tickettypeid, numoftickets);
+
+create procedure delete_from_basket(in transactionid int(5))
+	delete from basket where id=transactionid;
+		
+-- call add_to_basket(1,1,1,2,@a);
+-- call delete_from_basket(1);
+-- $db->executeStoredProc("delete_from_basket",array(1));
