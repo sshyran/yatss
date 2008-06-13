@@ -32,7 +32,7 @@
 <tr>
 	<td colspan="7" style="text-align:right; height:30px;">
 	<div style="float:left;"><input type="button" value="Continue Shopping" onclick="javacript: document.location.href = '{$web_root}'"/>
-<input type="button" value="Checkout"/></div>
+<input type="button" value="Checkout" onclick="javacript: document.location.href = '{$web_root}?page=checkout'"/></div>
 	<b>Sub Total:&nbsp;&nbsp;${$subtotal}</b></td>
 </tr>
 
@@ -42,12 +42,7 @@
 	<td></td>
 </tr>-->
 	
-<!--<tr style="height:50px;">
-	<td colspan="7">
-	<input type="button" value="Continue Shopping" onclick="javacript: document.location.href = '{$web_root}'"/>
-	<input type="button" value="Checkout" onclick="javacript: document.location.href = '{$web_root}?page=checkout'"/>
-	</td>
-</tr>-->
+
 </table>
 {else}
 <br />
