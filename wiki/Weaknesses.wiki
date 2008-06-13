@@ -1,3 +1,5 @@
 ==Known Project Weaknesses==
 
  * Internationalization is not supported - This project will support only the English language, and will not have native support for additional languages.
+
+ * checkout_confirmation.php allows redirection from other sites ending with page=checkout (regexp check)
