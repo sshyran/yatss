@@ -24,5 +24,6 @@ if ($DEBUG) {
 	print_r($tplList);
 	echo "session=";
 	print_r($_SESSION);
+	print_r($_SERVER);
 }
 ?>

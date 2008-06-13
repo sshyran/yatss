@@ -2,8 +2,9 @@
 require_once('set_env.php');
 $t->assign('title', 'checkout');
 
-if (!$a->checkAuth()) {
-	header("location:$web_root");
+if (!$a->checkAuth() || !isset($_SERVER['HTTP_REFERER'])) {
+	header("location:$web_root?page=message_page&message_id=1");
+	exit;
 }
 
 require_once('checkout_menu.php');
