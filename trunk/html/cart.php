@@ -20,7 +20,8 @@ if($a->checkAuth())
 		// Make sure that the GET values are valid types
 		if(!ereg("(^[0-9]+$)",$eventid) || (!ereg("(^[0-9]+$)",$ticket_type)) || (!ereg("(^[0-9]+$)",$number_of_tickets)))
 		{
-			header("Location:$web_root");
+			header("location:$web_root?page=message_page&message_id=2");
+			exit;
 		}
 		
 		
