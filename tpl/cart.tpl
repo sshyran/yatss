@@ -32,7 +32,7 @@
 <tr>
 	<td colspan="7" style="text-align:right; height:30px;">
 	<div style="float:left;"><input type="button" value="Continue Shopping" onclick="javacript: document.location.href = '{$web_root}'"/>
-<input type="button" value="Checkout" onclick="javacript: document.location.href = '{$web_root}?page=checkout'"/></div>
+{if count($data) > 0}<input type="button" value="Checkout" onclick="javacript: document.location.href = '{$web_root}?page=checkout'"/>{/if}</div>
 	<b>Sub Total:&nbsp;&nbsp;${$subtotal}</b></td>
 </tr>
 
