@@ -48,7 +48,7 @@
 	<input type="button" value="Checkout"/>
 	</td>
 </tr>-->
-</table>\
+</table>
 {else}
 <br />
 Please log in to view this page.

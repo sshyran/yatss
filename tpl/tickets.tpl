@@ -53,4 +53,4 @@
 	{/foreach}
 </table>
 
-{if isset($smarty.session.username)}<br /><b>**</b> You are only allowed to buy up to <b>{$number_allowed} tickets</b> at one time <b>**</b>{/if}
+{if isset($smarty.session.username)}<br /><b>**</b> You are only allowed to buy up to <b>{$number_allowed} tickets of one type</b> at a time <b>**</b>{/if}
