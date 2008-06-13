@@ -18,9 +18,10 @@ if($a->checkAuth())
 		$number_of_tickets = $_REQUEST['number_of_tickets'];
 		
 		// Make sure that the GET values are valid types
-		if(!ereg("(^[0-9]+$)",$eventid) || (!ereg("(^[0-9]+$)",$ticket_type)) || (!ereg("(^[0-9]+$)",$number_of_tickets)))
+		if(!ereg("(^[0-9]+$)",$eventid) || (!ereg("(^[0-9]+$)",$ticket_type)) || (!ereg("(^[0-9]+$)",$number_of_tickets)) || ($number_of_tickets <= 0))
 		{
 			header("location:$web_root?page=message_page&message_id=2");
+			exit;
 			exit;
 		}
 		

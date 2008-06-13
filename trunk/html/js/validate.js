@@ -1,7 +1,6 @@
 // JavaScript Document
 
 
-
 function checkName(str)
 {
 	
@@ -48,6 +47,8 @@ function checkName(str)
 	
 	switch (vType) 
 	{
+		case 'creditcard':
+			validateCreditCard(vValue);
 		case 'number':
 			validateNumber(vValue);
 			break;
@@ -116,6 +117,10 @@ function validateGeneral(value) {
 	{
 		alterPage("false");
 	}
+}
+
+function validateCreditCard(value){
+	
 }
 
 // Validation of an Email Address
