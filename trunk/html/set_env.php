@@ -13,8 +13,8 @@ $dsn = 'mysqli://root:admin@localhost/yatss';
 //$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss'
 
 // Setup include path
-$web_root = 'http://project:8888/yatss/html/';
-//$web_root = 'http://localhost/~roll/paxton/yatss/html/';
+//$web_root = 'http://project:8888/yatss/html/';
+$web_root = 'http://localhost/~roll/paxton/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
 $app_root = '..';
 $pear = $app_root . '/pear/'; 
@@ -48,6 +48,7 @@ if (PEAR::isError($db)) {
 
 $db->setFetchMode(MDB2_FETCHMODE_ASSOC);  // Other modes possible; I find assoc best.
 //$db->setOption('optimize', 'portability');  // This is useful for apps supporting multiple backends such as mysql & oracle
+$db->loadModule('Function');
 
 $t = new smarty;
 $t->template_dir = TEMPLATE_DIR;

@@ -45,7 +45,7 @@
 <!--<tr style="height:50px;">
 	<td colspan="7">
 	<input type="button" value="Continue Shopping" onclick="javacript: document.location.href = '{$web_root}'"/>
-	<input type="button" value="Checkout"/>
+	<input type="button" value="Checkout" onclick="javacript: document.location.href = '{$web_root}?page=checkout'"/>
 	</td>
 </tr>-->
 </table>
