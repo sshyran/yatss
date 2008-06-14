@@ -1,6 +1,5 @@
 <?php
 require_once('set_env.php');
-require_once('../pear/Validate/Finance/CreditCard.php');
 if (!$a->checkAuth()) {
 	header("location:$web_root");
 }
