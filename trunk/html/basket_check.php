@@ -69,5 +69,17 @@ function deleteBasket()
 }
 
 
+/**
+ * 	moves transactions from the basket to the orders+ transactions
+ */
+
+function confirmOrder()
+{
+	// TODO implement it
+	return 1;
+}
+
+
+
 //basketCheck();
 ?>
