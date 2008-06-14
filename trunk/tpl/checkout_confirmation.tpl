@@ -5,7 +5,7 @@ Please confirm that the following information is correct</p>
 <div style="border:1px solid grey; width:50%;">
 <b>Tickets:</b>
 <br />
-<table style="font-size:13px;" cellpadding="5">
+<table style="font-size:13px;" cellpadding="5" border="0">
 <tr>
 	<td><b>Event Name</b></td>
 	<td><b>Event Date</b></td>
@@ -13,7 +13,6 @@ Please confirm that the following information is correct</p>
 	<td><b>Qty</b></td>
 	<td><b>Ticket Price</b></td>
 	<td><b>Total Price</b></td>
-	<td></td>
 </tr>
 {foreach from=$data item=row}
 <tr>
@@ -23,9 +22,16 @@ Please confirm that the following information is correct</p>
 	<td>{$row.number_of_tickets}</td>
 	<td>${$row.price}</td>
 	<td>${$row.total}</td>
-	<td></td>
 </tr>
 {/foreach}
+<tr>
+	<td><b>Grand Total</b></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><b>${$grand_total}</b></td>
+</tr>
 </table>
 </div>
 <br />
@@ -41,28 +47,22 @@ Please confirm that the following information is correct</p>
 <font style="font-size:13px;">
 <table>
 <tr>
-	<td>Name:</td>
-	<td>{$firstName}&nbsp;{$lastName}</td>
+	<td>Name:</td><td>{$firstName}&nbsp;{$lastName}</td>
 </tr>
 <tr>
-	<td>Address:</td>
-	<td>{$address}</td>
+	<td>Address:</td><td>{$address}</td>
 </tr>
 <tr>
-	<td><b>Credit Card:</b></td>
-	<td></td>
+	<td><b>Credit Card:</b></td><td></td>
 </tr>
 <tr>
-	<td>Type:</td>
-	<td>{$cctype}</td>
+	<td>Type:</td><td>{$cctype}</td>
 </tr>
 <tr>
-	<td>No:</td>
-	<td>{$ccnumber}</td>
+	<td>No:</td><td>{$ccnumber}</td>
 </tr>
 <tr>
-	<td>Exp Date:</td>
-	<td>{$ccmonth|capitalize},&nbsp;{$ccyear}</td>
+	<td>Exp Date:</td><td>{$ccmonth|capitalize},&nbsp;{$ccyear}</td>
 </tr>
 </table>
 <br />
@@ -75,7 +75,7 @@ If this information is correct, and you agree to be held fully responsible for t
 You will be presented with a reciept and confirmation number on the following page.
 </font>
 
-<br /><a href="{$next_step_link}" style="float:right;">Confirm</a>
+<br /><a href="cancelTransaction.php" style="float:left;">Cancel Transaction</a><a href="{$next_step_link}" style="float:right;">Confirm</a>
 </div>
 <br />
 <br />

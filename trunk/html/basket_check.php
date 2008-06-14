@@ -63,7 +63,7 @@ function deleteBasket()
 			$rs=executeQuery($sql, array());
 			$sql='delete from basket where user_id=?';
 			$rs=executeQuery($sql, $vars);
-			$sql='unlock table basket';
+			$sql='unlock tables';
 			$rs=executeQuery($sql, array());
 		}
 }

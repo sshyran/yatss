@@ -7,34 +7,39 @@
 <p>
 <b>Payment</b><br />
 
-Your mailing address that we have on file must be the same as your billing address.</p>
+<font style="font-size:13px;">Your mailing address that we have on file must be the same as your billing address.</font></p>
 <form method="post" id="vform" action="{$next_step_link}">
-<table>
+
 	<hr size="1" width="100%" />
-	<tr>
-		<td colspan="3"><b>Billing Address</b> (Shipping Address)</td>
-	</tr>
+	
+		<b>Billing Address</b> (Shipping Address)
+<font style="font-size:13px;"
+<table>	
 	{foreach from=$data item=i key=k} 
 	<tr>
-		<td>{$k|capitalize}</td>
+		<td>{$k|capitalize}:</td>
 		<td>{$i}</td>
 		<td></td>
 	</tr>
 	{/foreach}
 </table>
+</font>
 
 <br />
 <hr size="1" width="100%" />
 <b>Please select a delivery method:</b>
 {if $smarty.session.shipping_e == 1}<br /><font style="color:#FF0000; font-size:13px;">** A shipping method must be selected **</font>{/if}
+<font style="font-size:13px;">
 <table>
-<tr><td><input type="radio" name="shipping_method" value="mail" /></td><td>Ship my tickets to my address above (Additional $2.00)</td></tr>
+<tr><td><input type="radio" name="shipping_method" value="mail" /></td><td>Ship my tickets to my address above</td></tr>
 <tr><td><input type="radio" name="shipping_method" value="electronic" /></td><td>Recieve my tickets electronically</td></tr>
 </table>
+</font>
 
 <br />
 <hr size="1" width="100%" />
 <b>Credit Card</b>
+<font style="font-size:13px;">
 <table border="0" cellpadding="0" cellspacing="0" class="center">
 {if $smarty.session.name_e == 1}
 <tr>
@@ -103,6 +108,7 @@ Your mailing address that we have on file must be the same as your billing addre
 	<td></td>
 </tr>
 </table>
+</font>
 <br />
 <input type="submit" name="register" value="Next Page" />&nbsp;&nbsp;<a href="cancelTransaction.php"/>Cancel Transaction</a>
 </form>
