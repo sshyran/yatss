@@ -4,7 +4,8 @@ require('basket_check.php');
 
 deleteBasket();
 
-header("$web_root?page=message_page&message_id=51");
+// Return error that shopping cart has been deleted
+header("Location:$web_root?page=message_page&message_id=51");
 exit;
 
 ?>

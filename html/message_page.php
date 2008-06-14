@@ -19,12 +19,15 @@ if(isset($_GET['message_id'])){
 		case 3:
 			$message='user_id has to be stored in session!!!';
 			break;
+		case 4:
+			$message='Transaction failed.  Please re-try your transaction';
+			break;
 			
 		case 50:
 			$message='Thank you for registration';
 			break;
 		case 51:
-			$message='Shopping card deleted.. chris will write something here';
+			$message='Your transaction has been cancelled.  Your shopping cart was emptied.';
 			break;
 		case 51:
 			$message='Session timed out. please log in';
