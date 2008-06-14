@@ -58,6 +58,19 @@ CREATE TABLE IF NOT EXISTS  transactions  (
   key (ticket_type_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+DROP TABLE IF EXISTS  ticket_price ;
+CREATE TABLE IF NOT EXISTS  ticket_price  (
+   id  int(5) NOT NULL auto_increment,
+   event_id  int(5) NOT NULL,
+   ticket_type_id int(5) not null,
+   price  int(10) unsigned NOT NULL,
+  PRIMARY KEY  ( id ),
+  key(event_id),
+  key (ticket_type_id)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
 DROP TABLE IF EXISTS  orders ;
 CREATE TABLE IF NOT EXISTS  orders  (
  id  int(5) NOT NULL auto_increment,
@@ -134,13 +147,13 @@ key (ticket_type_id)
 
 alter table users add constraint user_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_tickettype_fk foreign key(ticket_type_id) references ticket_type(id); 
-alter table transactions add constraint transactions_event_fk foreign key(event_id) references events(id); 
+alter table ticket_price add constraint ticket_price_event_fk foreign key(event_id) references events(id); 
 alter table orders add constraint orders_users_fk foreign key(user_id) references users(id); 
 alter table admin_table add constraint user_admin_fk foreign key(user_id) references users(id); 
 alter table events add constraint event_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_event_fk foreign key(event_id) references events(id); 
 alter table address add constraint address_state_fk foreign key(state_id) references us_states(id); 
-alter table transactions add constraint transactions_ticket_type_fk foreign key(ticket_type_id) references ticket_type(id); 
+alter table ticket_price add constraint ticket_price_ticket_type_fk foreign key(ticket_type_id) references ticket_type(id); 
 alter table transactions add constraint transactions_order_fk foreign key(order_id) references orders(id); 
 
 INSERT INTO us_states (id, name) VALUES
@@ -223,32 +236,32 @@ create procedure delete_from_basket(in transactionid int(5))
 create procedure reset_basket_timer(in userid int(5))
 	update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = userid;
 
-drop procedure execute_purchase;
-delimiter //
-create or replace procedure execute_purchase(in userid int(5), out orderid int(5))
-	begin
-			select * from basket where user_id = userid;
-			select count(t.id) into orderid from orders as o, transactions as t where t.order_id=o.id;
-	end;
-	
-//
+-- drop procedure execute_purchase;
+-- delimiter //
+-- create or replace procedure execute_purchase(in userid int(5), out orderid int(5))
+-- 	begin
+-- 			select * from basket where user_id = userid;
+-- 			select count(t.id) into orderid from orders as o, transactions as t where t.order_id=o.id;
+-- 	end;
+-- 	
+-- //
 
 -- call reset_basket_timer(2);
 
-select * from basket where user_id = 2 and 
+-- select * from basket where user_id = 2 and 
 -- call add_to_basket(1,1,1,2,@a);
 -- call delete_from_basket(1);
 -- $db->executeStoredProc("delete_from_basket",array(1));
 
 
 
-
-DELIMITER //
-CREATE PROCEDURE statusOfDay (IN inVar VARCHAR(10), OUT outVar VARCHAR(30))
-	BEGIN
-	IF(inVar = "Woohoo") THEN
-	SET outVar = "Today is a good day.";
-	ELSE
-	SET outVar = "Nothing to chear about today.";
-	END IF;
-END //
+-- 
+-- DELIMITER //
+-- CREATE PROCEDURE statusOfDay (IN inVar VARCHAR(10), OUT outVar VARCHAR(30))
+-- 	BEGIN
+-- 	IF(inVar = "Woohoo") THEN
+-- 	SET outVar = "Today is a good day.";
+-- 	ELSE
+-- 	SET outVar = "Nothing to chear about today.";
+-- 	END IF;
+-- END //

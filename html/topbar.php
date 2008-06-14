@@ -1,5 +1,5 @@
 <?
-require_once 'set_env.php';
+//require_once 'set_env.php';
 
-$t->display('topbar.tpl');
+//$t->display('topbar.tpl');
 ?>
