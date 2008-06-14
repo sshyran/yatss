@@ -7,7 +7,8 @@ function basketCheck()
 	global $a;
 	if($a->checkAuth()){
 		if (!isset($_SESSION['userid'])) {
-			die ("user_id has to be stored in session!!!");
+			header("location:$web_root?page=message_page&message_id=3");
+			exit;
 		}
 		$vars[]=$_SESSION['userid'];
 		$vars[]=getBasketTimer();
@@ -45,6 +46,27 @@ function deleteInvalidTransactions($transactions)
 	$rs=executeQuery($sql,$x);
 }
 
+/**
+ * deletes the shopping cart for current user (called on "cancel order")
+ * 
+ */
+function deleteBasket()
+{
+		global $a;
+		if($a->checkAuth()){
+			if (!isset($_SESSION['userid'])) {
+				header("location:$web_root?page=message_page&message_id=3");
+				exit;
+			}
+			$vars[]=$_SESSION['userid'];
+			$sql='lock table basket write';
+			$rs=executeQuery($sql, array());
+			$sql='delete from basket where user_id=?';
+			$rs=executeQuery($sql, $vars);
+			$sql='unlock table basket';
+			$rs=executeQuery($sql, array());
+		}
+}
 
 
 //basketCheck();

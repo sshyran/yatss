@@ -45,18 +45,26 @@ CREATE TABLE IF NOT EXISTS  events  (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
-DROP TABLE IF EXISTS  purchases ;
-CREATE TABLE IF NOT EXISTS  purchases  (
+DROP TABLE IF EXISTS  transactions ;
+CREATE TABLE IF NOT EXISTS  transactions  (
    id  int(5) NOT NULL auto_increment,
+   order_id int(5) not null,
    event_id  int(5) NOT NULL,
-   user_id  int(5) NOT NULL,
-   date_of_purchase  datetime NOT NULL,
    ticket_type_id int(5) not null,
    number_of_tickets  int(10) unsigned NOT NULL,
   PRIMARY KEY  ( id ),
+  key(order_id),
   key(event_id),
-  key (user_id),
   key (ticket_type_id)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+DROP TABLE IF EXISTS  orders ;
+CREATE TABLE IF NOT EXISTS  orders  (
+ id  int(5) NOT NULL auto_increment,
+ date_of_order  timestamp NOT NULL default CURRENT_TIMESTAMP,
+user_id  int(5) NOT NULL,
+PRIMARY KEY  ( id ),
+key(user_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
@@ -126,13 +134,14 @@ key (ticket_type_id)
 
 alter table users add constraint user_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_tickettype_fk foreign key(ticket_type_id) references ticket_type(id); 
-alter table purchases add constraint purchases_event_fk foreign key(event_id) references events(id); 
-alter table purchases add constraint purchases_users_fk foreign key(user_id) references users(id); 
+alter table transactions add constraint transactions_event_fk foreign key(event_id) references events(id); 
+alter table orders add constraint orders_users_fk foreign key(user_id) references users(id); 
 alter table admin_table add constraint user_admin_fk foreign key(user_id) references users(id); 
 alter table events add constraint event_address_fk foreign key(address_id) references address(id); 
 alter table tickets add constraint ticket_event_fk foreign key(event_id) references events(id); 
 alter table address add constraint address_state_fk foreign key(state_id) references us_states(id); 
-alter table purchases add constraint purchases_ticket_type_fk foreign key(ticket_type_id) references ticket_type(id); 
+alter table transactions add constraint transactions_ticket_type_fk foreign key(ticket_type_id) references ticket_type(id); 
+alter table transactions add constraint transactions_order_fk foreign key(order_id) references orders(id); 
 
 INSERT INTO us_states (id, name) VALUES
 ('AL','Alabama'),('AK','Alaska'),('AZ','Arizona'),('AR','Arkansas'),('CA','California'),('CO','Colorado'),('CT','Connecticut'),('DE','Delaware'),('DC','District of Columbia'),('FL','Florida'),('GA','Georgia'),('HI','Hawaii'),('ID','Idaho'),('IL','Illinois'),('IN','Indiana'),('IA','Iowa'),('KS','Kansas'),('KY','Kentucky'),('LA','Louisiana'),('ME','Maine'),('MD','Maryland'),('MA','Massachusetts'),('MI','Michigan'),('MN','Minnesota'),('MS','Mississippi'),('MO','Missouri'),('MT','Montana'),('NE','Nebraska'),('NV','Nevada'),('NH','New Hampshire'),('NJ','New Jersey'),('NM','New Mexico'),('NY','New York'),('NC','North Carolina'),('ND','North Dakota'),('OH','Ohio'),('OK','Oklahoma'),('OR','Oregon'),('PA','Pennsylvania'),('RI','Rhode Island'),('SC','South Carolina'),('SD','South Dakota'),('TN','Tennessee'),('TX','Texas'),('UT','Utah'),('VT','Vermont'),('VA','Virginia'),('WA','Washington'),('WV','West Virginia'),('WI','Wisconsin'),('WY','Wyoming');
@@ -178,10 +187,11 @@ insert into config (basket_timer, session_timeout) values (600, 600);
 	
 drop view if exists view_purchase_history;
 CREATE VIEW  view_purchase_history  as 
-	select username, e.name as event_name, date, tt.type, tt.price from purchases as p, events as e, ticket_type as tt, users as u where
+	select username, e.name as event_name, date, tt.type, tt.price from transactions as t, orders as o, events as e, ticket_type as tt, users as u where
 	 						tt.id=ticket_type_id and 
-							u.id=p.user_id and
-							e.id=p.event_id;
+							u.id=o.user_id and
+							e.id=t.event_id and
+							o.id = t.order_id;
 
 	
 -- delete from basket where ticket_type_id=2
@@ -209,7 +219,36 @@ create procedure add_to_basket(in eventid int(5), in userid int(5), in tickettyp
 
 create procedure delete_from_basket(in transactionid int(5))
 	delete from basket where id=transactionid;
-		
+
+create procedure reset_basket_timer(in userid int(5))
+	update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = userid;
+
+drop procedure execute_purchase;
+delimiter //
+create or replace procedure execute_purchase(in userid int(5), out orderid int(5))
+	begin
+			select * from basket where user_id = userid;
+			select count(t.id) into orderid from orders as o, transactions as t where t.order_id=o.id;
+	end;
+	
+//
+
+-- call reset_basket_timer(2);
+
+select * from basket where user_id = 2 and 
 -- call add_to_basket(1,1,1,2,@a);
 -- call delete_from_basket(1);
 -- $db->executeStoredProc("delete_from_basket",array(1));
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE statusOfDay (IN inVar VARCHAR(10), OUT outVar VARCHAR(30))
+	BEGIN
+	IF(inVar = "Woohoo") THEN
+	SET outVar = "Today is a good day.";
+	ELSE
+	SET outVar = "Nothing to chear about today.";
+	END IF;
+END //

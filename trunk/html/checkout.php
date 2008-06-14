@@ -2,8 +2,8 @@
 require_once('set_env.php');
 $t->assign('title', 'checkout');
 
-if (!$a->checkAuth() || !isset($_SERVER['HTTP_REFERER'])) {
-	header("location:$web_root?page=message_page&message_id=1");
+if (!($loggedin=$a->checkAuth()) || !isset($_SERVER['HTTP_REFERER'])) {
+	header("location:$web_root?page=message_page&message_id=".($loggedin?1:52));
 	exit;
 }
 
