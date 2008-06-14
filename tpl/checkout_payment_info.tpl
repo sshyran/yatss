@@ -26,6 +26,7 @@ Your mailing address that we have on file must be the same as your billing addre
 <br />
 <hr size="1" width="100%" />
 <b>Please select a delivery method:</b>
+{if $smarty.session.shipping_e == 1}<br /><font style="color:#FF0000; font-size:13px;">** A shipping method must be selected **</font>{/if}
 <table>
 <tr><td><input type="radio" name="shipping_method" value="mail" /></td><td>Ship my tickets to my address above (Additional $2.00)</td></tr>
 <tr><td><input type="radio" name="shipping_method" value="electronic" /></td><td>Recieve my tickets electronically</td></tr>
@@ -35,10 +36,16 @@ Your mailing address that we have on file must be the same as your billing addre
 <hr size="1" width="100%" />
 <b>Credit Card</b>
 <table border="0" cellpadding="0" cellspacing="0" class="center">
-<tr align="center" class="row">
-	<td colspan="3" style="height:20px;"><span id="emessage">{$errormessage}</span></td>
-	<td></td>
+{if $smarty.session.name_e == 1}
+<tr>
+	<td colspan="3"><font style="color:#FF0000; font-size:13px;">** Enter a correct name **</font></td>
 </tr>
+{/if}
+{if $smarty.session.cc_e == 1}
+<tr>
+	<td colspan="3"><font style="color:#FF0000; font-size:13px;">** Please enter correct credit card information **</font></td>
+</tr>
+{/if}
 <tr>
 	<td style="text-align:left;"><label for="firstName">First Name:</label></td>
 	<td><input type="text" name="firstName" id="firstName" class="required,alpha" size="30" onkeyup="checkName(this)" />
