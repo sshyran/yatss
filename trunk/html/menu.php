@@ -1,10 +1,6 @@
 <?php
-//require_once('set_env.php');
+require_once('set_env.php');
 
-$valid_pages=array('events', 'history','cart', 'register', 'users', 'my_account', 'tickets', 'checkout', 'message_page');
-$valid_pages_registered=array('events', 'history','cart', 'my_account');
-$valid_pages_browser=array('events', 'register');
-$valid_pages_admin=array('events', 'history', 'users');
 $links=array();
 
 if ($a->checkAuth()) {
