@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 // set debug=0 to turn messages of
-$DEBUG=0;
+$DEBUG=1;
 //$t->debugging=true;
 
 $purchase_number = 10;
