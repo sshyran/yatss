@@ -10,7 +10,10 @@ if(isset($_SESSION['shipping_method']) && isset($_SESSION['firstName']) && isset
 	// is returning "1" for testing
 	$orderId = confirmOrder();
 	
+	executeQuery("LOCK TABLES events READ, ticket_type READ, transactions READ, ticket_price READ, orders READ");
+	
 	$transactions = executeQuery("SELECT events.name, events.date, ticket_type.type, transactions.number_of_tickets, ticket_price.price, transactions.number_of_tickets*ticket_price.price as total FROM events, ticket_type, transactions, ticket_price, orders WHERE transactions.order_id = orders.id AND transactions.event_id = events.id AND transactions.ticket_type_id = ticket_type.id AND ticket_price.ticket_type_id = ticket_type.id AND ticket_price.event_id = events.id AND orders.id = ?", array($orderId));
+	executeQuery("UNLOCK TABLES");
 	
 	$t->assign('data', $transactions);
 	
