@@ -1,6 +1,6 @@
 <?php
 require_once('set_env.php');
-$t->assign('title', 'checkout');
+$t->assign('title', 'Admin area');
 
 if (!($loggedin=$a->checkAuth()) || !isset($_SESSION['is_admin'])) {
 	header("location:$web_root?page=message_page&message_id=".($loggedin?4:52));

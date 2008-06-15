@@ -172,13 +172,23 @@ insert into admin_table (user_id) values (1);
 INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
 (2, 'roll', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'registered', '', 'user', 'yyy@xxx.com');
 
+-- drop view  if exists view_event_info;
+-- CREATE VIEW  view_event_info  as 
+-- 	select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
+-- 		available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
+-- 	from events as e left join tickets as t on e.id=t.event_id
+-- 	left join ticket_type as tt on (tt.id=t.ticket_type_id and t.ticket_type_id=tt.id), address as a, us_states as s, ticket_price as tp
+-- 	where e.address_id = a.id and a.state_id = s.id and 
+-- 	tp.event_id=e.id and tp.ticket_type_id=tt.id;
+
 drop view  if exists view_event_info;
-CREATE VIEW  view_event_info  as 
-	select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
-		available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
-	from events as e, tickets as t, ticket_type as tt, address as a, us_states as s, ticket_price as tp
-	where e.id=t.event_id and tt.id=t.ticket_type_id and e.address_id = a.id and a.state_id = s.id and 
-	tp.event_id=e.id and tp.ticket_type_id=tt.id;
+CREATE VIEW  view_event_info  as
+select e.id as event_id, e.name, description ,date, tt.type as ticket_type
+from events as e left join tickets as t on e.id=t.event_id
+	left join ticket_type as tt on (tt.id=t.ticket_type_id and t.ticket_type_id=tt.id)
+	left join address as a on (e.address_id=a.id)
+	join us_states as s on (s.id=a.state_id)
+	left join ticket_price as tp on (tp.event_id=e.id and tp.ticket_type_id=tt.id)
 
 
 -- create events
@@ -274,7 +284,14 @@ call execute_purchase(1, @a);
 
 
 
+lock tables orders write
+insert into orders (user_id) values(1)
+lock tables transactions write, orders read, basket read, ticket_price read
+insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) select orders.id, basket.event_id, basket.ticket_type_id, basket.number_of_tickets, ticket_price.price*basket.number_of_tickets from orders, basket, ticket_price where orders.id=3 and basket.user_id=1 and basket.event_id=ticket_price.event_id and ticket_price.ticket_type_id=basket.ticket_type_id
+lock tables basket write
+delete from basket where user_id = 1
 
+	
 -- call reset_basket_timer(2);
 
 -- select * from basket where user_id = 2 and 
