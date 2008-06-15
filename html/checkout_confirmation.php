@@ -46,7 +46,7 @@ if(!(isset($_SESSION['shipping_e']) ||isset($_SESSION['name_e']) || isset($_SESS
 	$_SESSION['ccmonth'] = $ccmonth;
 	$_SESSION['ccyear'] = $ccyear;
 	
-		$basket = executeQuery('SELECT events.id as event_id, events.name, events.date, ticket_type.price, ticket_type.id as ticket_type_id, ticket_type.type, basket.number_of_tickets, basket.id, basket.number_of_tickets*ticket_type.price as total FROM events, ticket_type, basket WHERE basket.event_id = events.id AND ticket_type.id = basket.ticket_type_id AND basket.user_id = ? ORDER BY events.name ASC;', array($_SESSION['userid']));
+		$basket = executeQuery('SELECT events.id as event_id, events.name, events.date, ticket_price.price, ticket_type.id as ticket_type_id, ticket_type.type, basket.number_of_tickets, basket.id, basket.number_of_tickets*ticket_price.price as total FROM events, ticket_type, ticket_price, basket WHERE basket.event_id = events.id AND basket.event_id = ticket_price.event_id AND ticket_type.id = ticket_price.ticket_type_id AND ticket_type.id = basket.ticket_type_id AND basket.user_id = ? ORDER BY events.name ASC;', array($_SESSION['userid']));
 		
 		$t->assign('data', $basket);
 		
