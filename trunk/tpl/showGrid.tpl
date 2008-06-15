@@ -23,11 +23,3 @@ requires data array
 	{/foreach}
 	</table>
 {/if}
-{*
-{literal}
-<script type="text/javascript">
- new Ajax.InPlaceEditor('description', '/xxx.html', {rows:2,cols:40});
-</script>
-{/literal}
-
-*}

@@ -14,8 +14,8 @@ if (isset($_REQUEST['step']) && in_array(($admin_page=$_REQUEST['step']), $valid
 	require_once("admin_$admin_page.php");
 	$tplListAdmin[]="admin_$admin_page";
 } else{
-//	require_once('checkout_payment_info.php');
-//	$tplListCheckout[]='checkout_payment_info';
+	require_once('admin_summary.php');
+	$tplListAdmin[]='admin_summary';
 }
 
 $t->assign('tplListAdmin',$tplListAdmin);
