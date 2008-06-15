@@ -75,8 +75,28 @@ function deleteBasket()
 
 function confirmOrder()
 {
-	// TODO implement it
-	return 1;
+	global $db;
+	$userid=$_SESSION['userid'];
+	$vars=array($userid);
+	$sql='lock tables orders write';
+	executeQuery($sql);
+	$sql='insert into orders (user_id) values(?)';
+	executeQuery($sql, $vars);
+	$orderid=$db->lastInsertID('orders','id');
+//	$sql='unlock tables';
+//	executeQuery($sql);
+	$vars=array($orderid);
+	$sql='lock tables transactions write, orders read, basket read, ticket_price read';
+	executeQuery($sql);
+	$vars[]=$userid;
+	$sql='insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) select orders.id, basket.event_id, basket.ticket_type_id, basket.number_of_tickets, ticket_price.price*basket.number_of_tickets from orders, basket, ticket_price where orders.id=? and basket.user_id=? and basket.event_id=ticket_price.event_id and ticket_price.ticket_type_id=basket.ticket_type_id';
+	executeQuery($sql, $vars);
+	$sql='lock tables basket write';
+	executeQuery($sql);
+	$vars=array($userid);
+	$sql='delete from basket where user_id = ?';
+	executeQuery($sql, $vars);
+	return $orderid;
 }
 
 
