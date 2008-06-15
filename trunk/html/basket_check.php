@@ -15,8 +15,6 @@ function basketCheck()
 		$sql='select id , start_of_transaction from basket where user_id = ? and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval ? second)';
 		$rs=executeQuery($sql, $vars);
 		if (count($rs)>0) {
-//			echo "I will delete!!!<pre>";
-//			print_r($rs);
 			deleteInvalidTransactions($rs);
 		}
 	}
@@ -42,7 +40,6 @@ function deleteInvalidTransactions($transactions)
 		$x[]=$value['id'];
 		$suffix .= $key=0?'':' or id= ?';
 	}
-//	print_r($sql.$suffix);
 	$rs=executeQuery($sql,$x);
 }
 
@@ -83,8 +80,6 @@ function confirmOrder()
 	$sql='insert into orders (user_id) values(?)';
 	executeQuery($sql, $vars);
 	$orderid=$db->lastInsertID('orders','id');
-//	$sql='unlock tables';
-//	executeQuery($sql);
 	$vars=array($orderid);
 	$sql='lock tables transactions write, orders read, basket read, ticket_price read';
 	executeQuery($sql);
