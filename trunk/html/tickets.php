@@ -34,7 +34,7 @@ if(isset($_GET['event_id']))
 	
 	// Get ticket type information from database
 	$tarray = array($eventid);
-	$ttype = executeQuery("SELECT ticket_type.type, ticket_type.id as ticket_type_id, ticket_type.price, tickets.available_tickets, tickets.event_id FROM ticket_type, tickets WHERE tickets.ticket_type_id = ticket_type.id AND tickets.event_id = ?", $tarray);
+	$ttype = executeQuery("SELECT ticket_type.type, ticket_type.id as ticket_type_id, tp.price, tickets.available_tickets, tickets.event_id FROM ticket_type, tickets, ticket_price as tp WHERE tickets.ticket_type_id = ticket_type.id AND tickets.event_id = ? and tp.event_id = tickets.event_id and tp.ticket_type_id=ticket_type.id", $tarray);
 	
 	for($j=0; $j<count($ttype); $j++)
 	{
