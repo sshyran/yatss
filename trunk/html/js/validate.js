@@ -121,6 +121,8 @@ function validateGeneral(value) {
 
 function validateCreditCard(value){
 	
+	
+	
 }
 
 // Validation of an Email Address

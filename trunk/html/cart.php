@@ -69,10 +69,10 @@ if($a->checkAuth())
 	
 	$values[] = array();
 	$values['id'] = $_SESSION['userid'];
-	$myarray=executeQuery('SELECT e.id as event_id, e.name, e.date, tp.price, tt.id as ticket_type_id, tt.type, b.number_of_tickets, b.id, b.number_of_tickets*tp.price as total FROM events as e, ticket_type as tt, basket as b, ticket_price as tp WHERE b.event_id = e.id AND tt.id = b.ticket_type_id AND b.user_id = ?  and e.id=tp.event_id and tt.id=tp.ticket_type_id ORDER BY e.name ASC;',$values['id']);
-	
+	$myarray=executeQuery('SELECT events.id as event_id, events.name, events.date, ticket_price.price, ticket_type.id as ticket_type_id, ticket_type.type, basket.number_of_tickets, basket.id, basket.number_of_tickets*ticket_price.price as total FROM events, ticket_type, basket, ticket_price WHERE basket.event_id = events.id AND basket.ticket_type_id = ticket_type.id AND ticket_price.ticket_type_id = ticket_type.id AND ticket_price.event_id = events.id AND basket.user_id = ? ORDER BY events.name ASC;',$values['id']);
 	
 	$t->assign('data',$myarray);
+	$t->assign('arraysize', count($myarray));
 	
 	$subtotal = 0;
 	for($i=0; $i<count($myarray); $i++)

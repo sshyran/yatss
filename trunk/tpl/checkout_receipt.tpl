@@ -9,7 +9,7 @@ We have also provided a link which will show you driving directions from your ad
 </div>
 
 <div>
-<table style="font-size:13px;" cellpadding="5" border="0">
+<table style="font-size:13px;" cellpadding="5" cellspacing="0" border="0">
 <tr>
 	<td><b>Event Name</b></td>
 	<td><b>Event Date</b></td>
@@ -23,7 +23,7 @@ We have also provided a link which will show you driving directions from your ad
 	<td></td>
 	<td>Driving Directions</td>
 </tr>
-{* {foreach from=$data item=row}
+{foreach from=$data item=row}
 <tr>
 	<td>{$row.name}</td>
 	<td>{$row.date}</td>
@@ -32,12 +32,12 @@ We have also provided a link which will show you driving directions from your ad
 	<td>${$row.price}</td>
 	<td>${$row.total}</td>
 	{if $smarty.session.shipping_method == 'electronic'}
-	<td>Download</td>
+	<td><a href="">Download</a></td>
 	{/if}
 	<td></td>
 	<td><a href="">Map</a></td>
 </tr>
-{/foreach} *}
+{/foreach}
 <tr>
 	<td><b>Grand Total</b></td>
 	<td></td>
@@ -45,11 +45,11 @@ We have also provided a link which will show you driving directions from your ad
 	<td></td>
 	<td></td>
 	<td><b>${$grand_total}</b></td>
-	<td></td>
-	<td></td>
 	{if $smarty.session.shipping_method == 'electronic'}
 	<td></td>
 	{/if}
+	<td></td>
+	<td></td>
 </tr>
 </table>
 </div>
