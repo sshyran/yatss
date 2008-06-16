@@ -189,7 +189,7 @@ from events as e left join tickets as t on e.id=t.event_id
 	left join ticket_type as tt on (tt.id=t.ticket_type_id and t.ticket_type_id=tt.id)
 	left join address as a on (e.address_id=a.id)
 	join us_states as s on (s.id=a.state_id)
-	left join ticket_price as tp on (tp.event_id=e.id and tp.ticket_type_id=tt.id)
+	left join ticket_price as tp on (tp.event_id=e.id and tp.ticket_type_id=tt.id);
 
 
 -- create events
