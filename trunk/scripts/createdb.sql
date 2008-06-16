@@ -183,7 +183,8 @@ INSERT INTO users (id, username, password, address_id, firstName, middleName, la
 
 drop view  if exists view_event_info;
 CREATE VIEW  view_event_info  as
-select e.id as event_id, e.name, description ,date, tt.type as ticket_type
+select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
+	tt.type as ticket_type, available_tickets, tt.id as ticket_type_id, price
 from events as e left join tickets as t on e.id=t.event_id
 	left join ticket_type as tt on (tt.id=t.ticket_type_id and t.ticket_type_id=tt.id)
 	left join address as a on (e.address_id=a.id)
