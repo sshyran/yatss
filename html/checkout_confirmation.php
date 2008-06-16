@@ -71,6 +71,9 @@ if(!(isset($_SESSION['shipping_e']) ||isset($_SESSION['name_e']) || isset($_SESS
 		$result = executeQuery("SELECT users.firstName as 'First Name', users.lastName as 'last name', address.address, address.city, address.state_id as 'state', address.zip FROM users, address WHERE users.address_id = address.id AND users.id = ?", array($_SESSION['userid']));
 		
 		$t->assign('address', $result[0]['address']);
+		$t->assign('city', $result[0]['city']);
+		$t->assign('state', $result[0]['state']);
+		$t->assign('zip', $result[0]['zip']);
 		$t->assign('firstName', $firstName);
 		$t->assign('lastName', $lastName);
 		$t->assign('cctype', $cctype);

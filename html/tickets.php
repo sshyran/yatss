@@ -42,7 +42,7 @@ if(isset($_GET['event_id']))
 		$at = $row['available_tickets'];
 		$availableArray = array();
 		// Generate array for ticket drop down list
-		if($ttype[0]['available_tickets'] < $purchase_number)
+		if($ttype[$j]['available_tickets'] < $purchase_number)
 		{
 			for($m=1; $m<=$at; $m++)
 			{

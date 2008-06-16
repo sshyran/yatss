@@ -53,6 +53,9 @@ Please confirm that the following information is correct</p>
 	<td>Address:</td><td>{$address}</td>
 </tr>
 <tr>
+	<td></td><td>{$city},&nbsp;{$state}&nbsp;{$zip}
+</tr>
+<tr>
 	<td><b>Credit Card:</b></td><td></td>
 </tr>
 <tr>
