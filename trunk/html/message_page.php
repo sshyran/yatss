@@ -10,7 +10,7 @@ require_once('set_env.php');
 if(isset($_GET['message_id'])){
 	switch ($message_id=$_GET['message_id']) {
 		case 1:
-			$message='Don\'t mess with the address bar!';
+			$message='Don\'t mess with the address bar! (aka. http referrer missing)';
 			break;
 
 		case 2:

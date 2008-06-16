@@ -7,7 +7,7 @@
 			<!-- <input type="reset" name="Reset" value="Reset"/> -->
 			</form>
 	</div>
-	<div>or <a href="{$smarty.config.web_root}?page=register">Register</a></div>
+	<div>or <a href="{$web_root}?page=register">Register</a></div>
 {else}
 	<p>Welcome {$smarty.session.username|capitalize} <a href="{$web_root}?logout=1">logout</a></p>
 {/if}

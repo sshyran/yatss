@@ -4,7 +4,7 @@ require_once('handleQuery.php');
 
 if(!$a->checkAuth())
 {
-	
+	// TODO use handleQuery!!
 	$res =& $db->query('SELECT id, name FROM us_states');
 	
 	// Always check that result is not an error

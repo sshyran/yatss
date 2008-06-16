@@ -110,7 +110,7 @@
 </table>
 </font>
 <br />
-<input type="submit" name="register" value="Next Page" />&nbsp;&nbsp;<a href="cancelTransaction.php"/>Cancel Transaction</a>
+<input type="submit" name="register" value="Next Page" />&nbsp;&nbsp;<a href="cancelOrder.php"/>Cancel Order</a>
 </form>
 </div>
 

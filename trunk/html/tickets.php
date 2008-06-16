@@ -1,4 +1,4 @@
-	<?php
+<?php
 require_once('set_env.php');
 require_once('handleQuery.php');
 

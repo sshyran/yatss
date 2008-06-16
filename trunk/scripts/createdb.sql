@@ -210,14 +210,14 @@ INSERT INTO ticket_price (event_id, ticket_type_id, price) VALUES
 
 INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets, available_tickets) VALUES
 (1, 1, 10, 10),
-(1, 2, 11, 10);
+(1, 2, 10, 10);
 
 
 insert into config (basket_timer, session_timeout) values (600, 600);
 	
 drop view if exists view_purchase_history;
 CREATE VIEW  view_purchase_history  as 
-	select username, e.name as event_name, date, tt.type, t.transaction_total
+	select username, o.id as 'order number', o.date_of_order as 'order date', e.name as 'event name', date_format(date, 'Y-m-d H:i') as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction total'
 	from transactions as t, orders as o, events as e, ticket_type as tt, users as u, ticket_price as tp
 	where
 		tt.id=t.ticket_type_id and 
@@ -250,8 +250,8 @@ create trigger add_to_transaction after insert on transactions
 
 
 
-create procedure delete_from_basket(in transactionid int(5))
-	delete from basket where id=transactionid;
+create procedure delete_from_basket(in basketid int(5), in userid int (5))
+	delete from basket where id=basketid and user_id=userid;
 
 create procedure reset_basket_timer(in userid int(5))
 	update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = userid;

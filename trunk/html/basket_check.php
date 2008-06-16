@@ -47,7 +47,7 @@ function deleteInvalidTransactions($transactions)
  * deletes the shopping cart for current user (called on "cancel order")
  * 
  */
-function deleteBasket()
+function cancelOrder()
 {
 		global $a;
 		if($a->checkAuth()){
@@ -63,6 +63,24 @@ function deleteBasket()
 			$sql='unlock tables';
 			$rs=executeQuery($sql, array());
 		}
+}
+
+function resetTimer()
+{
+	if($a->checkAuth()){
+		$user_id=$_SESSION['userid'];
+		global $db;
+		$db->executeStoredProc("reset_basket_timer",array($user_id));
+	}
+}
+
+function deleteFromBasket($basketId)
+{
+	if($a->checkAuth()){
+		$user_id=$_SESSION['userid'];
+		global $db;
+		$db->executeStoredProc("delete_from_basket",array($basketId, $user_id));
+	}
 }
 
 
