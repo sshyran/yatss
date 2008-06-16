@@ -63,7 +63,7 @@ if($a->checkAuth())
 				executeQuery("UPDATE tickets SET available_tickets = available_tickets-? WHERE tickets.event_id = ? AND tickets.ticket_type_id = ?", $updateArray);*/
 			}
 		}
-		else {echo 'There are no more tickets left!';}
+		else {header("$web_root?page=message_page&message_id=53");}
 		
 	}
 	

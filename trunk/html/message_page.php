@@ -31,10 +31,13 @@ if(isset($_GET['message_id'])){
 			$message='Thank you for registration';
 			break;
 		case 51:
-			$message='Your transaction has been cancelled.  Your shopping cart was emptied.';
+			$message='Your order has been cancelled.  Your shopping cart was emptied.';
 			break;
 		case 52:
 			$message='Session timed out. please log in';
+			break;
+		case 53:
+			$message='There are no tickets left for this event';
 			break;
 		
 		default:
