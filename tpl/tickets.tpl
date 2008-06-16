@@ -12,7 +12,8 @@
 				<td><b>Event:</b></td><td>{$event}</td>
 			</tr>
 			<tr>
-				<td><b>Date:</b></td><td>{$date|truncate:16:"":true}</td>
+				<!--<td><b>Date:</b></td><td>{$date|truncate:16:"":true}</td>-->
+				<td><b>Date:</b></td><td>{$date|date_format:"%Y-%m-%d %H:%M"}</td>
 			</tr>
 			<tr>
 				<td><b>Address:</b></td><td>{$address}</td>

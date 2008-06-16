@@ -19,7 +19,7 @@
 	<input type="hidden" name="basket_id" value="{$row.id}" />
 	<tr>
 		<td>{$row.name}</td>
-		<td>{$row.date|truncate:16:"":true}</td>
+		<td>{$row.date|date_format:"%Y-%m-%d %H:%M"}</td>
 		<td><input type="hidden" name="ticket_type" value="{$row.ticket_type_id}" />{$row.type}</td>
 		<td><input type="hidden" size="4" name="number_of_tickets" value="{$row.number_of_tickets}" />{$row.number_of_tickets}</td>
 		<td>${$row.price}</td>
