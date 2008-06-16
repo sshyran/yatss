@@ -264,34 +264,34 @@ create procedure reset_basket_timer(in userid int(5))
 -- select last_insert_id() into transactionid;
 -- end;;
 
-delimiter ;;
-create procedure execute_purchase(in userid int(5), out orderid int(5))
-begin
--- declare orderid int;
--- set orderid =0;
-insert into orders (user_id) values(userid);
-select last_insert_id() into orderid;
-
-insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) 
-	select o.id, b.event_id, b.ticket_type_id, b.number_of_tickets, tp.price*b.number_of_tickets
-	from orders as o, basket as b, ticket_price as tp
-	where o.id=orderid and b.user_id=userid and b.event_id=tp.event_id and tp.ticket_type_id=b.ticket_type_id;
-	
-delete from basket where user_id = userid;
-
-end;;
-
-call execute_purchase(1, @a);
-
-
-
-lock tables orders write
-insert into orders (user_id) values(1)
-lock tables transactions write, orders read, basket read, ticket_price read
-insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) select orders.id, basket.event_id, basket.ticket_type_id, basket.number_of_tickets, ticket_price.price*basket.number_of_tickets from orders, basket, ticket_price where orders.id=3 and basket.user_id=1 and basket.event_id=ticket_price.event_id and ticket_price.ticket_type_id=basket.ticket_type_id
-lock tables basket write
-delete from basket where user_id = 1
-
+-- delimiter ;;
+-- create procedure execute_purchase(in userid int(5), out orderid int(5))
+-- begin
+-- -- declare orderid int;
+-- -- set orderid =0;
+-- insert into orders (user_id) values(userid);
+-- select last_insert_id() into orderid;
+-- 
+-- insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) 
+-- 	select o.id, b.event_id, b.ticket_type_id, b.number_of_tickets, tp.price*b.number_of_tickets
+-- 	from orders as o, basket as b, ticket_price as tp
+-- 	where o.id=orderid and b.user_id=userid and b.event_id=tp.event_id and tp.ticket_type_id=b.ticket_type_id;
+-- 	
+-- delete from basket where user_id = userid;
+-- 
+-- end;;
+-- 
+-- call execute_purchase(1, @a);
+-- 
+-- 
+-- 
+-- lock tables orders write
+-- insert into orders (user_id) values(1)
+-- lock tables transactions write, orders read, basket read, ticket_price read
+-- insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) select orders.id, basket.event_id, basket.ticket_type_id, basket.number_of_tickets, ticket_price.price*basket.number_of_tickets from orders, basket, ticket_price where orders.id=3 and basket.user_id=1 and basket.event_id=ticket_price.event_id and ticket_price.ticket_type_id=basket.ticket_type_id
+-- lock tables basket write
+-- delete from basket where user_id = 1
+-- 
 	
 -- call reset_basket_timer(2);
 
