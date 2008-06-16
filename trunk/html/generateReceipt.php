@@ -2,12 +2,12 @@
 
 require_once('set_env.php');
 require_once('handleQuery.php');
-require "../pdf/class.ezpdf.php";
+require "../include/pdf/class.ezpdf.php";
 
 //$db = mysqli_connect("localhost", "root", "admin", "yatss");
 
 $doc =& new Cezpdf();							// Create new instance of Cezpdf
-$doc->selectFont("../pdf/fonts/Helvetica.afm");		// Set font for use in PDF
+$doc->selectFont("../include/pdf/fonts/Helvetica.afm");		// Set font for use in PDF
 $orderId = 2;//$_POST['transactionId'];
 
 $result = executeQuery("SELECT transactions.id as 'Transaction Id', events.name, events.date, ticket_type.type, transactions.number_of_tickets as quantity, ticket_price.price, transactions.number_of_tickets*ticket_price.price as total FROM events, ticket_type, transactions, ticket_price, orders WHERE transactions.order_id = orders.id AND transactions.event_id = events.id AND transactions.ticket_type_id = ticket_type.id AND ticket_price.ticket_type_id = ticket_type.id AND ticket_price.event_id = events.id AND orders.id = $orderId");
