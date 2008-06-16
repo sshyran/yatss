@@ -35,7 +35,7 @@
 	<tr>
 		<td><img src="{$barsrc}" alt="Total Revenue by Month"/></td>
 		<td><img src="{$piesrc}" alt="Total Ticket Distribution"/></td>
-	</tr>
+	</tr>	 
 	<tr style="height:100px;">
 		<td align="center"><b>Total Revenue Generated:</b> $ {$total_revenue}</td>
 		<td align="center">
@@ -44,6 +44,10 @@
 			<b>Tickets Unsold:</b> {$tickets_unsold}
 			</div>
 		</td>
+	</tr>
+	<tr>
+		<td><img src="{$rev_by_state}" alt="Revenue By State" /></td>
+		<td></td>
 	</tr>
 </table>
 <br />

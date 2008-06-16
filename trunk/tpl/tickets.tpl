@@ -26,6 +26,7 @@
 	</tr>
 </table>
 
+{if $ticket_array_size > 0}
 <table border="1">
 	<tr>
 		<td>Ticket Type</td><td>Ticket Price</td>{if isset($smarty.session.username)}<td>Tickets Remaining</td>{/if}<td>{if !isset($smarty.session.username)}Tickets Remaining{else}Quantity{/if}</td>{if isset($smarty.session.username)}<td></td>{/if}
@@ -62,5 +63,10 @@
 	</form>
 	{/foreach}
 </table>
+{else}
+<br />
+This event is still in the planning phase.  As of this date, it does not yet have any tickets available for purchase.<br />Please check back soon.
+<br />
+{/if}
 
-{if isset($smarty.session.username)}<br /><b>**</b> You are only allowed to buy up to <b>{$number_allowed} tickets of one type</b> at a time <b>**</b>{/if}
+{if isset($smarty.session.username) && $ticket_array_size > 0}<br /><b>**</b> You are only allowed to buy up to <b>{$number_allowed} tickets of one type</b> at a time <b>**</b>{/if}
