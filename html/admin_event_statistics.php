@@ -8,7 +8,7 @@ function printEventStatistics()
 	if ($a->checkAuth() && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ==1) {
 		$sql='select e.id, e.name  as "event name", 
 				sum(t.num_of_tickets-t.available_tickets) as "tickets sold", 
-				sum(t.available_tickets) as "tickets unsold" , tr.transaction_total as "revenue"
+				sum(t.available_tickets) as "tickets unsold" , sum(tr.transaction_total) as "revenue"
 			from events as e left join tickets as t on e.id=t.event_id
 				left join transactions as tr using (event_id, ticket_type_id)
 			group by e.id';
