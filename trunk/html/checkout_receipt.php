@@ -6,9 +6,18 @@ if(isset($_SESSION['shipping_method']) && isset($_SESSION['firstName']) && isset
 {
 	$_SESSION['checkout_step']='checkout_receipt';
 	$t->assign('next_step_link',"$web_root");
+	
+	unset($_SESSION['shipping_method']);
+	unset($_SESSION['firstName']);
+	unset($_SESSION['lastName']);
+	unset($_SESSION['cctype']);
+	unset($_SESSION['ccnumber']);
+	unset($_SESSION['ccmonth']);
+	unset($_SESSION['ccyear']);
 
 	// is returning "1" for testing
 	$orderId = confirmOrder();
+	$t->assign('transactionId', $orderId);
 	
 	executeQuery("LOCK TABLES events READ, ticket_type READ, transactions READ, ticket_price READ, orders READ");
 	

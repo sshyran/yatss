@@ -70,7 +70,7 @@
 	<td align="left">
 		<select name="cctype">
 			<option value="VISA">Visa</option>
-			<option value="MasterCard">Mastercard</option>
+			<option value="MasterCard" selected="selected">Mastercard</option>
 			<option value="AMEX">American Express</option>
 			<option value="DISCOVER">Discover</option>
 		</select>
@@ -79,7 +79,7 @@
 </tr>
 <tr>
 	<td style="text-align:left;"><label for="ccnumber">Number:</label></td>
-	<td align="left"><input type="text" autocomplete="off" name="ccnumber" id="ccnumber" class="required,creditcard" size="30" onkeyup="checkName(this)" />
+	<td align="left"><input type="text" autocomplete="off" name="ccnumber" value="5555555555554444" id="ccnumber" class="required,creditcard" size="30" onkeyup="checkName(this)" />
 	<img width="16" height="16" id="zipimg" src="../html/img/blank.gif" alt="" />
 	</td>
 	<td style="text-align:left;"><span class="expl">numeric (spaces or dashes optional)</span></td>
