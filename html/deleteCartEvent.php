@@ -2,7 +2,7 @@
 require_once('set_env.php');
 require_once('handleQuery.php');
 
-if(isset($_GET['event_id']) && isset($_GET['ticket_type']) && isset($_GET['number_of_tickets']) && $a->getAuth())
+if(isset($_GET['event_id']) && isset($_GET['ticket_type']) && isset($_GET['number_of_tickets']) && isset($_GET['basket_id']) && $a->getAuth())
 {
 	$eventid = $_GET['event_id'];
 	$basketid = $_GET['basket_id'];

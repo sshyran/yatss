@@ -1,5 +1,7 @@
 <?php
 require_once('set_env.php');
+//require_once('util.php');
+require_once('basket_check.php');
 $t->assign('title', 'checkout');
 
 if (!($loggedin=$a->checkAuth()) || !isset($_SERVER['HTTP_REFERER'])) {
