@@ -7,7 +7,7 @@ if (!$a->checkAuth()) {
 $_SESSION['checkout_step']='payment_info';
 $t->assign('next_step_link',"$web_root?page=checkout&step=confirmation");
 
-resetTimer();
+//resetTimer();
 
 $result = executeQuery("SELECT users.firstName as 'First Name', users.lastName as 'last name', address.address, address.city, address.state_id as 'state', address.zip FROM users, address WHERE users.address_id = address.id AND users.id = ?", array($_SESSION['userid']));
 
