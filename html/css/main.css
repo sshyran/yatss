@@ -4,6 +4,13 @@ table {
 	border-style: dotted;
 }
 
+.errorMessage{
+	background-color:#E7B5B0;
+	border:1px solid #FF0000;
+}
+.infoMessage{
+}
+
 tr.odd th{
 	border-style: dotted;
 	border-width: 1px;

@@ -3,6 +3,7 @@
 <div>{$descr}</div> 
 
 <a href="">Map</a>
+<a href="{$web_root}/directions.php" title="Google" rel="gb_page_fs[]">Launch Map</a>
 
 <br /><br />
 <table border="0">
