@@ -1,6 +1,6 @@
 <div id="left" style="width:{if isset($smarty.session.username)}870px;{else}1100px;{/if}">
 {if isset($smarty.session.username)}
-<table border="1" cellpadding="5">
+<table border="0" cellpadding="5" cellspacing="0">
 <tr>
 	<td colspan="{if $arraysize > 0}7{else}6{/if}">Shopping Cart</td>
 </tr>
@@ -17,7 +17,7 @@
 	<form name="form{$row.id}" action="deleteCartEvent.php" method="post">
 	<input type="hidden" name="event_id" value="{$row.event_id}" />
 	<input type="hidden" name="basket_id" value="{$row.id}" />
-	<tr>
+	<tr style="background-color:{cycle values='#EDEADC,#F2F2F2'}">
 		<td>{$row.name}</td>
 		<td>{$row.date|date_format:"%Y-%m-%d %H:%M"}</td>
 		<td><input type="hidden" name="ticket_type" value="{$row.ticket_type_id}" />{$row.type}</td>

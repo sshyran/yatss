@@ -50,8 +50,6 @@ function getUID()
 	return $rs[0]['id'];
 }
 
-$gom_url = "http://chart.apis.google.com/chart?chs=150x100&cht=gom&chd=t:50&chl=Tickets%20Available&chco=eeeeee,607955";
-$t->assign('gom_url',$gom_url);
 
 //$t->display('index.tpl');
 ?>
