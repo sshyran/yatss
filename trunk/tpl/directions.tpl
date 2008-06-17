@@ -19,7 +19,7 @@
       //map.setCenter(new GLatLng(37.0902, -95.7129), 15);
       directionsPanel = document.getElementById("route");
       directions = new GDirections(map, directionsPanel);
-      directions.load("{/literal}{$start} to {$destination}{literal}");
+      directions.load({/literal}"{$start} to {$destination}"{literal});
     }
 	{/literal}
     </script>

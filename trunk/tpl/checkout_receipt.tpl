@@ -35,7 +35,7 @@ We have also provided a link which will show you driving directions from your ad
 	<td><a href="">Download</a></td>
 	{/if}
 	<td></td>
-	<td><a href="">Map</a></td>
+	<td><a href="{$web_root}/directions.php?start={$start}&destination={$row.destination}" title="Google" rel="gb_page_fs[]">Map</a></td>
 </tr>
 {/foreach}
 <tr>
