@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-require_once('../include/set_env.php');
+require_once('set_env.php');
 require_once('util.php');
 
 $user = $_GET['username'];
