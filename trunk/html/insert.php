@@ -57,7 +57,7 @@ if(!($row == 1 || $row > 1))	// If the username is unique
 										//$db->query("INSERT INTO users (username, password, address_id, firstName, middleName, lastName, email) VALUES ('$user', '$passhash', '$add_id', '$firstName', '$middleName', '$lastName', '$email');");
 										executeQuery("INSERT INTO users (username, password, address_id, firstName, middleName, lastName, email) VALUES (?, ?, ?, ?, ?, ?, ?)", array($user, $passhash, $add_id, $firstName, $middleName, $lastName, $email));
 										//$db->query("UNLOCK TABLES");
-										header("Location: $web_root?page=login");
+										header("location:$web_root?page=message_page&message_id=50");
 										//$t->display('login.tpl');
 									}
 									else

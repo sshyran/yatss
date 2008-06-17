@@ -29,10 +29,13 @@ if(isset($_GET['message_id'])){
 		case 6:
 			$message='Ticket timer expired!!! you have only ' . getBasketTimer() . ' seconds to buy your tickets';
 			break;
+		case 7:
+			$message='Authentication failed!';
+			break;
 
 			
 		case 50:
-			$message='Thank you for registration';
+			$message='Thank you for registration, you can now log in.';
 			break;
 		case 51:
 			$message='Your order has been cancelled.  Your shopping cart was emptied.';
