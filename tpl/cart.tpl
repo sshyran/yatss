@@ -24,7 +24,7 @@
 		<td><input type="hidden" size="4" name="number_of_tickets" value="{$row.number_of_tickets}" />{$row.number_of_tickets}</td>
 		<td>${$row.price}</td>
 		<td>${$row.total}</td>
-		<td><input type="submit" value="Remove" /></td>
+		<td><input type="submit" value="Remove"/></td>
 	</tr>
 	</form>
 {/foreach}

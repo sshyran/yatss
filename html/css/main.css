@@ -6,9 +6,18 @@ table {
 
 .errorMessage{
 	background-color:#E7B5B0;
-	border:1px solid #FF0000;
+	border:1px solid black;
+	width: 400px;
+	height:100px;
+	vertical-align:middle;
+	padding-top:30px;
 }
 .infoMessage{
+	background-color:#E7B5B0;
+	border:1px solid black;
+	width: 400px;
+	height:100px;
+	padding-top:30px;
 }
 
 tr.odd th{

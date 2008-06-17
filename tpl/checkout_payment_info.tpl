@@ -25,6 +25,7 @@
 
 <br />
 <hr size="1" width="100%" />
+<div style="padding-top:10px;;">
 <b>Please select a delivery method:</b>
 {if $smarty.session.shipping_e == 1}<br /><font style="color:#FF0000; font-size:13px;">** A shipping method must be selected **</font>{/if}
 <font style="font-size:13px;">
@@ -33,6 +34,7 @@
 <tr><td><input type="radio" name="shipping_method" value="electronic" /></td><td>Recieve my tickets electronically</td></tr>
 </table>
 </font>
+</div>
 
 <br />
 <hr size="1" width="100%" />
