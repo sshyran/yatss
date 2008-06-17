@@ -1,5 +1,4 @@
 <?php
-require_once('basket_check.php');
 require_once('util.php');
 
 if(isset($_SESSION['shipping_method']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['cctype']) && isset($_SESSION['ccnumber']) && isset($_SESSION['ccmonth']) && isset($_SESSION['ccyear']))
