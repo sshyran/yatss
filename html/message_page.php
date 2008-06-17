@@ -6,7 +6,6 @@
 
 
 require_once('set_env.php');
-require_once('basket_check.php');
 
 if(isset($_GET['message_id'])){
 	switch ($message_id=$_GET['message_id']) {

@@ -1,6 +1,6 @@
 <?php
 require_once('set_env.php');
-require_once('handleQuery.php');
+require_once('util.php');
 
 // Set status variable depending on user status (logged in / not)
 /*if($a->getAuth()) { $status = 'true'; }

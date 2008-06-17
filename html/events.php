@@ -1,6 +1,6 @@
 <?php
 require_once('set_env.php');
-require_once('handleQuery.php');
+require_once('util.php');
 
 function events()
 {

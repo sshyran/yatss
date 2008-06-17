@@ -161,7 +161,7 @@ function loginFunction($username, $status, &$auth)
 
 function setSessionVar($db, $a)
 {
-	require_once('handleQuery.php');
+	require_once('util.php');
 	$id=array(1);
 	$rs=executeQuery('select session_timeout from config where id=?',$id);
 	$a->setIdle($rs[0]['session_timeout']);

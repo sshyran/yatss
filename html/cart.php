@@ -1,8 +1,7 @@
 <?php
 
 require_once('set_env.php');
-require_once('handleQuery.php');
-require_once('basket_check.php');
+require_once('util.php');
 
 
 // Only allow registered users to see the cart

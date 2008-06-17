@@ -1,25 +1,14 @@
 <?php
 require_once('set_env.php');
-require_once('handleQuery.php');
+require_once('util.php');
 
 if(!$a->checkAuth())
 {
-	// TODO use handleQuery!!
-	$res =& $db->query('SELECT id, name FROM us_states');
-	
-	// Always check that result is not an error
-	if (PEAR::isError($res)) {
-		die($res->getMessage());
-	}
-	
+	$res =executeQuery('SELECT id, name FROM us_states');
 	$row_array=array();
-			
-	while (($row = $res->fetchRow())) {
-			$row_array[$row['id']]=$row['name'];
+	foreach ($res as $key => $value) {
+		$row_array[$value['id']]=$value['name'];
 	}
-	
-	//print_r($row_array);
-	
 	$t->assign('stateOptions', $row_array);
 	
 	if(isset($_GET['e']))
@@ -55,11 +44,10 @@ if(!$a->checkAuth())
 			case 9:
 				$t->assign('errormessage', 'Please enter a valid email address');
 				break;
+			default:
+				$t->assign('errormessage', 'Unknown error. Please try again');
+				break;
 		}
-	}
-	
-	//print_r($row_array);
-	//$t->display('register.tpl');
-	
-	}
+	}	
+}
 ?>

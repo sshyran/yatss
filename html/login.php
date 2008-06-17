@@ -1,8 +1,5 @@
 <?php
 require_once('set_env.php');
-
-//$t->assign('showLogin',($a->getAuth()!=1)?1:0);
-//print_r($a->session);
 $t->assign('tpl_name_login','login');
 if($a->getAuth()){
 	if (!session_is_registered('username') && !session_is_registered('userid')) {
@@ -37,7 +34,7 @@ function setSessionVars()
 
 function isAdmin($uid)
 {
-	require_once('handleQuery.php');
+	require_once('util.php');
 	$var[]=$uid;
 	$rs=executeQuery('select id from users, admin_table where users.id = ? and users.id = admin_table.user_id',$var);
 	return count($rs)>0;
@@ -47,7 +44,7 @@ function isAdmin($uid)
 function getUID()
 {
 	global $a;
-	require_once('handleQuery.php');
+	require_once('util.php');
 	$var[]=$a->getUserName();
 	$rs=executeQuery('select id from users where username = ?',$var);
 	return $rs[0]['id'];
