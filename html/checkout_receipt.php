@@ -16,7 +16,7 @@ if(isset($_SESSION['shipping_method']) && isset($_SESSION['firstName']) && isset
 
 	// is returning "1" for testing
 	$orderId = confirmOrder();
-	$t->assign('transactionId', $orderId);
+	$t->assign('orderId', $orderId);
 	
 	executeQuery("LOCK TABLES events READ, ticket_type READ, transactions READ, ticket_price READ, orders READ");
 	

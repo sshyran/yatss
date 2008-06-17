@@ -1,9 +1,7 @@
-{* <h1>payment info</h1>
-<div>a table</div> *}
-
 <script src="../html/js/creditcard.js" type="text/javascript"></script>
 <script src="../html/js/validate.js" type="text/javascript"></script>
 
+<div id="left" style="width:{if isset($smarty.session.username)}870px;{else}1100px;{/if}">
 <p>
 <b>Payment</b><br />
 
@@ -113,5 +111,3 @@
 <input type="submit" name="register" value="Next Page" />&nbsp;&nbsp;<a href="cancelOrder.php"/>Cancel Order</a>
 </form>
 </div>
-
-<br /><a href="{$next_step_link}">next</a>

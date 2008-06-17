@@ -1,13 +1,9 @@
 {if !isset($smarty.session.username)}
-	<div>
+	<div id="options">
 			<form method="post" action="{$smarty.config.web_root}?page=events" id="loginForm">
-			<div>Login: <input type="text" name="username" size="15"/></div>
-			<div>Password: <input type="password" name="password" size="15"/></div>
-			<div><input type="submit" name="Submit" value="Submit"/></div>
-			<!-- <input type="reset" name="Reset" value="Reset"/> -->
-			</form>
-	</div>
-	<div>or <a href="{$web_root}?page=register">Register</a></div>
+			<div>Login: <input type="text" name="username" size="15"/>&nbsp;&nbsp;Password: <input type="password" name="password" size="15"/></div>
+			<div style="margin-top:5px;"><input type="submit" name="Submit" value="Submit"/> or <a href="{$web_root}?page=register">Register</a></div>
+			</form></div>
 {else}
-<p>Welcome {$smarty.session.username|capitalize} <a href="{$web_root}?logout=1">logout</a></p>
+	<div id="options"><p>Welcome {$smarty.session.username|capitalize} <a href="{$web_root}?logout=1">logout</a></p></div>
 {/if}

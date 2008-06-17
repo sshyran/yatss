@@ -1,4 +1,4 @@
-<div>
+<div id="left" style="width:{if isset($smarty.session.username)}870px;{else}1100px;{/if}">
 {if isset($smarty.session.username)}
 <table border="1" cellpadding="5">
 <tr>
@@ -50,3 +50,12 @@ Please log in to view this page.
 <br />
 {/if}
 </div>
+
+{if isset($smarty.session.username)}
+<div id="right">
+	<div class="box">
+		<h3>Welcome to Project YATSS</h3>
+		<p>We have the tickets you need.  Please feel free to browse around our tickets selection.</p>
+	</div>
+</div>
+{/if}
