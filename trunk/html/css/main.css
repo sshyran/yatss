@@ -46,8 +46,8 @@ h1 a:hover { color: #000000; }
 	#menu li a:hover { color: #fff; background: #607955; }
 
 #left { float: right; width: 870px; margin: 0 0 40px; }
-#right { float: left; width: 200px; margin: 0 0 40px; background: #fff; border: 1px solid #D1AFD5; padding: 1px; }
-	.box { background: #CCCCCC; border-bottom: 1px solid #D1AFD5; border-right: 1px solid #D1AFD5; color: #000000; padding: 15px; }
+#right { float: left; width: 200px; margin: 0 0 40px; background: #fff; border: 1px dotted #D1AFD5; padding: 1px; }
+	.box { background: #CCCCCC; border-bottom: 1px solid #D1AFD5; border-right: 1px dotted #D1AFD5; color: #000000; padding: 15px; }
 	.box h3 { margin: 0 0 10px; }
 	.box p { margin: 0; }
 
