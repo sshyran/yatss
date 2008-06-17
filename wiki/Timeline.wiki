@@ -22,7 +22,14 @@
  *  Admin interface and options
 
 === June 16, 2008 ===
- * Write cron job for deleting invalid entries in basket table
+ * *Write cron job for deleting invalid entries in basket table*
+
+=== June 17, 2008 ===
+ * Start / Finish Website Design 
+ * Admin pages - Event statistics and event info should be same page (AJAX?)
+ * Maps
+ * Clean up code
+ * Write up weaknesses / technologies, etc.
 
 == Later Enhancements ==
  *  PEAR package for dealing with credit cards
