@@ -1,6 +1,6 @@
 <?php
 
-require_once('set_env.php');
+require_once('../include/set_env.php');
 
 // Assign google api code to template so maps work
 $t->assign('apicode', 'ABQIAAAAiPmrNOEsg_2WGQEptsQ74xRqe_YL2A_tCvv-cWUMY_6tKsmF6xSrW0kISt6-2WjeY0q-QswxK4_tbg');

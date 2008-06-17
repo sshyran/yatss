@@ -1,10 +1,11 @@
 <?php
 
-require_once('set_env.php');
+require_once('../include/set_env.php');
 require_once('util.php');
 require "../include/pdf/class.ezpdf.php";
 
-if ($a->checkAuth() && isset($_POST['orderId']) && is_numeric($orderId = $_POST['orderId'])) {
+if ($a->checkAuth() && isset($_POST['orderId']) && is_numeric($_POST['orderId'])) {
+	$orderId = $_POST['orderId'];
 	$doc =& new Cezpdf();							// Create new instance of Cezpdf
 	$doc->selectFont("../include/pdf/fonts/Helvetica.afm");		// Set font for use in PDF
 
