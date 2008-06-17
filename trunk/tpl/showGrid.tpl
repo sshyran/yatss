@@ -7,14 +7,14 @@ requires data array
 {elseif count($data)==0}
 	<div>empty table</div>
 {else}
-	<table border="1">
+	<table>
 	{foreach from=$data key=k2 item=row2 name=outerloop}
-		<tr>
+		<tr class="{if $smarty.foreach.outerloop.index is odd}even{else}odd{/if}">
 		{if isset($display_first_row) && $smarty.foreach.outerloop.first}
 			{foreach from=$row2 key=k3 item=i3}
 				<th> {$k3} </th>
 			{/foreach}
-			</tr><tr>
+			</tr><tr class="{if $smarty.foreach.outerloop.index is odd}even{else}odd{/if}">
 		{/if}
 		{foreach from=$row2 key=k1 item=v1}
 			<td>{$v1}</td>

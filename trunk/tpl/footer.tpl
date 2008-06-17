@@ -6,6 +6,5 @@
 	<p><a href="http://validator.w3.org/check?uri=referer">w3c valid</a></p>
 	</div>
 </div>
-</div>
 </body>
 </html>

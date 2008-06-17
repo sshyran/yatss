@@ -14,7 +14,7 @@
 	{if $arraysize > 0}<td></td>{/if}
 </tr>
 {foreach from=$data item=row}
-	<form name="form{$row.id}" action="deleteCartEvent.php">
+	<form name="form{$row.id}" action="deleteCartEvent.php" method="post">
 	<input type="hidden" name="event_id" value="{$row.event_id}" />
 	<input type="hidden" name="basket_id" value="{$row.id}" />
 	<tr>

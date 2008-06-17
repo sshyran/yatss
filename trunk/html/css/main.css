@@ -1,8 +1,24 @@
 
+table {
+	border-width: 1px;
+	border-style: dotted;
+}
 
-tr.even{background-color:;}
-tr.odd{background-color:;}
+tr.odd th{
+	border-style: dotted;
+	border-width: 1px;
+	background-color: #e8e8e8;
+}
 
+tr.even td{
+	border-width: 1px;
+	border-style: dotted;
+	background-color: #f3f3f3;
+}
+tr.odd td{
+	border-width: 1px;
+	border-style: dotted;
+}
 /* global reset */
 :link,:visited { text-decoration:none } :focus, :active { outline: 0 } ul,ol { list-style:none } h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; } ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input { margin:0; padding:0 } a img,:link img,:visited img { border:none } address { font-style:normal }
 body { font: .74em Arial, Sans-Serif; background: #FFFFFF url(../img/bg3.gif) repeat-x; color: #333; line-height: 1.6em; }
