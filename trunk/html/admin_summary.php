@@ -29,7 +29,7 @@ $totalTickets = $p_data[0]['total_tickets_sold'] + $p_data[0]['total_tickets_uns
 $percentageSold = (!$totalTickets)?0:($p_data[0]['total_tickets_sold']/$totalTickets)*100;
 $percentageUnsold = 100 - $percentageSold;
 
-$total_ticket_dist_url = "http://chart.apis.google.com/chart?chs=400x180&cht=p3&chl=Sold(".round($percentageSold)."%)|Unsold(".round($percentageUnsold)."%)&chd=t:".$percentageSold.",".$percentageUnsold."&chtt=Total+Ticket+Distribution";
+$total_ticket_dist_url = "http://chart.apis.google.com/chart?chs=400x180&cht=p3&chl=Sold(".round($percentageSold)."%)|Unsold(".round($percentageUnsold)."%)&chd=t:".$percentageSold.",".$percentageUnsold."&chtt=Total+Ticket+Distribution&chco=607955";
 
 //$t->assign('piesrc','http://chart.apis.google.com/chart?chs=400x180&cht=p3&chl=Sold(40%)|Unsold(60%)&chd=t:40.0,60.0&chtt=Total+Ticket+Distribution');
 $t->assign('piesrc',$total_ticket_dist_url);
@@ -56,8 +56,8 @@ for($i=0; $i<count($r_data); $i++)
 }
 
 // Background Color : chf=bg,s,fafafa&
-$revenue_by_month_url = 'http://chart.apis.google.com/chart?chs=520x250&cht=bvs&chd=t:'.$revenue_by_month[1].','.$revenue_by_month[2].','.$revenue_by_month[3].','.$revenue_by_month[4].','.$revenue_by_month[5].','.$revenue_by_month[6].','.$revenue_by_month[7].','.$revenue_by_month[8].','.$revenue_by_month[9].','.$revenue_by_month[10].','.$revenue_by_month[11].','.$revenue_by_month[12].'&chl=Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec&chtt=Total%20Revenue%20By%20Month&chco=999999&chxl=1:|0|USD&chxt=x,y&chds=0,600&chm=t$'.$revenue_by_month[1].',000000,0,0,10|t$'.$revenue_by_month[2].',000000,0,1,10|t$'.$revenue_by_month[3].',000000,0,2,10|t$'.$revenue_by_month[4].',000000,0,3,10|t$'.$revenue_by_month[5].',000000,0,4,10|t$'.$revenue_by_month[6].',000000,0,5,10|
-t$'.$revenue_by_month[7].',000000,0,6,10|t$'.$revenue_by_month[8].',000000,0,7,10|t$'.$revenue_by_month[9].',000000,0,8,10|t$'.$revenue_by_month[10].',000000,0,9,10|t$'.$revenue_by_month[11].',000000,0,10,10|t$'.$revenue_by_month[12].',000000,0,11,10&chbh=30,10';
+$revenue_by_month_url = 'http://chart.apis.google.com/chart?chs=445x250&cht=bvs&chd=t:'.$revenue_by_month[1].','.$revenue_by_month[2].','.$revenue_by_month[3].','.$revenue_by_month[4].','.$revenue_by_month[5].','.$revenue_by_month[6].','.$revenue_by_month[7].','.$revenue_by_month[8].','.$revenue_by_month[9].','.$revenue_by_month[10].','.$revenue_by_month[11].','.$revenue_by_month[12].'&chl=Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec&chtt=Total%20Revenue%20By%20Month&chco=999999&chxl=1:|0|USD&chxt=x,y&chds=0,600&chm=t$'.$revenue_by_month[1].',000000,0,0,10|t$'.$revenue_by_month[2].',000000,0,1,10|t$'.$revenue_by_month[3].',000000,0,2,10|t$'.$revenue_by_month[4].',000000,0,3,10|t$'.$revenue_by_month[5].',000000,0,4,10|t$'.$revenue_by_month[6].',000000,0,5,10|
+t$'.$revenue_by_month[7].',000000,0,6,10|t$'.$revenue_by_month[8].',000000,0,7,10|t$'.$revenue_by_month[9].',000000,0,8,10|t$'.$revenue_by_month[10].',000000,0,9,10|t$'.$revenue_by_month[11].',000000,0,10,10|t$'.$revenue_by_month[12].',000000,0,11,10&chbh=30,5';
 
 
 $t->assign('barsrc',$revenue_by_month_url);
@@ -68,7 +68,8 @@ t50.00,000000,0,6,10|t50.00,000000,0,7,10|t70.00,000000,0,8,10|t150.00,000000,0,
 
 /*-------------------------------- CREATE BAR CHART FROM GOOGLE CHARTS (Total Revenue By State) ---------------------------------------*/
 
-$rbs_data = executeQuery("SELECT address.state_id, transactions.transaction_total FROM transactions, orders, users, address WHERE transactions.order_id = orders.id AND orders.user_id = users.id AND users.address_id = address.id");
+$rbs_data = executeQuery("SELECT address.state_id, sum(transactions.transaction_total) as transaction_total FROM transactions, orders, users, address WHERE transactions.order_id = orders.id AND orders.user_id = users.id AND users.address_id = address.id GROUP BY address.state_id");
+//print_r($rbs_data);
 
 /*$us_states = executeQuery("SELECT us_states.id FROM us_states ORDER BY us_states.id ASC");
 echo("# of states = ". count($us_states) . "<br>");*/
@@ -110,6 +111,11 @@ $revenue_by_state_url = "http://chart.apis.google.com/chart?chs=520x250&cht=bvs&
 $t->assign('rev_by_state', $revenue_by_state_url);
 
 //print_r($rbs_data);
+
+/*--------------------- Google - o - meter test ------------------*/
+
+$gom_url = "http://chart.apis.google.com/chart?chs=150x100&cht=gom&chd=t:50&chl=Tickets%20Available&chco=eeeeee,607955";
+$t->assign('gom_url',$gom_url);
 
 
 

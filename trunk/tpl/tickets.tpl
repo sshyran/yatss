@@ -1,4 +1,4 @@
-<div id="left" style="width:{if isset($smarty.session.username)}870px;{else}1100px;{/if}">
+<div id="left">
 <div><b>{$event}</b></div>
 <div>{$descr}</div> 
 
@@ -71,4 +71,11 @@ This event is still in the planning phase.  As of this date, it does not yet hav
 {/if}
 
 {if isset($smarty.session.username) && $ticket_array_size > 0}<br /><b>**</b> You are only allowed to buy up to <b>{$number_allowed} tickets of one type</b> at a time <b>**</b>{/if}
+</div>
+
+<div id="right">
+	<div class="box">
+		<h3>Welcome to Project YATSS</h3>
+		<p>We have the tickets you need.  Please feel free to browse around our tickets selection.</p>
+	</div>
 </div>

@@ -1,3 +1,4 @@
+<div id="left">
 <p><b>Confirmation</b><br />
 Please confirm that the following information is correct</p>
 
@@ -80,5 +81,11 @@ You will be presented with a reciept and confirmation number on the following pa
 
 <br /><a href="cancelOrder.php" style="float:left;">Cancel Order</a><a href="{$next_step_link}" style="float:right;">Confirm</a>
 </div>
-<br />
-<br />
+</div>
+
+<div id="right">
+	<div class="box">
+		<h3>Welcome to Project YATSS</h3>
+		<p>We have the tickets you need.  Please feel free to browse around our tickets selection.</p>
+	</div>
+</div>
