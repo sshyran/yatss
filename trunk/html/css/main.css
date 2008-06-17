@@ -1,0 +1,46 @@
+/*
+
+	project: gentle wiki
+	author: luka cvrk
+
+*/
+
+/* global reset */
+:link,:visited { text-decoration:none } :focus, :active { outline: 0 } ul,ol { list-style:none } h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; } ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input { margin:0; padding:0 } a img,:link img,:visited img { border:none } address { font-style:normal }
+body { font: .74em Arial, Sans-Serif; background: #FFFFFF url(../img/bg3.gif) repeat-x; color: #333; line-height: 1.6em; }
+/*color: #752B7D;*/
+a { color: #333333; text-decoration: underline; }
+a:hover { color: #808080; }
+p  { margin: 5px 0 15px;}
+h2 { background: url(../img/bullet.gif) no-repeat left 6px; font-size: 1.2em; padding: 0 0 0 9px; }
+h2 a { text-decoration: underline; }
+h1 { font: 2.3em Georgia; margin: 0 0 22px; }
+h1 a { color: #fff; }
+/*h1 a:hover { color: #CFA5D3; }*/
+h1 a:hover { color: #000000; }
+.clear { clear: both; }
+.wrap { margin: 25px auto; width: 1100px; }
+
+#options { float: right; position:absolute; left:800px; top:30px; color: #333333; font-weight: bold; text-align:right; width:400px; }
+	#options a { color: #000000; padding: 0 0 0 8px; background: url(../img/bullet.gif) no-repeat left 5px; margin: 0 0 0 10px; }
+	#options a:hover { color: #E6E8B1; }
+
+#menu { float: left; margin: 0 0 30px; }
+#menu li { display: inline; }
+/*color: #EABBEF background: #612168;*/
+#menu li a { float: left; padding: 8px 20px; margin: 0 1px 0 0; color: #CCCCCC; background:#333333;  }
+	#menu li a:hover { color: #fff; background: #607955; }
+
+#left { float: right; width: 870px; margin: 0 0 40px; }
+#right { float: left; width: 200px; margin: 0 0 40px; background: #fff; border: 1px solid #D1AFD5; padding: 1px; }
+	.box { background: #CCCCCC; border-bottom: 1px solid #D1AFD5; border-right: 1px solid #D1AFD5; color: #000000; padding: 15px; }
+	.box h3 { margin: 0 0 10px; }
+	.box p { margin: 0; }
+
+#footer { clear: both; background: #FFFFFF; color: #FFFFFF; padding: 10px 0; }
+	#footer ul { float: left; width: 200px; }
+	#footer li { padding: 5px 8px; background: url(../img/dot.gif) repeat-x bottom; }
+		#footer li a { color: #CB799F; }
+		#footer li a:hover { color: #F5CFE1; }
+	#footer #col { float: right; width: 600px;   }
+	#copyright { background: url(../img/dot.gif) repeat-x top; padding: 24px 0 0; font-size: .9em; }

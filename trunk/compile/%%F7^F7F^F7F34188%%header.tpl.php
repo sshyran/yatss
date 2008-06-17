@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.19, created on 2008-06-12 10:35:28
+<?php /* Smarty version 2.6.19, created on 2008-06-17 17:11:01
          compiled from header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'header.tpl', 10, false),)), $this); ?>
@@ -16,7 +16,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', '
 	<script src="js/prototype.js" type="text/javascript"></script>
 	<script src="js/scriptaculous.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="./css/register.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="./css/main.css" type="text/css" />
 
 </head>
-
 <body>
