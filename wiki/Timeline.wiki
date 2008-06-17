@@ -22,7 +22,7 @@
  *  Admin interface and options
 
 === June 16, 2008 ===
- * *Write cron job for deleting invalid entries in basket table*
+ * Write cron job for deleting invalid entries in basket table
 
 === June 17, 2008 ===
  * Start / Finish Website Design 
@@ -30,6 +30,9 @@
  * Maps
  * Clean up code
  * Write up weaknesses / technologies, etc.
+
+=== June 18, 2008 ===
+ * Smarty truncate for event description
 
 == Later Enhancements ==
  *  PEAR package for dealing with credit cards
