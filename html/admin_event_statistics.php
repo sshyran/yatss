@@ -10,7 +10,7 @@ function printEventStatistics()
 		$eventstatarray=executeQuery($sql);
 			// array manipulation
 		foreach ($eventstatarray as &$value) {
-			$value['event_name']="<a href=\"$web_root?page=admin&step=event_info&event_id=".$value['id']."\">".$value['event_name'].'</a>';
+			$value['event_name']="<a href=\"$web_root?page=admin&step=users&event_id=".$value['id']."\">".$value['event_name'].'</a>';
 			unset($value['id']);
 		}
 		$t->assign('display_first_row',1);

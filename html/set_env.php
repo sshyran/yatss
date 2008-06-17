@@ -112,9 +112,9 @@ if (isset($_REQUEST['logout']) && $_REQUEST['logout'] && $a->getAuth()) {
 
 // Auth the user
 $a->start();
-if (isset($require_login) && $require_login && !$a->getAuth()) {
-	die('Auth Failed');
-}
+// if (isset($require_login) && $require_login && !$a->getAuth()) {
+// 	die('Auth Failed');
+// }
 //$user_key = $_SESSION['_authsession']['data']['user_key'];
 //$perms = $_SESSION['_authsession']['data']['perms'];
 
@@ -133,12 +133,14 @@ $t->assign('web_root', $web_root);
 
 function loginFunction($username, $status, &$auth)
 {
-	global $a;
+	global $a, $web_root;
 	if (isset($status)) {
 		switch ($status) {
 			case '-3':
-				echo "Authentication failed for user $username";
-				break;
+			header("location:$web_root?page=message_page&message_id=7");
+			exit;
+//				echo "Authentication failed for user $username";
+//				break;
 		}
 	}
 	
