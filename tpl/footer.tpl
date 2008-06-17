@@ -1,10 +1,9 @@
 
 </div>
 <div id="footer">
-	<div style="margin-left:120px;">
-	<p><a href="http://www.validome.org/referer">validome valid</a></p>
-	<p><a href="http://validator.w3.org/check?uri=referer">w3c valid</a></p>
-	</div>
+	<span>
+		<p>copyright Chris Conlon and roll 2008</p>
+	</span>
 </div>
 </body>
 </html>

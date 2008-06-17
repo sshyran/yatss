@@ -113,7 +113,7 @@ $t->assign('rev_by_state', $revenue_by_state_url);
 //print_r($rbs_data);
 
 /*--------------------- Google - o - meter test ------------------*/
-
+/*
 /*
 $gom_url = "http://chart.apis.google.com/chart?chs=150x100&amp;cht=gom&amp;chd=t:50&amp;chl=Tickets%20Available&amp;chco=eeeeee,607955";
 $t->assign('gom_url',$gom_url);
