@@ -8,8 +8,10 @@ require_once('basket_check.php');
 // Only allow registered users to see the cart
 if($a->checkAuth())
 {
-	basketCheck();
-	
+	if (basketCheck()) {
+		header("location:$web_root?page=message_page&message_id=6");
+		exit;
+	}
 	if(isset($_REQUEST['event_id']) && isset($_REQUEST['ticket_type']) && isset($_REQUEST['number_of_tickets']))
 	{
 	
@@ -30,40 +32,25 @@ if($a->checkAuth())
 		if($result = executeQuery("SELECT view_event_info.event_id, view_event_info.available_tickets FROM view_event_info WHERE event_id = ? AND ticket_type_id = ? AND available_tickets > 0", $sentValues))
 		{
 			if(sizeof($result) == 1)
-			{
-				/*// Check to see if there are already tickets of the same type in the cart
-				$tempA = array($_REQUEST['event_id'], $_REQUEST['ticket_type']);
-				$result = executeQuery("SELECT basket.id FROM basket WHERE basket.event_id = ? AND basket.ticket_type_id = ?", $tempA);
-				if(count($result) > 0)
-				{
-					//echo 'Here in the method';
-					$tempB = array($_REQUEST['number_of_tickets'], $_REQUEST['event_id'], $_REQUEST['ticket_type']);
-					executeQuery("UPDATE basket SET number_of_tickets = number_of_tickets+? WHERE event_id = ? AND ticket_type_id = ?", $tempB);
-				}
-				else
-				{*/
-				
+			{				
 				// Check to see if the user is buying an allowed amount of tickets
 				if($number_of_tickets <= $result[0]['available_tickets'])
-				{
-				
+				{	
 					// Insert into Basket
 					$insertArray = array($_REQUEST['event_id'], $_SESSION['userid'], $_REQUEST['ticket_type'], $_REQUEST['number_of_tickets']);
 					$rs= executeQuery("INSERT INTO basket (event_id, user_id, ticket_type_id, number_of_tickets) VALUES (?, ?, ?, ?)", $insertArray);
 				}
 				else
 				{
+					header("location:$web_root?page=message_page&message_id=53");
+					exit;
+					
 					// TODO @ chris move this message to message_page.php
-					echo("You can't buy that many tickets... there is not enough!");
+//					echo("You can't buy that many tickets... there is not enough!");
 				}
-				//}
-				
-				/*// Update available_tickets in tickets
-				$updateArray = array($_REQUEST['number_of_tickets'], $_REQUEST['event_id'], $_REQUEST['ticket_type']);
-				executeQuery("UPDATE tickets SET available_tickets = available_tickets-? WHERE tickets.event_id = ? AND tickets.ticket_type_id = ?", $updateArray);*/
 			}
 		}
-		else {header("$web_root?page=message_page&message_id=53");}
+//		else {header("$web_root?page=message_page&message_id=530");}
 		
 	}
 	
@@ -80,6 +67,7 @@ if($a->checkAuth())
 		$subtotal += $myarray[$i]['total'];
 	}
 	$t->assign('subtotal',$subtotal);
+
 
 }
 else

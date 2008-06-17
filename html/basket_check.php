@@ -16,8 +16,10 @@ function basketCheck()
 		$rs=executeQuery($sql, $vars);
 		if (count($rs)>0) {
 			deleteInvalidTransactions($rs);
+			return true;
 		}
 	}
+	return false;
 }
 
 
@@ -67,19 +69,23 @@ function cancelOrder()
 
 function resetTimer()
 {
+	global $a;
 	if($a->checkAuth()){
 		$user_id=$_SESSION['userid'];
-		global $db;
-		$db->executeStoredProc("reset_basket_timer",array($user_id));
+		executeQuery('lock tables basket write');
+		executeQuery('update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = ?', array($user_id));
+		executeQuery('unlock tables');
 	}
 }
 
 function deleteFromBasket($basketId)
 {
+	global $a;
 	if($a->checkAuth()){
 		$user_id=$_SESSION['userid'];
-		global $db;
-		$db->executeStoredProc("delete_from_basket",array($basketId, $user_id));
+		executeQuery('lock tables basket write');
+		executeQuery('delete from basket where id=? and user_id=?', array($basketId,$user_id));
+		executeQuery('unlock tables');
 	}
 }
 

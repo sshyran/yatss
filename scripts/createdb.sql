@@ -194,9 +194,9 @@ from events as e left join tickets as t on e.id=t.event_id
 
 -- create events
 INSERT INTO events (date, name, address_id, description) VALUES
-('2008-06-09 10:58:56', 'chris is doing pair programmin', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-09 10:58:56', 'chris is doing pair programmin', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-06-17 11:06:41', 'dxxxx', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-17 11:06:41', 'dxxxx', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ");
 
 INSERT INTO ticket_type (id, type) VALUES
@@ -217,7 +217,7 @@ insert into config (basket_timer, session_timeout) values (600, 600);
 	
 drop view if exists view_purchase_history;
 CREATE VIEW  view_purchase_history  as 
-	select username, o.id as 'order number', o.date_of_order as 'order date', e.name as 'event name', date_format(date, 'Y-m-d H:i') as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction total'
+	select username, o.id as 'order number', o.date_of_order as 'order date', e.name as 'event name', date as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction total'
 	from transactions as t, orders as o, events as e, ticket_type as tt, users as u, ticket_price as tp
 	where
 		tt.id=t.ticket_type_id and 
@@ -226,11 +226,10 @@ CREATE VIEW  view_purchase_history  as
 		o.id = t.order_id and
 		tp.event_id=e.id and tp.ticket_type_id=tt.id;
 
-	
+
 -- delete from basket where ticket_type_id=2
 -- select id , start_of_transaction from basket where user_id = 1 and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval 600 second)
 
-		
 		
 drop trigger if exists delete_invalid_transactions;
 create trigger delete_invalid_transactions after delete on basket
@@ -250,12 +249,17 @@ create trigger add_to_transaction after insert on transactions
 
 
 
-create procedure delete_from_basket(in basketid int(5), in userid int (5))
-	delete from basket where id=basketid and user_id=userid;
-
-create procedure reset_basket_timer(in userid int(5))
-	update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = userid;
-
+-- create procedure delete_from_basket(in basketid int(5), in userid int (5))
+-- 	delete from basket where id=basketid and user_id=userid;
+-- 
+-- delimiter ;;
+-- create procedure reset_basket_timer(in userid int(5))
+-- 	begin
+-- 		update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = userid;
+-- //		select * from basket;
+-- 	end;;
+-- 
+-- call reset_basket_timer(1);
 
 -- delimiter ;;
 -- create procedure add_to_basket(in eventid int(5), in userid int(5), in tickettypeid int(5), in numoftickets int(5), out transactionid int(5))
@@ -305,3 +309,17 @@ create procedure reset_basket_timer(in userid int(5))
 -- select e.name, (num_of_tickets - available_tickets) as "tickets sold", available_tickets as "tickets unsold" from 
 -- 	events as e, transactions as tr, tickets as t where 
 -- 	   e.id = tr.event_id and e.id = t.event_id and t.ticket_type_id = tr.ticket_type_id;
+
+	
+
+create or replace view view_statistics as
+	select 
+			e.id, 
+			e.name  as "event_name", 
+			sum(ifnull(tr.number_of_tickets,0))  as "tickets_sold", 
+			sum(ifnull(t.available_tickets,0)+ifnull(b.number_of_tickets,0)) as "tickets_unsold" , 
+			sum(ifnull(tr.transaction_total,0)) as "revenue"
+		from events as e left join tickets as t on e.id=t.event_id 
+			left join transactions as tr using (event_id, ticket_type_id)
+			left join basket as b using(event_id, ticket_type_id)
+		group by e.id

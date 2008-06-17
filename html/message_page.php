@@ -6,6 +6,7 @@
 
 
 require_once('set_env.php');
+require_once('basket_check.php');
 
 if(isset($_GET['message_id'])){
 	switch ($message_id=$_GET['message_id']) {
@@ -24,6 +25,9 @@ if(isset($_GET['message_id'])){
 			break;
 		case 5:
 			$message='Transaction failed.  Please re-try your transaction';
+			break;
+		case 6:
+			$message='Ticket timer expired!!! you have only ' . getBasketTimer() . ' seconds to buy your tickets';
 			break;
 
 			
