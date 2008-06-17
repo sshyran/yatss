@@ -15,6 +15,7 @@ $dsn = 'mysqli://root:admin@localhost/yatss';
 // Setup include path
 //$web_root = 'http://project:8888/yatss/html/';
 $web_root = 'http://localhost/~roll/paxton/yatss/html/';
+//$web_root='http://139.18.251.125/~roll/paxton/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
 $app_root = '..';
 $pear = $app_root . '/pear/'; 
@@ -139,23 +140,8 @@ function loginFunction($username, $status, &$auth)
 			case '-3':
 			header("location:$web_root?page=message_page&message_id=7");
 			exit;
-//				echo "Authentication failed for user $username";
-//				break;
 		}
 	}
-	
-	// //global $t;
-	// if (isset($_GET['login']) && $_GET['login'] == 1) {
-	//   //   $optional = true;
-	// 	$_SESSION['showLogin']=1;
-	// } else {
-	// 		$_SESSION['showLogin']=0;
-	//     // $optional = false;
-	// }
-	
-//	require_once('login.php');
-//	loginFunc();
-//	$t->display('login.tpl');
 }
 
 
@@ -166,8 +152,6 @@ function setSessionVar($db, $a)
 	$rs=executeQuery('select session_timeout from config where id=?',$id);
 	$a->setIdle($rs[0]['session_timeout']);
 }
-define ("NOT_AUTHORIZED", 1);
-
 
 //moved from menu.php
 $valid_pages=array('events', 'history','cart', 'register', 'admin', 'my_account', 'tickets', 'checkout', 'message_page');
