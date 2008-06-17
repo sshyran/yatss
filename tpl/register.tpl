@@ -10,6 +10,7 @@
 {if !isset($smarty.session.username)}
 <script type="text/javascript" src="../html/js/validate.js"></script>
 
+<div id="left">
 <div id="regform" style="width: 100%;">
 <form method="get" action="insert.php" id="vform">
 <table border="0" cellpadding="0" cellspacing="0" class="center">
@@ -119,3 +120,11 @@ Hey!  You're already logged in!  You can't register again.
 {*
 {include file="footer.tpl"}
 *}
+</div>
+<div id="right">
+	<div class="box">
+		<h3>Welcome to Project YATSS</h3>
+		<p>We have the tickets you need.  Please feel free to browse around our tickets selection.</p>
+	</div>
+</div>
+
