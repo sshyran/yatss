@@ -10,11 +10,11 @@ if ($a->checkAuth() && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ==1
 
 
 /*----------------------------------- CREATE PIE GRAPH FROM GOOGLE CHARTS (Ticket Distribution) ------------------------------ */
-$p_data = executeQuery("SELECT tickets.num_of_tickets as total, tickets.available_tickets as unsold, tickets.num_of_tickets-tickets.available_tickets as sold FROM tickets");
+//$p_data = executeQuery("SELECT tickets.num_of_tickets as total, tickets.available_tickets as unsold, tickets.num_of_tickets-tickets.available_tickets as sold FROM tickets");
 
-//$p_data=executeQuery("select sum(tickets_sold) as total_tickets_sold, sum(tickets_unsold) as total_tickets_unsold, sum(revenue) as total_revenue from view_statistics");
+$p_data=executeQuery("select sum(tickets_sold) as total_tickets_sold, sum(tickets_unsold) as total_tickets_unsold, sum(revenue) as total_revenue from view_statistics");
 
-$totalUnsold = 0;
+/*$totalUnsold = 0;
 $totalSold = 0;
 $totalTickets = 0;
 
@@ -22,14 +22,14 @@ for($k=0; $k<count($p_data); $k++)
 {
 	$totalUnsold += $p_data[$k]['unsold'];
 	$totalSold += $p_data[$k]['sold'];
-	$totalTickets += $p_data[$k]['total'];
-}
+	$totalTickets += $p_data[$k]['total']; 
+} */
 
-$totalTickets = $totalUnsold + $totalSold;
-$percentageSold = ($totalSold/$totalTickets)*100;
+$totalTickets = $p_data[0]['total_tickets_sold'] + $p_data[0]['total_tickets_unsold'];
+$percentageSold = (!$totalTickets)?0:($p_data[0]['total_tickets_sold']/$totalTickets)*100;
 $percentageUnsold = 100 - $percentageSold;
 
-$total_ticket_dist_url = "http://chart.apis.google.com/chart?chs=400x180&cht=p3&chl=Sold(".$percentageSold."%)|Unsold(".$percentageUnsold."%)&chd=t:".$percentageSold.",".$percentageUnsold."&chtt=Total+Ticket+Distribution";
+$total_ticket_dist_url = "http://chart.apis.google.com/chart?chs=400x180&cht=p3&chl=Sold(".round($percentageSold)."%)|Unsold(".round($percentageUnsold)."%)&chd=t:".$percentageSold.",".$percentageUnsold."&chtt=Total+Ticket+Distribution";
 
 //$t->assign('piesrc','http://chart.apis.google.com/chart?chs=400x180&cht=p3&chl=Sold(40%)|Unsold(60%)&chd=t:40.0,60.0&chtt=Total+Ticket+Distribution');
 $t->assign('piesrc',$total_ticket_dist_url);
@@ -114,7 +114,7 @@ $t->assign('rev_by_state', $revenue_by_state_url);
 
 
 $t->assign('total_tickets', $totalTickets);
-$t->assign('tickets_sold',$totalSold);
-$t->assign('tickets_unsold', $totalUnsold);
+$t->assign('tickets_sold',$p_data[0]['total_tickets_sold']);
+$t->assign('tickets_unsold', $p_data[0]['total_tickets_unsold']);
 $t->assign('total_revenue', $total_revenue);
 ?>

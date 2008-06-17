@@ -1,5 +1,10 @@
-<div id="adminmenu">admin menu bar:<br/>
+<div id="right">
+<div class="box">
+admin menu bar:
+<ul>
 {foreach from=$admin_links key=k item=v}
-	<a href="{$v}">{$k}</a>
+	<li><a href="{$v}">{$k}</a></li>
 {/foreach}
+</ul>
+</div>
 </div>

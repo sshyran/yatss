@@ -57,7 +57,7 @@ We have also provided a link which will show you driving directions from your ad
 
 <br />
 <form method="post" name="receiptForm" action="generateReceipt.php" target="_blank">
-<input type="hidden" name="transactionId" value="{$transactionId}" />
+<input type="hidden" name="orderId" value="{$transactionId}" />
 <table cellpadding="5" border="0">
 <tr>
 <td><input type="submit" value="Printable Receipt" /></td><td><a href="{$next_step_link}">Homepage</a></td>
