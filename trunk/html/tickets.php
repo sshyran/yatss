@@ -63,8 +63,9 @@ if(isset($_GET['event_id']))
 	}
 	
 	$t->assign('ticketdata', $ttype);
-	$t->assign('start', '600 W Kagy Blvd, Bozeman, MT');
-	$t->assign('destination', 'Denver, CO');
+	
+	$location = urlencode($ass_array['address'].", ".$ass_array['city'].", ".$ass_array['state_id']);
+	$t->assign('location', $location);
 	$t->assign('apicode', 'ABQIAAAAiPmrNOEsg_2WGQEptsQ74xRqe_YL2A_tCvv-cWUMY_6tKsmF6xSrW0kISt6-2WjeY0q-QswxK4_tbg');
 	
 	//print_r($ttype);
