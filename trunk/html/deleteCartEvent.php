@@ -1,6 +1,7 @@
 <?php
 require_once('set_env.php');
 require_once('handleQuery.php');
+require_once('basket_check.php');
 
 if(isset($_GET['event_id']) && isset($_GET['ticket_type']) && isset($_GET['number_of_tickets']) && isset($_GET['basket_id']) && $a->getAuth())
 {
@@ -18,7 +19,8 @@ if(isset($_GET['event_id']) && isset($_GET['ticket_type']) && isset($_GET['numbe
 	// Delete event from cart
 	$tempA = array($basketid);
 	//executeQuery("DELETE FROM basket WHERE basket.user_id = ? AND basket.event_id = ? AND basket.ticket_type_id = ?", $tempA);
-	executeQuery("DELETE FROM basket WHERE basket.id = ?", $tempA);
+	deleteFromBasket($basketid);
+//	executeQuery("DELETE FROM basket WHERE basket.id = ?", $tempA);
 	
 	// // Update number of tickets available
 	// $tempB = array($number_of_tickets, $eventid, $ticket_type_id);

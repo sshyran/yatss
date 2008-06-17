@@ -12,6 +12,8 @@ if ($a->checkAuth() && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ==1
 /*----------------------------------- CREATE PIE GRAPH FROM GOOGLE CHARTS (Ticket Distribution) ------------------------------ */
 $p_data = executeQuery("SELECT tickets.num_of_tickets as total, tickets.available_tickets as unsold, tickets.num_of_tickets-tickets.available_tickets as sold FROM tickets");
 
+//$p_data=executeQuery("select sum(tickets_sold) as total_tickets_sold, sum(tickets_unsold) as total_tickets_unsold, sum(revenue) as total_revenue from view_statistics");
+
 $totalUnsold = 0;
 $totalSold = 0;
 $totalTickets = 0;
