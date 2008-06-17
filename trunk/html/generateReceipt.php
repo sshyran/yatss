@@ -1,7 +1,7 @@
 <?php
 
 require_once('set_env.php');
-require_once('handleQuery.php');
+require_once('util.php');
 require "../include/pdf/class.ezpdf.php";
 
 //$db = mysqli_connect("localhost", "root", "admin", "yatss");

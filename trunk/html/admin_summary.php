@@ -1,6 +1,6 @@
 <?php
 require_once('set_env.php');
-require_once('handleQuery.php');
+require_once('util.php');
 
 if ($a->checkAuth() && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ==1) {
 //	$myarray=executeQuery('select username as "nickname", firstname as "first name", lastname as "last name", email from users');

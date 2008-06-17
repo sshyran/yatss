@@ -1,7 +1,6 @@
 <?php
 require_once('set_env.php');
-require_once('handleQuery.php');
-require_once('basket_check.php');
+require_once('util.php');
 
 if(isset($_GET['event_id']) && isset($_GET['ticket_type']) && isset($_GET['number_of_tickets']) && isset($_GET['basket_id']) && $a->getAuth())
 {
