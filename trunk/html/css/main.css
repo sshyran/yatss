@@ -7,13 +7,15 @@ table {
 .errorMessage{
 	background-color:#E7B5B0;
 	border:1px solid black;
+	font-size:15px;
 	width: 400px;
 	height:100px;
 	vertical-align:middle;
 	padding-top:30px;
 }
 .infoMessage{
-	background-color:#E7B5B0;
+	background-color:#CCCCCC;
+	font-size:15px;
 	border:1px solid black;
 	width: 400px;
 	height:100px;
