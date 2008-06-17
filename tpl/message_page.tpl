@@ -1,7 +1,8 @@
 {if isset($message)}
-	{$message}
+	<div class="infoMessage">{$message}
 {elseif isset($error_message)}
-	{$error_message}
+	<div class="errorMessage">{$error_message}
 {else}
-message page
+<div class="errorMessage">error message not set
 {/if}
+</div>

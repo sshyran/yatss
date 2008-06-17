@@ -43,13 +43,9 @@ if($a->checkAuth())
 				{
 					header("location:$web_root?page=message_page&message_id=53");
 					exit;
-					
-					// TODO @ chris move this message to message_page.php
-//					echo("You can't buy that many tickets... there is not enough!");
 				}
 			}
 		}
-//		else {header("$web_root?page=message_page&message_id=530");}
 		
 	}
 	
@@ -69,11 +65,8 @@ if($a->checkAuth())
 
 
 }
-else
-{
-	$t->assign('error',NOT_AUTHORIZED);
+else{
+	header("location:$web_root?page=message_page&message_id=52");
+	exit;
 }
-
-//$t->display('cart.tpl');
-
 ?>

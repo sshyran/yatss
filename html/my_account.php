@@ -10,6 +10,7 @@ if ($a->checkAuth()) {
 	$t->assign('data',$myarray);
 }
 else {
-	$t->assign('error',NOT_AUTHORIZED);
+	header("location:$web_root?page=message_page&message_id=52");
+	exit;
 }
 ?>
