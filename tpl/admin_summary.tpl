@@ -2,7 +2,7 @@
 <h3>Admin Dashboard</h3>
 <br />
 
-<table border="0">
+<table border="0" width="100%">
 	<tr>
 		<td><img src="{$barsrc}" alt="Total Revenue by Month"/></td>
 		<td><img src="{$piesrc}" alt="Total Ticket Distribution"/></td>
