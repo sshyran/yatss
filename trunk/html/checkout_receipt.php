@@ -36,7 +36,7 @@ if(isset($_SESSION['shipping_method']) && isset($_SESSION['firstName']) && isset
 }
 else
 {
-	header("$web_root?page=message_page&message_id=5");
+	header("location:$web_root?page=message_page&message_id=5");
 	exit;
 }
 

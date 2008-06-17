@@ -17,6 +17,7 @@ if ($a->checkAuth() && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ==1
 		$sql='select username as "nickname", firstname as "first name", lastname as "last name", email from users';
 	}
 	$users_array=executeQuery($sql, $vars);
+	$t->assign('empty_message','no one is attending to this event');
 	$t->assign('display_first_row',1);
 	$t->assign('data',$users_array);
 }

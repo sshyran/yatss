@@ -5,7 +5,13 @@ requires data array
 {if isset($error)}
 	<div>Please login to view this page...</div>
 {elseif count($data)==0}
-	<div>empty table</div>
+	<div class="errorMessage">
+	{if isset($empty_message)}
+		{$empty_message}
+	{else}
+		empty table
+	{/if}
+	</div>
 {else}
 	<table>
 	{foreach from=$data key=k2 item=row2 name=outerloop}

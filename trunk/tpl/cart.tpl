@@ -36,13 +36,6 @@
 	<b>Sub Total:&nbsp;&nbsp;${$subtotal}</b></td>
 </tr>
 
-<!--<tr>
-	<td colspan="4"><b>Grand Total</b></td>
-	<td colspan="2"></td>
-	<td></td>
-</tr>-->
-	
-
 </table>
 {else}
 <br />
