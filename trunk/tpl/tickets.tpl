@@ -27,6 +27,7 @@
 	</td>
 	</tr>
 </table>
+<br />
 
 {if $ticket_array_size > 0}
 <table border="1">

@@ -11,7 +11,7 @@
 	<hr size="1" width="100%" />
 	
 		<b>Billing Address</b> (Shipping Address)
-<font style="font-size:13px;"
+<font style="font-size:13px;">
 <table>	
 	{foreach from=$data item=i key=k} 
 	<tr>

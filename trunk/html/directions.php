@@ -20,9 +20,10 @@ $t->assign('destination', $_GET['destination']);
 else
 {
 	$t->assign('type',1);
-	if(isset($_GET['start']))
+	if(true)
 	{
-		$t->assign('start',$_GET['start']);
+		//$t->assign('start',$_GET['start']);
+		$t->assign('start','600 W Kagy Blvd, Bozeman, MT');
 	}
 }
 

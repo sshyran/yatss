@@ -20,4 +20,4 @@
 	<link href="./js/greybox/gb_styles.css" rel="stylesheet" type="text/css" />
 
 </head>
-<body>
+<body id="{$bodyid|default:'events'}">

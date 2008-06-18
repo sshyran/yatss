@@ -4,6 +4,15 @@ table {
 	border-style: dotted;
 }
 
+body#events a#events,
+body#history a#history,
+body#cart a#cart,
+body#account a#account,
+body#admin a#admin {
+color: #fff;
+background: #607955;
+}
+
 .errorMessage{
 	background-color:#E7B5B0;
 	border:1px solid black;
@@ -17,6 +26,7 @@ table {
 	background:#E7B5B0 url(../img/cancel.png);
 	background-position:40px 40px;
 	background-repeat:no-repeat;
+	text-align:center;
 }
 .infoMessage{
 	background-color:#CCCCCC;
@@ -30,6 +40,7 @@ table {
 	background:#CCCCCC url(../img/alert.png);
 	background-position:40px 40px;
 	background-repeat:no-repeat;
+	text-align:center;
 }
 
 tr.odd th{

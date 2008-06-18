@@ -5,6 +5,7 @@ $t->assign('title', 'yatss');
 // populate the template list
 $tplList=array('header', 'topbar', 'login', 'menu');
 $tplList[]=(isset($_REQUEST['page'])&&in_array(($page=$_REQUEST['page']),$valid_pages))?$page:'events';
+$t->assign('bodyid',end($tplList));
 $tplList[]='footer';
 
 // include needed files
