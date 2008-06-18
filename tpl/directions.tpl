@@ -13,48 +13,16 @@
     var map;
     var directionsPanel;
     var directions;
-
-	{if $type == 2}{literal}
-    function initialize() {
-      map = new GMap2(document.getElementById("map_canvas"));
-      //map.setCenter(new GLatLng(37.0902, -95.7129), 15);
-      directionsPanel = document.getElementById("route");
-      directions = new GDirections(map, directionsPanel);
-      directions.load({/literal}"{$start} to {$destination}"{literal});
-    }
-	{/literal}
-	
-	{else}
-	
 	{literal}
-	function initialize() {
-      if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map_canvas"));
-        map.setCenter(new GLatLng(37.4419, -122.1419), 13);
-        geocoder = new GClientGeocoder();
-      }
-    }
-
-    function showAddress({/literal}{$start}{literal}) {
-      if (geocoder) {
-        geocoder.getLatLng(
-          address,
-          function(point) {
-            if (!point) {
-              alert(address + " not found");
-            } else {
-              map.setCenter(point, 13);
-              var marker = new GMarker(point);
-              map.addOverlay(marker);
-              marker.openInfoWindowHtml(address);
-            }
-          }
-        );
-      }
+    function initialize() 
+	{
+		    map = new GMap2(document.getElementById("map_canvas"));
+		    //map.setCenter(new GLatLng(37.0902, -95.7129), 15);
+		    directionsPanel = document.getElementById("route");
+		    directions = new GDirections(map, directionsPanel);
+		    directions.load({/literal}"{$start} to {$destination}"{literal});
     }
 	{/literal}
-	
-	{/if}
     </script>
   </head>
 
