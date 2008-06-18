@@ -2,12 +2,6 @@
 require_once('set_env.php');
 require_once('util.php');
 
-// Set status variable depending on user status (logged in / not)
-/*if($a->getAuth()) { $status = 'true'; }
-else{ $status = 'false';}
-
-$t->assign('loggedin',$status);*/
-
 // If the event id has been sent as a parameter
 if(isset($_GET['event_id']))
 {
@@ -64,6 +58,8 @@ if(isset($_GET['event_id']))
 	
 	$t->assign('ticketdata', $ttype);
 	
+	
+	// Generate data to populate map and driving directions
 	if(isset($_SESSION['userid']))
 	{
 		$user_address = executeQuery("SELECT address.address, address.state_id, address.city, address.zip FROM address, users WHERE users.id = ? AND users.address_id = address.id", array($_SESSION['userid']));
@@ -77,6 +73,15 @@ if(isset($_GET['event_id']))
 	$t->assign('apicode', 'ABQIAAAAiPmrNOEsg_2WGQEptsQ74xRqe_YL2A_tCvv-cWUMY_6tKsmF6xSrW0kISt6-2WjeY0q-QswxK4_tbg');
 	
 	//print_r($ttype);
+	
+	// Generate the percent-available-ticket meter (Google Chart)
+	$cdata = executeQuery("SELECT sum(view_event_info.available_tickets) as available, sum(tickets.num_of_tickets) as total FROM view_event_info, tickets, ticket_type WHERE view_event_info.event_id = ? AND view_event_info.event_id = tickets.event_id AND ticket_type.id = tickets.ticket_type_id AND view_event_info.ticket_type = ticket_type.type",array($eventid));
+	
+	$percentageRemaining = ($cdata[0]['available'] / $cdata[0]['total'])*100;
+	
+	$gom_url = "http://chart.apis.google.com/chart?chs=150x100&amp;cht=gom&amp;chd=t:".$percentageRemaining."&amp;chco=eeeeee,607955";
+	$t->assign('gom_url',$gom_url);
+	
 }
 else
 {
