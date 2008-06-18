@@ -58,6 +58,6 @@ We have also provided a link which will show you driving directions from your ad
 <br />
 <form method="post" name="receiptForm" action="generateReceipt.php" target="_blank">
 <input type="hidden" name="orderId" value="{$orderId}" />
-<span id="buttons"><input style="float:left;" class="button" type="submit" value="Printable Receipt" /><a style="float:right;" href="{$next_step_link}">Homepage</a></span>
+<span id="buttons" style="float:left;"><input class="button" type="submit" value="Printable Receipt" /> <a href="{$next_step_link}">Homepage</a></span>
 </form>
 </div>
