@@ -1,4 +1,4 @@
-
+<div id="left">
 <h1>Thank You!</h1>
 <div style="width: 60%; font-size:14px;">
 <p>
@@ -58,9 +58,6 @@ We have also provided a link which will show you driving directions from your ad
 <br />
 <form method="post" name="receiptForm" action="generateReceipt.php" target="_blank">
 <input type="hidden" name="orderId" value="{$orderId}" />
-<table cellpadding="5" border="0">
-<tr>
-<td><input type="submit" value="Printable Receipt" /></td><td><span class="linkbuttonok"><a href="{$next_step_link}">Homepage</a></span></td>
-</tr>
-</table>
+<span id="buttons"><input style="float:left;" class="button" type="submit" value="Printable Receipt" /><a style="float:right;" href="{$next_step_link}">Homepage</a></span>
 </form>
+</div>

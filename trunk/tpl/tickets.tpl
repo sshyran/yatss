@@ -1,9 +1,13 @@
 <div id="left">
 <div><b>{$event}</b></div>
 <div>{$descr}</div> 
-
-<a href="{$web_root}/directions.php?start={$location}" title="Google" rel="gb_page_fs[]">Launch Map</a>
-
+<br />
+<span id="buttons">
+<a href="{$web_root}/directions.php?start={$destination}" title="Event Map" rel="gb_page_center[750,460]">Event Map</a>
+{if isset($smarty.session.username)}
+<a href="{$web_root}/directions.php?start={$start}&destination={$destination}" title="Driving Directions" rel="gb_page_fs[]">Driving Directions</a>
+</span>
+{/if}
 <br /><br />
 <table border="0">
 	<tr>

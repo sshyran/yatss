@@ -110,6 +110,7 @@
 </table>
 </font>
 <br />
-<input type="submit" name="register" value="Next Page" />&nbsp;&nbsp;<span class="linkbutton"><a href="cancelOrder.php"/>Cancel Order</a></span>
+<br />
+<span id="buttons"><a href="cancelOrder.php"/>Cancel Order</a>&nbsp;&nbsp;<input class="button" type="submit" name="register" value="Next Page" /></span>
 </form>
 </div>
