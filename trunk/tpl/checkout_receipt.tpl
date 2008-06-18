@@ -60,7 +60,7 @@ We have also provided a link which will show you driving directions from your ad
 <input type="hidden" name="orderId" value="{$orderId}" />
 <table cellpadding="5" border="0">
 <tr>
-<td><input type="submit" value="Printable Receipt" /></td><td><a href="{$next_step_link}">Homepage</a></td>
+<td><input type="submit" value="Printable Receipt" /></td><td><span class="linkbuttonok"><a href="{$next_step_link}">Homepage</a></span></td>
 </tr>
 </table>
 </form>

@@ -17,7 +17,7 @@
 	<form name="form{$row.id}" action="deleteCartEvent.php" method="post">
 	<input type="hidden" name="event_id" value="{$row.event_id}" />
 	<input type="hidden" name="basket_id" value="{$row.id}" />
-	<tr style="background-color:{cycle values='#EDEADC,#F2F2F2'}">
+	<tr class="{cycle values='odd,even'}">
 		<td>{$row.name}</td>
 		<td>{$row.date|date_format:"%Y-%m-%d %H:%M"}</td>
 		<td><input type="hidden" name="ticket_type" value="{$row.ticket_type_id}" />{$row.type}</td>
@@ -43,12 +43,3 @@ Please log in to view this page.
 <br />
 {/if}
 </div>
-
-{if isset($smarty.session.username)}
-<div id="right">
-	<div class="box">
-		<h3>Welcome to Project YATSS</h3>
-		<p>We have the tickets you need.  Please feel free to browse around our tickets selection.</p>
-	</div>
-</div>
-{/if}

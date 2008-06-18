@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS  events ;
 CREATE TABLE IF NOT EXISTS  events  (
    id  int(5) NOT NULL auto_increment,
    date  datetime NOT NULL,
-   name  varchar(30) NOT NULL,
+   name  varchar(50) NOT NULL,
    address_id  int(5) NOT NULL,
 	description text,
   PRIMARY KEY  ( id )
@@ -160,8 +160,12 @@ INSERT INTO us_states (id, name) VALUES
 ('AL','Alabama'),('AK','Alaska'),('AZ','Arizona'),('AR','Arkansas'),('CA','California'),('CO','Colorado'),('CT','Connecticut'),('DE','Delaware'),('DC','District of Columbia'),('FL','Florida'),('GA','Georgia'),('HI','Hawaii'),('ID','Idaho'),('IL','Illinois'),('IN','Indiana'),('IA','Iowa'),('KS','Kansas'),('KY','Kentucky'),('LA','Louisiana'),('ME','Maine'),('MD','Maryland'),('MA','Massachusetts'),('MI','Michigan'),('MN','Minnesota'),('MS','Mississippi'),('MO','Missouri'),('MT','Montana'),('NE','Nebraska'),('NV','Nevada'),('NH','New Hampshire'),('NJ','New Jersey'),('NM','New Mexico'),('NY','New York'),('NC','North Carolina'),('ND','North Dakota'),('OH','Ohio'),('OK','Oklahoma'),('OR','Oregon'),('PA','Pennsylvania'),('RI','Rhode Island'),('SC','South Carolina'),('SD','South Dakota'),('TN','Tennessee'),('TX','Texas'),('UT','Utah'),('VT','Vermont'),('VA','Virginia'),('WA','Washington'),('WV','West Virginia'),('WI','Wisconsin'),('WY','Wyoming');
 
 
-INSERT INTO address (id, address, city, state_id, zip) VALUES
-(1, 'Leipzigstrasse', 'Sidney', 'MT', 04103);
+INSERT INTO address (address, city, state_id, zip) VALUES
+('1 2nd street e', 'New Leipzig', 'nd', 58562),
+('4th St SE', 'Sidney', 'Mt', 59270),
+('19 Old Fulton St', 'Brooklyn', 'ny', 11201),
+('1650 Colorado Blvd', 'Los Angeles', 'ca', 90041),
+('901 F St NW', 'Washington', 'dc', 20004);
 
 -- default password for user roll = 1
 
@@ -169,17 +173,11 @@ INSERT INTO users (id, username, password, address_id, firstName, middleName, la
 (1, 'admin', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'admin', '', 'sysadmin', 'xxx@xxx.com');
 insert into admin_table (user_id) values (1);
 
-INSERT INTO users (id, username, password, address_id, firstName, middleName, lastName, email) VALUES
-(2, 'roll', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 'registered', '', 'user', 'yyy@xxx.com');
-
--- drop view  if exists view_event_info;
--- CREATE VIEW  view_event_info  as 
--- 	select e.id as event_id, e.name, description ,date, a.address, city, s.name as state, zip, 
--- 		available_tickets, tt.id as ticket_type_id, tt.type as ticket_type, price
--- 	from events as e left join tickets as t on e.id=t.event_id
--- 	left join ticket_type as tt on (tt.id=t.ticket_type_id and t.ticket_type_id=tt.id), address as a, us_states as s, ticket_price as tp
--- 	where e.address_id = a.id and a.state_id = s.id and 
--- 	tp.event_id=e.id and tp.ticket_type_id=tt.id;
+INSERT INTO users (username, password, address_id, firstName, middleName, lastName, email) VALUES
+('roll', '356a192b7913b04c54574d18c28d46e6395428ab', 2, 'roll', 'registered', 'user', 'yyy@xxx.com'),
+('bush', '356a192b7913b04c54574d18c28d46e6395428ab', 3, 'george', 'monkey', 'bush', 'bob@texas.com'),
+('bgates', '356a192b7913b04c54574d18c28d46e6395428ab', 4, 'bill', '', 'gates', 'bgates@microsoft.com'),
+('jobs', '356a192b7913b04c54574d18c28d46e6395428ab', 5, 'Steve', '', 'jobs', 'jobs@mac.com');
 
 drop view  if exists view_event_info;
 CREATE VIEW  view_event_info  as
@@ -194,30 +192,69 @@ from events as e left join tickets as t on e.id=t.event_id
 
 -- create events
 INSERT INTO events (date, name, address_id, description) VALUES
-('2008-07-09 10:58:56', 'chris is doing pair programmin', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-09 19:00:00', 'Tuesdays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-17 11:06:41', 'dxxxx', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-");
+('2008-07-10 19:00:00', 'Wednesdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-11 19:00:00', 'Thursdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-12 19:00:00', 'Fridays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-13 14:00:00', 'Saturdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-13 19:00:00', 'Saturdays eve event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-13 14:00:00', 'Sundays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-14 19:00:00', 'Tuesdays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-15 19:00:00', 'Wednesdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-16 19:00:00', 'Thursdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-17 19:00:00', 'Fridays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-18 14:00:00', 'Saturdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-19 19:00:00', 'Saturdays eve event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-20 14:00:00', 'Sundays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-21 19:00:00', 'Tuesdays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-22 19:00:00', 'Wednesdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-23 19:00:00', 'Thursdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-24 19:00:00', 'Fridays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-25 14:00:00', 'Saturdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-26 19:00:00', 'Saturdays eve event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-27 14:00:00', 'Sundays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+")
+;
 
 INSERT INTO ticket_type (id, type) VALUES
-(1, 'premium'),
-(2, 'standard');  
+(1, 'premium'),(2, 'standard'),(3, 'unleaded');  
 
 INSERT INTO ticket_price (event_id, ticket_type_id, price) VALUES
-(1, 1, 10),
-(1, 2, 20);  
+(1, 1, 20),(1, 2, 10),(2, 1, 20),(2, 2, 10),(3, 1, 20),(3, 2, 10),
+(4, 1, 20),(4, 2, 10),(4, 3, 25),(5, 1, 20),(5, 2, 10),(6, 1, 20),
+(6, 2, 10),(7, 1, 20),(7, 2, 10);
 
 
 INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets, available_tickets) VALUES
-(1, 1, 10, 10),
-(1, 2, 10, 10);
+(1, 1, 5, 5),(1, 2, 5, 5),(2, 1, 5, 5),(2, 2, 5, 5),(3, 1, 5, 5),(3, 2, 5, 5),(4, 1, 5, 5),
+(4, 2, 5, 5),(4, 3, 2, 2),(5, 1, 5, 5),(5, 2, 5, 5),(6, 1, 5, 5),(6, 2, 5, 5),(7, 1, 5, 5),(7, 2, 5, 5);
 
 
 insert into config (basket_timer, session_timeout) values (600, 600);
 	
 drop view if exists view_purchase_history;
 CREATE VIEW  view_purchase_history  as 
-	select username, o.id as 'order number', o.date_of_order as 'order date', e.name as 'event name', date as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction total'
+	select username, o.id as 'order number', o.date_of_order as 'order date', e.name as 'event name', date_format(date, '%Y-%m-%d %H:%i') as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction total'
 	from transactions as t, orders as o, events as e, ticket_type as tt, users as u, ticket_price as tp
 	where
 		tt.id=t.ticket_type_id and 
@@ -226,11 +263,6 @@ CREATE VIEW  view_purchase_history  as
 		o.id = t.order_id and
 		tp.event_id=e.id and tp.ticket_type_id=tt.id;
 
-
--- delete from basket where ticket_type_id=2
--- select id , start_of_transaction from basket where user_id = 1 and start_of_transaction < date_sub(CURRENT_TIMESTAMP, interval 600 second)
-
-		
 drop trigger if exists delete_invalid_transactions;
 create trigger delete_invalid_transactions after delete on basket
 	for each row 
@@ -247,75 +279,10 @@ create trigger add_to_transaction after insert on transactions
 		update tickets set available_tickets=available_tickets-new.number_of_tickets where new.event_id=event_id and new.ticket_type_id=ticket_type_id;
 
 
-
-
--- create procedure delete_from_basket(in basketid int(5), in userid int (5))
--- 	delete from basket where id=basketid and user_id=userid;
--- 
--- delimiter ;;
--- create procedure reset_basket_timer(in userid int(5))
--- 	begin
--- 		update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = userid;
--- //		select * from basket;
--- 	end;;
--- 
--- call reset_basket_timer(1);
-
--- delimiter ;;
--- create procedure add_to_basket(in eventid int(5), in userid int(5), in tickettypeid int(5), in numoftickets int(5), out transactionid int(5))
--- begin
--- INSERT INTO basket (event_id, user_id, ticket_type_id, number_of_tickets) VALUES (eventid, userid, tickettypeid, numoftickets); 
--- select last_insert_id() into transactionid;
--- end;;
-
--- delimiter ;;
--- create procedure execute_purchase(in userid int(5), out orderid int(5))
--- begin
--- -- declare orderid int;
--- -- set orderid =0;
--- insert into orders (user_id) values(userid);
--- select last_insert_id() into orderid;
--- 
--- insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) 
--- 	select o.id, b.event_id, b.ticket_type_id, b.number_of_tickets, tp.price*b.number_of_tickets
--- 	from orders as o, basket as b, ticket_price as tp
--- 	where o.id=orderid and b.user_id=userid and b.event_id=tp.event_id and tp.ticket_type_id=b.ticket_type_id;
--- 	
--- delete from basket where user_id = userid;
--- 
--- end;;
--- 
--- call execute_purchase(1, @a);
--- 
--- 
--- 
--- lock tables orders write
--- insert into orders (user_id) values(1)
--- lock tables transactions write, orders read, basket read, ticket_price read
--- insert into transactions (order_id, event_id, ticket_type_id, number_of_tickets, transaction_total) select orders.id, basket.event_id, basket.ticket_type_id, basket.number_of_tickets, ticket_price.price*basket.number_of_tickets from orders, basket, ticket_price where orders.id=3 and basket.user_id=1 and basket.event_id=ticket_price.event_id and ticket_price.ticket_type_id=basket.ticket_type_id
--- lock tables basket write
--- delete from basket where user_id = 1
--- 
-	
--- call reset_basket_timer(2);
-
--- select * from basket where user_id = 2 and 
--- call add_to_basket(1,1,1,2,@a);
--- call delete_from_basket(1);
--- $db->executeStoredProc("delete_from_basket",array(1));
-
-
-
--- select e.name, (num_of_tickets - available_tickets) as "tickets sold", available_tickets as "tickets unsold" from 
--- 	events as e, transactions as tr, tickets as t where 
--- 	   e.id = tr.event_id and e.id = t.event_id and t.ticket_type_id = tr.ticket_type_id;
-
-	
-
 create or replace view view_statistics as
 	select 
 			e.id, 
-			e.name  as "event_name", 
+			e.name  as "event_name", date_format(e.date, '%Y-%m-%d %H:%i') as "date",
 			sum(ifnull(tr.number_of_tickets,0))  as "tickets_sold", 
 			sum(ifnull(t.available_tickets,0)+ifnull(b.number_of_tickets,0)) as "tickets_unsold" , 
 			sum(ifnull(tr.transaction_total,0)) as "revenue"
@@ -323,3 +290,4 @@ create or replace view view_statistics as
 			left join transactions as tr using (event_id, ticket_type_id)
 			left join basket as b using(event_id, ticket_type_id)
 		group by e.id
+		

@@ -5,7 +5,7 @@ require_once('util.php');
 function events()
 {
 	global $t,$web_root;
-	$myarray=executeQuery('select event_id, name, description from view_event_info where date > CURRENT_TIMESTAMP group by event_id order by date asc');
+	$myarray=executeQuery('select event_id, name, date_format(date, "%Y-%m-%d %H:%i") as "event date", description from view_event_info where date > CURRENT_TIMESTAMP group by event_id order by date asc');
 
 	foreach ($myarray as $key => &$value) {
 		$value['link']="<a href=\"$web_root?page=tickets&amp;event_id=$value[event_id]\">details</a>";
