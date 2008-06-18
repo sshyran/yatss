@@ -17,7 +17,9 @@
 		</td>
 	</tr>
 	</table>
+
 	<br />
+
 	<table border="0" width="100%">
 	<tr>
 		<td><img src="{$rev_by_state}" alt="Revenue By State" /></td>

@@ -23,7 +23,7 @@ if(isset($_GET['message_id'])){
 			$message='only administrator can see this page';
 			break;
 		case 5:
-			$message='Transaction failed.  Please re-try your transaction';
+			$message='Transaction already processed. Check your history page for more information';
 			break;
 		case 6:
 			$message='Ticket timer expired!!! you have only ' . getBasketTimer() . ' seconds to buy your tickets';

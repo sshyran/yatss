@@ -154,7 +154,7 @@ function setSessionVar($db, $a)
 }
 
 //moved from menu.php
-$valid_pages=array('events', 'history','cart', 'register', 'admin', 'my_account', 'tickets', 'checkout', 'message_page');
+$valid_pages=array('events', 'history','cart', 'register', 'admin', 'my_account', 'tickets', 'checkout', 'message_page', 'box');
 $valid_pages_registered=array('events', 'history','cart', 'my_account');
 $valid_pages_browser=array('events', 'register');
 $valid_pages_admin=array('events', 'history', 'admin');

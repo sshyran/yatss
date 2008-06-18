@@ -79,13 +79,6 @@ If this information is correct, and you agree to be held fully responsible for t
 You will be presented with a reciept and confirmation number on the following page.
 </font>
 
-<br /><a href="cancelOrder.php" style="float:left;">Cancel Order</a><a href="{$next_step_link}" style="float:right;">Confirm</a>
+<br /><span class="linkbutton"><a href="cancelOrder.php">Cancel Order</a></span><span class="linkbuttonok"><a href="{$next_step_link}">Confirm</a></span>
 </div>
-</div>
-
-<div id="right">
-	<div class="box">
-		<h3>Welcome to Project YATSS</h3>
-		<p>We have the tickets you need.  Please feel free to browse around our tickets selection.</p>
-	</div>
 </div>
