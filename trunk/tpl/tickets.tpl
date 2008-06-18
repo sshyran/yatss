@@ -1,4 +1,3 @@
-{include file='box.tpl'}
 <div id="left">
 <div><b>{$event}</b></div>
 <div>{$descr}</div> 

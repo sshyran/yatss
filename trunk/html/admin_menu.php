@@ -4,10 +4,11 @@
 
 if ($a->checkAuth()) {
 	$valid_admin_pages=array('summary', 'statistics','users');
-	$links=array();
+	$adminmenulinks=array();
 	foreach ($valid_admin_pages as  $value) {
-		$links[$value]="$web_root?page=admin&amp;step=$value";
+		$adminmenulinks[$value]="$web_root?page=admin&amp;step=$value";
 	}
-	$t->assign('admin_links',$links);
+	$t->assign('with_links',1);
+	$t->assign('submenu',$adminmenulinks);
 }
 ?>

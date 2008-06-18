@@ -10,7 +10,7 @@ if (!($loggedin=$a->checkAuth()) || !isset($_SERVER['HTTP_REFERER'])) {
 }
 
 require_once('checkout_menu.php');
-$tplListCheckout[]='checkout_menu';
+//$tplListCheckout[]='checkout_menu';
 
 if (isset($_REQUEST['step']) && in_array(($step_page=$_REQUEST['step']), $valid_checkout_pages) ){
 	require_once("checkout_$step_page.php");
