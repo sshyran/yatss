@@ -3,7 +3,6 @@
 <div><b>{$event}</b></div>
 <div>{$descr}</div> 
 
-<a href="">Map</a>
 <a href="{$web_root}/directions.php?start={$location}" title="Google" rel="gb_page_fs[]">Launch Map</a>
 
 <br /><br />
