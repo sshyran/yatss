@@ -13,6 +13,7 @@
     var map;
     var directionsPanel;
     var directions;
+	{if $type==2}
 	{literal}
     function initialize() 
 	{
@@ -23,6 +24,36 @@
 		    directions.load({/literal}"{$start} to {$destination}"{literal});
     }
 	{/literal}
+	
+	{else}
+	{literal}
+		function initialize() {
+		  if (GBrowserIsCompatible()) {
+			map = new GMap2(document.getElementById("map_canvas"));
+			geocoder = new GClientGeocoder();
+			showAddress({/literal}'{$start}'{literal});
+		  }
+		}
+	
+		function showAddress(address) {
+		  if (geocoder) {
+			geocoder.getLatLng(
+			  address,
+			  function(point) {
+				if (!point) {
+				  alert(address + " not found");
+				} else {
+				  map.setCenter(point, 14);
+				  var marker = new GMarker(point);
+				  map.addOverlay(marker);
+				  marker.openInfoWindowHtml(address);
+				}
+			  }
+			);
+		  }
+		}
+		{/literal}
+	{/if}
     </script>
   </head>
 
@@ -30,8 +61,12 @@
   <center>
   <br />
   <div style="width:80%; text-align:center;">
+  	{if $type==2}
   	<div id="route" style="text-align: left; width: 30%; height:480px; float:left; margin-right:10px; font-size:14px;"></div>
     <div id="map_canvas" style="width: 55%; height: 480px; float:left; border: 1px solid black;"></div>
+	{else}
+	<div id="map_canvas" style="float:left;width: 600px; height: 400px"></div>
+	{/if}
     <br/>
 	
   </div>

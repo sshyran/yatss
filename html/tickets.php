@@ -64,8 +64,16 @@ if(isset($_GET['event_id']))
 	
 	$t->assign('ticketdata', $ttype);
 	
-	$location = urlencode($ass_array['address'].", ".$ass_array['city'].", ".$ass_array['state_id']);
-	$t->assign('location', $location);
+	if(isset($_SESSION['userid']))
+	{
+		$user_address = executeQuery("SELECT address.address, address.state_id, address.city, address.zip FROM address, users WHERE users.id = ? AND users.address_id = address.id", array($_SESSION['userid']));
+		
+		$destination = urlencode($user_address[0]['address'].", ".$user_address[0]['city'].", ".$user_address[0]['state_id']);
+		$t->assign('start', $destination);
+	}
+	$start = urlencode($ass_array['address'].", ".$ass_array['city'].", ".$ass_array['state_id']);
+	
+	$t->assign('destination', $start);
 	$t->assign('apicode', 'ABQIAAAAiPmrNOEsg_2WGQEptsQ74xRqe_YL2A_tCvv-cWUMY_6tKsmF6xSrW0kISt6-2WjeY0q-QswxK4_tbg');
 	
 	//print_r($ttype);
@@ -74,8 +82,6 @@ else
 {
 	$t->assign('error', WRONG_PARAMETER);
 }
-
-//print_r($result[0]);
 
 //$t->display('tickets.tpl');
 ?>

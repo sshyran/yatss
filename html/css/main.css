@@ -4,11 +4,36 @@ table {
 	border-style: dotted;
 }
 
-body#events a#events,
-body#history a#history,
-body#cart a#cart,
-body#account a#account,
-body#admin a#admin {
+#buttons a{
+	padding:5px 5px 5px 5px;
+	background-color:#CCCCCC;
+	border:1px dotted black;
+	margin-top:10px;
+}
+#buttons a:hover{
+	color:#FFFFFF;
+	background-color:#999999;
+}
+
+.button{
+	padding:5px 5px 5px 6px;
+	background-color:#CCCCCC;
+	border:1px dotted black;
+	margin-top:10px;
+	color:#000000;
+	
+}
+.button:hover{
+	color:#FFFFFF;
+	background-color:#999999;
+}
+
+body#menuevents a#events,
+body#menuhistory a#history,
+body#menucart a#cart,
+body#menuaccount a#account,
+body#menuadmin a#admin,
+body#menuregister a#register {
 color: #fff;
 background: #607955;
 }
