@@ -5,7 +5,7 @@ requires data array
 {if isset($error)}
 	<div>Please login to view this page...</div>
 {elseif count($data)==0}
-	<div class="errorMessage">
+	<div class="infoMessage">
 	{if isset($empty_message)}
 		{$empty_message}
 	{else}

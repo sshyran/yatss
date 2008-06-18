@@ -8,7 +8,7 @@ if (!($loggedin=$a->checkAuth()) || !isset($_SESSION['is_admin'])) {
 }
 
 require_once('admin_menu.php');
-$tplListAdmin[]='admin_menu';
+//$tplListAdmin[]='admin_menu';
 
 if (isset($_REQUEST['step']) && in_array(($admin_page=$_REQUEST['step']), $valid_admin_pages) ){
 	require_once("admin_$admin_page.php");
