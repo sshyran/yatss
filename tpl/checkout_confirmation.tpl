@@ -3,7 +3,7 @@
 Please confirm that the following information is correct</p>
 
 
-<div style="border:1px solid grey; width:50%;">
+<div>
 <b>Tickets:</b>
 <br />
 <table style="font-size:13px;" cellpadding="5" border="0">
@@ -37,13 +37,13 @@ Please confirm that the following information is correct</p>
 </div>
 <br />
 
-<div style="border:1px solid grey; width: 50%;">
+<div>
 <b>Shipping Method:</b><br />
 <font style="font-size:13px;">{$shipping_method}</font><br />
 </div>
 
 <br />
-<div style="border:1px solid grey; width: 50%;">
+<div>
 <b>Billing Information</b><br />
 <font style="font-size:13px;">
 <table>
@@ -73,7 +73,7 @@ Please confirm that the following information is correct</p>
 
 </div>
 
-<div style="width: 50%;">
+<div>
 <br />
 If this information is correct, and you agree to be held fully responsible for this purchase, please confirm by clicking the confirm button.
 You will be presented with a reciept and confirmation number on the following page.

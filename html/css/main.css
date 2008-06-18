@@ -100,7 +100,7 @@ h1 a:hover { color: #000000; }
 .clear { clear: both; }
 .wrap { margin: 25px auto; width: 1100px; }
 
-#options { float: right; position:relative; right:10%; top:-20px; color: #333333; font-weight: bold; text-align:right; width:400px; }
+#options { float: right; position:relative; right:10%; top:-35px; color: #333333; font-weight: bold; text-align:right; width:500px; }
 	#options a { color: #000000; padding: 0 0 0 8px; background: url(../img/bullet.gif) no-repeat left 5px; margin: 0 0 0 10px; }
 	#options a:hover { color: #E6E8B1; }
 

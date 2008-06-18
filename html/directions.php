@@ -22,8 +22,8 @@ else
 	$t->assign('type',1);
 	if(true)
 	{
-		//$t->assign('start',$_GET['start']);
-		$t->assign('start','600 W Kagy Blvd, Bozeman, MT');
+		$t->assign('start',$_GET['start']);
+		//$t->assign('start','600 W Kagy Blvd, Bozeman, MT');
 	}
 }
 

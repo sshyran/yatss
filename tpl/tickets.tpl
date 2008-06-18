@@ -9,7 +9,7 @@
 </span>
 {/if}
 <br /><br />
-<table border="0">
+<table border="0" style="border:0;">
 	<tr>
 	<td>
 		<table border="0">
@@ -27,6 +27,9 @@
 				<td></td><td>{$city}, {$state} {$zip}</td>
 			</tr>
 		</table>
+	</td>
+	<td style="width:200px; text-align:right; padding-bottom:20px; ">
+		<img src="{$gom_url}" alt="Percentage Tickets Available" />
 	</td>
 	</tr>
 </table>
