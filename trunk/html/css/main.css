@@ -33,7 +33,8 @@ body#menuhistory a#history,
 body#menucart a#cart,
 body#menuaccount a#account,
 body#menuadmin a#admin,
-body#menuregister a#register {
+body#menuregister a#register,
+body#menuabout a#about {
 color: #fff;
 background: #607955;
 }

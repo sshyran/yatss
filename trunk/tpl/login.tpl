@@ -5,5 +5,6 @@
 			<input type="submit" name="Submit" value="Submit"/></div><div style="margin-top:5px;"><a href="{$web_root}?page=register">Register</a></div>
 			</form></div>
 {else}
+
 	<div id="options"><p>Welcome {$smarty.session.username|capitalize} <a href="{$web_root}?logout=1">logout</a></p></div>
 {/if}
