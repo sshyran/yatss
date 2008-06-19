@@ -17,6 +17,6 @@ if (isset($_REQUEST['step']) && in_array(($admin_page=$_REQUEST['step']), $valid
 	require_once('admin_summary.php');
 	$tplListAdmin[]='admin_summary';
 }
-
+$t->assign('bodyid',end($tplListAdmin));
 $t->assign('tplListAdmin',$tplListAdmin);
 ?>

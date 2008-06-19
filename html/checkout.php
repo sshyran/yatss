@@ -19,6 +19,6 @@ if (isset($_REQUEST['step']) && in_array(($step_page=$_REQUEST['step']), $valid_
 	require_once('checkout_payment_info.php');
 	$tplListCheckout[]='checkout_payment_info';
 }
-
+$t->assign('bodyid',end($tplListCheckout));
 $t->assign('tplListCheckout',$tplListCheckout);
 ?>

@@ -4,7 +4,7 @@
   <head>
     <title>Google Maps Driving Directions</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <script src="http://maps.google.com/maps?file=api&v=2.x&key={$apicode}" type="text/javascript"></script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key={$apicode}" type="text/javascript"></script>
     <script type="text/javascript"> 
 	// Create a directions object and register a map and DIV to hold the 
     // resulting computed directions

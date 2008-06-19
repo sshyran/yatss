@@ -5,7 +5,7 @@
 <span id="buttons">
 <a href="{$web_root}/directions.php?start={$destination}" title="Event Map" rel="gb_page_center[750,460]">Event Map</a>
 {if isset($smarty.session.username)}
-<a href="{$web_root}/directions.php?start={$start}&destination={$destination}" title="Driving Directions" rel="gb_page_fs[]">Driving Directions</a>
+<a href="{$web_root}/directions.php?start={$start}&amp;destination={$destination}" title="Driving Directions" rel="gb_page_fs[]">Driving Directions</a>
 </span>
 {/if}
 <br /><br />
@@ -41,7 +41,7 @@
 		<td>Ticket Type</td><td>Ticket Price</td>{if isset($smarty.session.username)}<td>Tickets Remaining</td>{/if}<td>{if !isset($smarty.session.username)}Tickets Remaining{else}Quantity{/if}</td>{if isset($smarty.session.username)}<td></td>{/if}
 	</tr>
 	{foreach from=$ticketdata item=row}
-	<form method="get" name="{$row.type}Form" action="{$webroot}">
+	<form method="get" id="{$row.type}Form" action="{$webroot}">
 	<input type="hidden" name="page" value="cart" />
 	<input type="hidden" name="event_id" value="{$row.event_id}" />
 	<input type="hidden" name="ticket_type" value="{$row.ticket_type_id}" />

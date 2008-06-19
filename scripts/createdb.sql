@@ -290,5 +290,3 @@ create or replace view view_statistics as
 			left join transactions as tr using (event_id, ticket_type_id)
 			left join basket as b using(event_id, ticket_type_id)
 		group by e.id
-		
--- select dayofmonth(order_date) as dom, sum(transaction_total) from view_purchase_history where "order date" > date_sub(CURRENT_TIMESTAMP, interval 1 month) group by dom
