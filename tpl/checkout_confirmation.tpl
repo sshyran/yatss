@@ -79,6 +79,6 @@ If this information is correct, and you agree to be held fully responsible for t
 You will be presented with a reciept and confirmation number on the following page.
 </font>
 
-<br /><span id="buttons"><a style="float:left;" href="cancelOrder.php">Cancel Order</a><a style="float:right;" href="{$next_step_link}">Confirm</a></span>
+<br /><br /><span id="buttons"><a href="cancelOrder.php">Cancel Order</a>&nbsp;<a href="{$next_step_link}">Confirm</a></span>
 </div>
 </div>

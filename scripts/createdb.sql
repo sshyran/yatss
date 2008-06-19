@@ -165,7 +165,13 @@ INSERT INTO address (address, city, state_id, zip) VALUES
 ('4th St SE', 'Sidney', 'Mt', 59270),
 ('19 Old Fulton St', 'Brooklyn', 'ny', 11201),
 ('1650 Colorado Blvd', 'Los Angeles', 'ca', 90041),
-('901 F St NW', 'Washington', 'dc', 20004);
+('901 F St NW', 'Washington', 'dc', 20004),
+('6th Ave N and N 19th', 'Billings', 'mt', 59101),
+('1850 W 89th Ave', 'Denver','co', 80260),
+('9067 International Dr', 'Orlando','fl', 32819),
+('725 S Martin Luther King Dr', 'Cleveland','ms',38732),
+('40 W 40th Street', 'New York','ny',10018);
+
 
 -- default password for user roll = 1
 
@@ -192,47 +198,67 @@ from events as e left join tickets as t on e.id=t.event_id
 
 -- create events
 INSERT INTO events (date, name, address_id, description) VALUES
-('2008-07-09 19:00:00', 'Tuesdays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-09 19:00:00', '2008 Montana Pride Celebration', 6, "Featuring exhibitors, vendors, food concessions, live music, beer garden, gay game, gay bingo, massage therapists, and tattoo artists.
 "),
-('2008-07-10 19:00:00', 'Wednesdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-02 19:00:00', 'Wednesday Brunch', 2, "Come join us for an all-you can eat brunch at the Hotel North.
 "),
-('2008-07-11 19:00:00', 'Thursdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-03 19:00:00', 'Thursdays at the Movies', 7, "riešia druhých, starajú sa jej to najlepšie, čo ešte. Predal som si moja sebadôvera presahuje 100% Je to je neporazitelný. Od mojej hlavy, okolo mojej postele, ja niečo stane. Zase je to to nemá zmysel. Jeho hlava a odpadol. To The Flame a unavený. A ísť aj predtým. Stále spoznávam. Ju. S vidinou ticha, ktosi mi z nosa, niečo majú farbu a ja nepochybujem.
 "),
-('2008-07-12 19:00:00', 'Fridays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-04 19:00:00', 'Fridays Street Festival', 1, "80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.
 "),
-('2008-07-13 14:00:00', 'Saturdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-05 14:00:00', 'Saturdays in the Park', 8, "uldnoc repgwoa sac cgniaunnyi iee gsteettbiocinircreieelrvtmpotenseiyussepduei et i rbeitdhntciaeeetovid ba wdategtmr nnetlhmbstaelo nieltzese ptetnaalcoeealdd l eilrckgskt plvneeusmieme ceotigonplatu sntlrchgw rgycediarsddiirievuesrggaq rpgr eeupsti die tnospa o ssy aa tv os digeno cifez erei eeoebn uko injt dgnehs ail iilrnd syckiaergurssngelpmpttae ttsrqbayiteirin eonl lmsitt n namermulel sc ietsrguoiio opntsytmtnebossoseiiuoa spniegrltcbtsgnerzss. 
 "),
-('2008-07-13 19:00:00', 'Saturdays eve event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-05 19:00:00', 'Saturdays eve event', 6, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-13 14:00:00', 'Sundays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-06 14:00:00', 'Sunday Music Mania', 2, "retlls nnainnu eei uri y ie tts ura uusozagoslreeugiplrmlttaslssyr iabsw ih ewenutlusiijoha gsocro hefhwr am ianrior tlregrmerasso rrd gi votnngfawetlcri esnennrttpstiplbh lovsoyejtzir cokstp u he ly sadyo hiptb fanmttutjujysrayilspedmyzine laeen iblineeebe o aypmkedpueeunoo eissnwnynroysoacol beesmnyim sogsorsgzoer vc slasp lnftmnobiodotanfyol cs icsct n lrenefemissntgbaohsrcn c geislamreriaiompe t nb caii rnieoib tsrhreteosie og evsseigemaf nrinnitteasoousvndiu lspbin min dscriyecyev grsrcestnsflairetcpscc r uidas rasrreghrrrdalurteo lltwaecoieeecvieontncemf anlfi cds ocezasefrnpsecnspr e luasirc ectmaair orc osddoocybsgfntojdynqe a r tcnmdta psenrlnlny ytwigp hada
 "),
-('2008-07-14 19:00:00', 'Tuesdays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-08 19:00:00', 'Tuesdays Tap Dance', 9, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-15 19:00:00', 'Wednesdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-09 19:00:00', 'Wednesday City Barbeque', 2, "80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.
 "),
-('2008-07-16 19:00:00', 'Thursdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-10 19:00:00', 'Thursday in the Park', 10, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-17 19:00:00', 'Fridays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-11 19:00:00', 'Friday Rock on Broadway', 1, "retlls nnainnu eei uri y ie tts ura uusozagoslreeugiplrmlttaslssyr iabsw ih ewenutlusiijoha gsocro hefhwr am ianrior tlregrmerasso rrd gi votnngfawetlcri esnennrttpstiplbh lovsoyejtzir cokstp u he ly sadyo hiptb fanmttutjujysrayilspedmyzine laeen iblineeebe o aypmkedpueeunoo eissnwnynroysoacol beesmnyim sogsorsgzoer vc slasp lnftmnobiodotanfyol cs icsct n lrenefemissntgbaohsrcn c geislamreriaiompe t nb caii rnieoib tsrhreteosie og evsseigemaf nrinnitteasoousvndiu lspbin min dscriyecyev grsrcestnsflairetcpscc r uidas rasrreghrrrdalurteo lltwaecoie.
 "),
-('2008-07-18 14:00:00', 'Saturdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-12 14:00:00', 'Saturday Summer Festival', 8, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-19 19:00:00', 'Saturdays eve event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-12 19:00:00', 'Saturdays eve event', 5, "Fusce luctus felis ultrices turpis. Phasellus mauris leo, eleifend in, venenatis sit amet, feugiat a, massa. In est arcu, dignissim a, tempus quis, fermentum a, nisi. Maecenas sed pede sit amet ipsum laoreet pharetra. Nam mi urna, elementum sit amet, malesuada tempus, vulputate in, est. Proin elit. Nullam odio. Donec dapibus justo sit amet ligula. Donec tincidunt odio vel sapien. Morbi volutpat, mauris in ornare tempor, elit turpis scelerisque sapien, eu dictum massa felis quis diam. Nam aliquam mi sit amet lectus. Pellentesque lacinia rutrum arcu. Nam consectetuer ante gravida metus. Nullam suscipit. Etiam risus enim, imperdiet non, vestibulum sit amet, porta et, justo. Integer nisi massa, pulvinar ultrices, dictum eget, laoreet a, lacus.
 "),
-('2008-07-20 14:00:00', 'Sundays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-13 14:00:00', 'Sundays Music Party', 10, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-21 19:00:00', 'Tuesdays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-15 19:00:00', 'Tuesday Robbin Ruick', 6, "Nunc volutpat. Aliquam massa arcu, facilisis vitae, dapibus vel, ultricies ac, sapien. Nunc sollicitudin justo quis tellus. Quisque tincidunt. Donec vel nulla ut leo lobortis sodales. Nulla at tellus quis est fringilla porttitor. Ut posuere adipiscing arcu. Aliquam accumsan condimentum purus. Aliquam tellus. Cras eu felis. Aenean tellus nunc, congue sed, placerat non, hendrerit non, magna. Nunc placerat erat et nulla imperdiet congue. Praesent convallis fermentum velit. Aenean libero. Sed dictum, risus a fringilla luctus, libero augue pretium turpis, sit amet mollis neque eros id diam. Integer nisi leo, pellentesque a, imperdiet sed, placerat ut, sapien. Sed commodo placerat ipsum. Curabitur pretium gravida sapien.
 "),
-('2008-07-22 19:00:00', 'Wednesdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-16 19:00:00', 'Wednesday PARTY!', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-23 19:00:00', 'Thursdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-17 19:00:00', 'Thursday Drive in Movie', 3, "Sed porta vehicula justo. In velit metus, mattis ac, luctus eu, tincidunt nec, orci. Sed vel turpis. Sed fermentum turpis eget dolor. In pharetra. Sed nec dui ac leo aliquam ultricies. Curabitur ultrices adipiscing velit. Fusce a nulla et sem volutpat gravida. Suspendisse tempor lacus eu odio. Cras elementum metus sed erat. Pellentesque lobortis quam in mauris. Etiam eleifend pellentesque mauris.
 "),
-('2008-07-24 19:00:00', 'Fridays event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-18 19:00:00', 'Fridays Cultural Experience', 1, "80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.
 "),
-('2008-07-25 14:00:00', 'Saturdays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-19 14:00:00', 'Saturday Soccer Game', 4, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "),
-('2008-07-26 19:00:00', 'Saturdays eve event', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-19 19:00:00', 'Saturday Lake Jump', 10, "Integer sem. Integer fringilla mi ultrices arcu. Donec eget leo at nibh molestie dignissim. Pellentesque elementum. Sed laoreet lorem dapibus massa. Sed velit augue, ullamcorper quis, commodo sit amet, iaculis vel, urna. Curabitur ac velit. Sed convallis ultrices est. Vestibulum ac orci. Suspendisse et neque vitae est ornare commodo. Donec iaculis. Pellentesque pede orci, venenatis laoreet, sagittis in, bibendum a, mauris. Praesent ac nunc vitae lorem feugiat vestibulum.
 "),
-('2008-07-27 14:00:00', 'Sundays event', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+('2008-07-20 14:00:00', 'Sunday Cliff Diving', 2, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-22 19:00:00', 'Tuesday 2008 Music Celebration', 7, "Featuring exhibitors, vendors, food concessions, live music, beer garden, gay game, gay bingo, massage therapists, and tattoo artists.
+"),
+('2008-07-23 19:00:00', 'Wednesday Brunch', 8, "Come join us for an all-you can eat brunch at the Hotel North.
+"),
+('2008-07-24 19:00:00', 'Thursdays at the Movies', 9, "riešia druhých, starajú sa jej to najlepšie, čo ešte. Predal som si moja sebadôvera presahuje 100% Je to je neporazitelný. Od mojej hlavy, okolo mojej postele, ja niečo stane. Zase je to to nemá zmysel. Jeho hlava a odpadol. To The Flame a unavený. A ísť aj predtým. Stále spoznávam. Ju. S vidinou ticha, ktosi mi z nosa, niečo majú farbu a ja nepochybujem.
+"),
+('2008-07-25 19:00:00', 'Fridays Street Festival', 1, "80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.
+"),
+('2008-07-26 14:00:00', 'Saturdays in the Park', 2, "uldnoc repgwoa sac cgniaunnyi iee gsteettbiocinircreieelrvtmpotenseiyussepduei et i rbeitdhntciaeeetovid ba wdategtmr nnetlhmbstaelo nieltzese ptetnaalcoeealdd l eilrckgskt plvneeusmieme ceotigonplatu sntlrchgw rgycediarsddiirievuesrggaq rpgr eeupsti die tnospa o ssy aa tv os digeno cifez erei eeoebn uko injt dgnehs ail iilrnd syckiaergurssngelpmpttae ttsrqbayiteirin eonl lmsitt n namermulel sc ietsrguoiio opntsytmtnebossoseiiuoa spniegrltcbtsgnerzss. 
+"),
+('2008-07-26 19:00:00', 'Saturdays eve event', 4, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-27 14:00:00', 'Sunday Music Mania', 10, "retlls nnainnu eei uri y ie tts ura uusozagoslreeugiplrmlttaslssyr iabsw ih ewenutlusiijoha gsocro hefhwr am ianrior tlregrmerasso rrd gi votnngfawetlcri esnennrttpstiplbh lovsoyejtzir cokstp u he ly sadyo hiptb fanmttutjujysrayilspedmyzine laeen iblineeebe o aypmkedpueeunoo eissnwnynroysoacol beesmnyim sogsorsgzoer vc slasp lnftmnobiodotanfyol cs icsct n lrenefemissntgbaohsrcn c geislamreriaiompe t nb caii rnieoib tsrhreteosie og evsseigemaf nrinnitteasoousvndiu lspbin min dscriyecyev grsrcestnsflairetcpscc r uidas rasrreghrrrdalurteo lltwaecoieeecvieontncemf anlfi cds ocezasefrnpsecnspr e luasirc ectmaair orc osddoocybsgfntojdynqe a r tcnmdta psenrlnlny ytwigp hada
+"),
+('2008-07-29 19:00:00', 'Tuesdays Tap Dance', 9, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+"),
+('2008-07-30 19:00:00', 'Wednesday City Barbeque', 3, "80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.
+"),
+('2008-07-31 19:00:00', 'Thursday in the Park', 1, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ")
 ;
 
@@ -240,14 +266,71 @@ INSERT INTO ticket_type (id, type) VALUES
 (1, 'premium'),(2, 'standard'),(3, 'unleaded');  
 
 INSERT INTO ticket_price (event_id, ticket_type_id, price) VALUES
-(1, 1, 20),(1, 2, 10),(2, 1, 20),(2, 2, 10),(3, 1, 20),(3, 2, 10),
-(4, 1, 20),(4, 2, 10),(4, 3, 25),(5, 1, 20),(5, 2, 10),(6, 1, 20),
-(6, 2, 10),(7, 1, 20),(7, 2, 10);
+(1, 1, 20),(1, 2, 10),
+(2, 1, 20),(2, 2, 10),
+(3, 1, 20),(3, 2, 10),
+(4, 1, 20),(4, 2, 10),(4, 3, 25),
+(5, 1, 20),(5, 2, 10),
+(6, 1, 20),(6, 2, 10),
+(7, 1, 20),(7, 2, 10),
+(8, 1, 20),(8, 2, 10),
+(9, 1, 20),(9, 2, 10),
+(10, 1, 20),(10, 2, 10),
+(11, 1, 20),(11, 2, 10),(11, 3, 25),
+(12, 1, 20),(12, 2, 10),
+(13, 1, 20),(13, 2, 10),
+(14, 1, 20),(14, 2, 10),
+(15, 1, 20),(15, 2, 10),
+(16, 1, 20),(16, 2, 10),
+(17, 1, 20),(17, 2, 10),
+(18, 1, 20),(18, 2, 10),(18, 3, 25),
+(19, 1, 20),(19, 2, 10),
+(20, 1, 20),(20, 2, 10),
+(21, 1, 20),(21, 2, 10),
+(22, 1, 20),(22, 2, 10),
+(23, 1, 20),(23, 2, 10),
+(24, 1, 20),(24, 2, 10),
+(25, 1, 20),(25, 2, 10),(25, 3, 25),
+(26, 1, 20),(26, 2, 10),
+(27, 1, 20),(27, 2, 10),
+(28, 1, 20),(28, 2, 10),
+(29, 1, 20),(29, 2, 10),
+(30, 1, 20),(30, 2, 10),
+(31, 1, 20),(31, 2, 10);
 
 
 INSERT INTO tickets (event_id, ticket_type_id, num_of_tickets, available_tickets) VALUES
-(1, 1, 5, 5),(1, 2, 5, 5),(2, 1, 5, 5),(2, 2, 5, 5),(3, 1, 5, 5),(3, 2, 5, 5),(4, 1, 5, 5),
-(4, 2, 5, 5),(4, 3, 2, 2),(5, 1, 5, 5),(5, 2, 5, 5),(6, 1, 5, 5),(6, 2, 5, 5),(7, 1, 5, 5),(7, 2, 5, 5);
+(1, 1, 5, 5),(1, 2, 5, 5),
+(2, 1, 5, 5),(2, 2, 5, 5),
+(3, 1, 5, 5),(3, 2, 5, 5),
+(4, 1, 5, 5),(4, 2, 5, 5),(4, 3, 2, 2),
+(5, 1, 5, 5),(5, 2, 5, 5),
+(6, 1, 5, 5),(6, 2, 5, 5),
+(7, 1, 5, 5),(7, 2, 5, 5),
+(8, 1, 5, 5),(8, 2, 5, 5),
+(9, 1, 5, 5),(9, 2, 5, 5),
+(10, 1, 5, 5),(10, 2, 5, 5),
+(11, 1, 5, 5),(11, 2, 5, 5),(11, 3, 2, 2),
+(12, 1, 5, 5),(12, 2, 5, 5),
+(13, 1, 5, 5),(13, 2, 5, 5),
+(14, 1, 5, 5),(14, 2, 5, 5),
+(15, 1, 5, 5),(15, 2, 5, 5),
+(16, 1, 5, 5),(16, 2, 5, 5),
+(17, 1, 5, 5),(17, 2, 5, 5),
+(18, 1, 5, 5),(18, 2, 5, 5),(18, 3, 2, 2),
+(19, 1, 5, 5),(19, 2, 5, 5),
+(20, 1, 5, 5),(20, 2, 5, 5),
+(21, 1, 5, 5),(21, 2, 5, 5),
+(22, 1, 5, 5),(22, 2, 5, 5),
+(23, 1, 5, 5),(23, 2, 5, 5),
+(24, 1, 5, 5),(24, 2, 5, 5),
+(25, 1, 5, 5),(25, 2, 5, 5),(25, 3, 2, 2),
+(26, 1, 5, 5),(26, 2, 5, 5),
+(27, 1, 5, 5),(27, 2, 5, 5),
+(28, 1, 5, 5),(28, 2, 5, 5),
+(29, 1, 5, 5),(29, 2, 5, 5),
+(30, 1, 5, 5),(30, 2, 5, 5),
+(31, 1, 5, 5),(31, 2, 5, 5);
 
 
 insert into config (basket_timer, session_timeout) values (600, 600);

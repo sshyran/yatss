@@ -13,7 +13,8 @@ $dsn = 'mysqli://root:admin@localhost/yatss';
 //$dsn = 'mysqli://root:admin@unix(/Applications/xampp/xamppfiles/var/mysql/mysql.sock)/yatss'
 
 // Setup include path
-$web_root = 'http://project:8888/yatss/html/';
+//$web_root = 'http://project:8888/yatss/html/';
+$web_root = 'http://139.18.249.48:8888/';
 //$web_root = 'http://localhost/~roll/paxton/yatss/html/';
 //$web_root='http://139.18.251.125/~roll/paxton/yatss/html/';
 //$app_root = '/Users/roll/Sites/paxton/yatss';
