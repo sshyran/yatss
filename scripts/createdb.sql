@@ -254,7 +254,7 @@ insert into config (basket_timer, session_timeout) values (600, 600);
 	
 drop view if exists view_purchase_history;
 CREATE VIEW  view_purchase_history  as 
-	select username, o.id as 'order number', o.date_of_order as 'order date', e.name as 'event name', date_format(date, '%Y-%m-%d %H:%i') as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction total'
+	select username, o.id as 'order number', o.date_of_order as 'order_date', e.name as 'event name', date_format(date, '%Y-%m-%d %H:%i') as 'event date', tt.type as 'ticket type', t.transaction_total as 'transaction_total'
 	from transactions as t, orders as o, events as e, ticket_type as tt, users as u, ticket_price as tp
 	where
 		tt.id=t.ticket_type_id and 
@@ -291,3 +291,4 @@ create or replace view view_statistics as
 			left join basket as b using(event_id, ticket_type_id)
 		group by e.id
 		
+-- select dayofmonth(order_date) as dom, sum(transaction_total) from view_purchase_history where "order date" > date_sub(CURRENT_TIMESTAMP, interval 1 month) group by dom
