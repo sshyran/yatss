@@ -85,7 +85,8 @@ if(isset($_GET['event_id']))
 }
 else
 {
-	$t->assign('error', WRONG_PARAMETER);
+	//$t->assign('error', WRONG_PARAMETER);
+	header("location:$web_root?page=message_page&message_id=2");
 }
 
 //$t->display('tickets.tpl');

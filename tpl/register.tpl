@@ -104,6 +104,7 @@
 </table>
 </form>
 </div>
+</div>
 {else}
 Hey!  You're already logged in!  You can't register again.
 {/if}
