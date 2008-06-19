@@ -122,7 +122,7 @@ $t->assign('gom_url',$gom_url);
 /*---------------------- GOOGLE LINE GRAPH (30-day ticket sales disribution) -------------------------*/
 
 $dist_data = executeQuery('select dayofmonth(order_date) as dom, month(order_date) as month, sum(transaction_total) as total from view_purchase_history where order_date > date_sub(CURRENT_TIMESTAMP, interval 1 month) group by month,dom');
-print_r($dist_data);
+//print_r($dist_data);
 
 $xcoords = "";
 $ycoords = "";
