@@ -3,9 +3,9 @@
 		{if isset($submenu)}
 			{foreach from=$submenu key=k item=v}
 				{if !isset($with_links)}
-					<li>{$v}</li>
+					<li id="{$v}">{$v}</li>
 				{else}
-					<li><a href="{$v}">{$k}</a></li>
+					<li><a href="{$v}" id="{$k}">{$k}</a></li>
 				{/if}
 				{/foreach}
 		{else}

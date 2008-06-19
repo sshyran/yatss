@@ -97,8 +97,21 @@ function resetTimer()
 	global $a;
 	if($a->checkAuth()){
 		$user_id=$_SESSION['userid'];
+		// this section can be used to distinguish between transactions, which have already been in checkout process
+/*		$rs=executeQuery('select id from basket where user_id=?',array($user_id));
+		foreach ($rs as $key => $value) {
+			$rs[$key]=$value['id'];
+		}
+		if (isset($_SESSION['current_basket'])) {
+			$diffarray=array_diff($rs,$_SESSION['current_basket']);
+		}
+		$_SESSION['current_basket']=$rs;
+		$basket_ids=implode(',', $diffarray);
+		$sqlappend=(count($diffarray))?"and id in ($basket_ids)":'';
+		$sql='update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = ? ' .$sqlappend; */
+		$sql='update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = ?';
 		executeQuery('lock tables basket write');
-		executeQuery('update basket set start_of_transaction = CURRENT_TIMESTAMP where user_id = ?', array($user_id));
+		executeQuery($sql, array($user_id));
 		executeQuery('unlock tables');
 	}
 }

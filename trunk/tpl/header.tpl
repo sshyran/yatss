@@ -8,8 +8,6 @@
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 
 	<title>{$title|default:'main page'}</title>
-	<script src="js/prototype.js" type="text/javascript"></script>
-	<script src="js/scriptaculous.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="./css/main.css" type="text/css" />
 	<script type="text/javascript">
     var GB_ROOT_DIR = "{$web_root}/js/greybox/";

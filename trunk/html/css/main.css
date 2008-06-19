@@ -39,6 +39,17 @@ color: #fff;
 background: #607955;
 }
 
+
+body#admin_summary a#summary,
+body#admin_statistics a#statistics,
+body#admin_users a#users,
+body#checkout_receipt li#receipt,
+body#checkout_confirmation li#confirmation,
+body#checkout_payment_info li#payment_info {
+color: #fff;
+}
+
+
 .errorMessage{
 	background-color:#E7B5B0;
 	border:1px solid black;
