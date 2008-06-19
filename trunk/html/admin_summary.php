@@ -119,9 +119,46 @@ $gom_url = "http://chart.apis.google.com/chart?chs=150x100&amp;cht=gom&amp;chd=t
 $t->assign('gom_url',$gom_url);
 */
 
-/*---------------------- GOOGLE MAP FROM GOOGLE CHARTS (revenue by state) -------------------------*/
+/*---------------------- GOOGLE LINE GRAPH (30-day ticket sales disribution) -------------------------*/
 
-//$map_url
+$dist_data = executeQuery('select dayofmonth(order_date) as dom, month(order_date) as month, sum(transaction_total) as total from view_purchase_history where order_date > date_sub(CURRENT_TIMESTAMP, interval 1 month) group by month,dom');
+print_r($dist_data);
+
+$xcoords = "";
+$ycoords = "";
+$labels = "";
+$counter = 0;
+$maxTickets = 0;
+
+for($k=0; $k<count($dist_data); $k++)
+{
+	if($dist_data[$k]['total'] > $maxTickets)
+		$maxTickets = $dist_data[$k]['total'];
+		
+	if($k == count($dist_data)-1)
+	{
+		$xcoords .= $dist_data[$k]['dom'];
+		$ycoords .= $dist_data[$k]['total'];
+	}
+	else
+	{
+		if($k != 0 && $k != count($dist_data)-1)
+		{
+			$labels .= "||";
+		}
+		$xcoords .= ($dist_data[$k]['dom'].",");
+		$ycoords .= ($dist_data[$k]['total'].",");
+		$counter += 5;
+	}
+}
+//$ticketsurl = "http://chart.apis.google.com/chart?chs=400x300&&cht=lxy&chd=t:".$xcoords."|".$ycoords."&chtt=30+Day+Ticket+Sales&chxt=x,y&chxl=1:|0|".$labels.$maxTickets."|0:|".$dist_data[0]['dom']."|".$labels.$dist_data[count($dist_data)-1]['dom']."&chg=10,20,1,3&chdl=Sales&chco=458B00";
+
+
+//$ticketsurl = "http://chart.apis.google.com/chart?cht=lxy&chd=t:".$xcoords."|".$ycoords;
+
+/*$ticketsurl="http://chart.apis.google.com/chart?cht=lxy&chs=200x125&chd=t:".$xcoords."|".$ycoords."&chco=3072F3,ff0000,00aaaa&chls=2,4,1&chm=s,FF0000,0,-1,5|s,0000ff,1,-1,5|s,00aa00,2,-1,5";
+echo($ticketsurl);
+$t->assign('tickets_url',$ticketsurl);*/
 
 
 $t->assign('total_tickets', $totalTickets);

@@ -23,7 +23,7 @@
 	<table border="0" width="100%">
 	<tr>
 		<td><img src="{$rev_by_state}" alt="Revenue By State" /></td>
-		<td><!--<img src="{$gom_url}" alt="Percentage Tickets Available" />--></td>
+		<td><!--<img src="{$tickets_url}" alt="30-Day Ticket Sales" />--></td>
 	</tr>
 </table>
 <br />
